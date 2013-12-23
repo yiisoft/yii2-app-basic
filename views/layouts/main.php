@@ -46,10 +46,12 @@ AppAsset::register($this);
 	?>
 
 	<div class="container">
-		<?= Breadcrumbs::widget([
-			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-		]) ?>
-		<?= $content ?>
+		<div class="<?= Yii::$app->controller->id . '-' . Yii::$app->controller->action->id ?>">
+			<?= Breadcrumbs::widget([
+				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+			]) ?>
+			<?= $content ?>
+		</div>
 	</div>
 
 	<footer class="footer">
