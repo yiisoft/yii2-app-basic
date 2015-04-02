@@ -4,7 +4,9 @@ return [
     'wechat' => [
         'class' => 'callmez\wechat\Module',
         'modules' => [
-            'admin' => 'callmez\wechat\modules\admin\Module' // 微信后台管理模块
+            'admin' => [
+                'class' => 'callmez\wechat\modules\admin\Module' // 微信后台管理模块
+            ]
         ]
     ],
 ];
