@@ -1,5 +1,5 @@
 {
-    "name": "yiisoft/yii2-app-wechat",
+    "name": "callmez/yii2-app-wechat",
     "description": "Yii 2 Wechat Application Template",
     "keywords": ["yii2", "framework", "wechat", "application template"],
     "homepage": "https://github.com/callmez/yii2-app-wechat",
