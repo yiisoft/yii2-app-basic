@@ -22,7 +22,7 @@ PHP >= 5.4.0.
 // Yii2框架依赖
 php composer.phar global require "fxp/composer-asset-plugin:1.0.0" 
 // 框架安装为wechat目录
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-wechat wechat 
+php composer.phar create-project --prefer-dist --stability=dev callmez/yii2-app-wechat wechat 
 ~~~
 
 
