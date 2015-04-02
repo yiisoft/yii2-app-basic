@@ -1,23 +1,23 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Application Template",
-    "keywords": ["yii2", "framework", "basic", "application template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "yiisoft/yii2-app-wechat",
+    "description": "Yii 2 Wechat Application Template",
+    "keywords": ["yii2", "framework", "wechat", "application template"],
+    "homepage": "https://github.com/callmez/yii2-app-wechat",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "issues": "https://github.com/callmez/yii2-app-wechat/issues?state=open",
+        "wiki": "https://github.com/callmez/yii2-app-wechat/wiki/",
+        "source": "https://github.com/callmez/yii2-app-wechat"
     },
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+
+        "callmez/yii2-wechat": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
