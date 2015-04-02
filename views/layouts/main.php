@@ -38,6 +38,7 @@ AppAsset::register($this);
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
+                    ['label' => 'Wechat', 'url' => ['/wechat/admin']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',

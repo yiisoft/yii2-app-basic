@@ -1,0 +1,11 @@
+#禁止访问.htaccess文件
+location ~ .*\.(htaccess)?$
+{
+	deny all;
+}
+
+#0.8.6以上版本nginx rewrite规则
+location / 
+{
+	try_files $uri $uri/ /index.php?$args;
+}
