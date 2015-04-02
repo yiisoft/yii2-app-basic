@@ -1,92 +1,64 @@
-Yii 2 Basic Application Template
-================================
+Yii2微信系统模板
+==============
 
-Yii 2 Basic Application Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
-
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
-
-DIRECTORY STRUCTURE
--------------------
-
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+以[Yii2-app-basic](https://github.com/yiisoft/yii2-app-basic)为基础模板展现[Yii2-wechat](https://github.com/callmez/yii2-wechat)模块的基础功能,  可用于生产环境或模块使用示例.
 
 
+安装要求
+-------
 
-REQUIREMENTS
-------------
-
-The minimum requirement by this application template that your Web server supports PHP 5.4.0.
+PHP >= 5.4.0.
 
 
-INSTALLATION
-------------
+安装
+---
 
-### Install from an Archive File
 
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
+### 使用Composer安装
 
-You can then access the application through the following URL:
+命令行执行以下命令:
 
 ~~~
-http://localhost/basic/web/
+// Yii2框架依赖
+php composer.phar global require "fxp/composer-asset-plugin:1.0.0" 
+// 框架安装为wechat目录
+php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-wechat wechat 
 ~~~
 
 
-### Install via Composer
+配置
+---
 
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
+### 数据库
 
-You can then install this application template using the following command:
-
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:1.0.0"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
+编辑 `config/db.php` 填入你的数据库配置, 例如:
 
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=yii2wechat', // 数据库必须存在. 
     'username' => 'root',
     'password' => '1234',
     'charset' => 'utf8',
 ];
 ```
 
-**NOTE:** Yii won't create the database for you, this has to be done manually before you can access it.
+### 微信设置
 
-Also check and edit the other files in the `config/` directory to customize your application.
+当数据库配置完成后, 需要执行一些步骤来完整的使用wechat模块提供的功能
+
+命令行执行
+
+~~~
+// 迁移wechat模块数据库表
+php yii migrate --migrationPath=@callmez/wechat/migrations 
+// 迁移示例模块数据库表, 如果已经熟悉微信模块的功能这一步可以略过
+php yii migrate --migrationPath=@app/modules/example/migrations 
+~~~
+
+访问
+---
+如果以上都设置完毕, 并且应用安装在你的Web服务访问目录下, 你只需要在浏览器输入以下地址即可体验
+~~~
+http://localhost/wechat/web
+~~~
