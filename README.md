@@ -1,7 +1,7 @@
-Yii 2 Basic Application Template
-================================
+Yii 2 Basic Project Template
+============================
 
-Yii 2 Basic Application Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
+Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 rapidly creating small projects.
 
 The template contains the basic features including user login/logout and a contact page.
@@ -32,7 +32,7 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this application template that your Web server supports PHP 5.4.0.
+The minimum requirement by this project template that your Web server supports PHP 5.4.0.
 
 
 INSTALLATION
@@ -55,7 +55,7 @@ http://localhost/basic/web/
 If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-You can then install this application template using the following command:
+You can then install this project template using the following command:
 
 ~~~
 php composer.phar global require "fxp/composer-asset-plugin:1.0.0"
