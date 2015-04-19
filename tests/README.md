@@ -32,6 +32,7 @@ composer require --dev yiisoft/yii2-faker:*
 ```
 codeception/bin/yii migrate
 ```
+> Note: Navigate to "tests" directory to run the above command. Database configuration can be found at `tests/codeception/config/config.php`
 
 4. Build the test suites:
 
