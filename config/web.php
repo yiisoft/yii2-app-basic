@@ -5,15 +5,24 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
+    'language' => 'zh-CN',
+    'timeZone' => 'Asia/Shanghai',
     'bootstrap' => ['log'],
     'modules' => require(__DIR__ . '/modules.php'),
     'components' => [
+        'errorHandler' => [
+            'maxSourceLines' => 20,
+        ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oxTxC600X5DGRubG2mYdBMmC4MM0C-ZB',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'assetManager' => [
+            'forceCopy' => YII_DEBUG
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -49,7 +58,12 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = 'yii\debug\Module';
 
     $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = 'yii\gii\Module';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'generators' => [
+            'wechat' => 'callmez\wechat\generators\module\Generator'
+        ]
+    ];
 }
 
 return $config;
