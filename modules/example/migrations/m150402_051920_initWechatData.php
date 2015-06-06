@@ -14,14 +14,12 @@ class m150402_051920_initWechatData extends Migration
         $wechat = new Wechat;
         $wechat->setAttributes([
             'name' => '示例公众号',
-            'hash' => 'shili',
             'token' => 'lL2hcT4c41H3wL21Hlftlz4A4w22j12L',
             'account' => 'example',
             'original' => 'gh_example12345',
             'type' => Wechat::TYPE_SUBSCRIBE,
-            'app_id' => 'wxd8cce40cc50ce6c7',
-            'app_secret' => '8e850dfed1befa106ea0bbe7cb67ad25',
-            'encoding_type' => Wechat::ENCODING_COMPATIBLE,
+            'key' => 'wxd8cce40cc50ce6c7',
+            'secret' => '8e850dfed1befa106ea0bbe7cb67ad25',
             'encoding_aes_key' => '8J4In8J3R3ppqWgQkCXhOvU1ZxaPFa5eSDZ8u3XNy45',
             'avatar' => 'example_avatar.png',
             'qrcode' => 'example_qr_code.png',
