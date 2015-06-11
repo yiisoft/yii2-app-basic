@@ -17,6 +17,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oxTxC600X5DGRubG2mYdBMmC4MM0C-ZB',
+            'parsers' => [ // angular.js 提交数据解析
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
