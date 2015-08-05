@@ -33,6 +33,9 @@ After creating the basic application, follow these steps to prepare for the test
    codeception/bin/yii migrate
    ```
 
+   The command needs to be run in the `tests` directory.
+   The database configuration can be found at `tests/codeception/config/config.php`.
+
 4. Build the test suites:
 
    ```
