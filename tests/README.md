@@ -62,6 +62,17 @@ webserver. In the `web` directory execute the following:
    codecept run unit
    ```
 
+Fixtures Default Configuration
+------------------------------
+The `fixture` commands refer to the following `ActiveFixture` configuration by default:
+
+- Fixtures path: `@tests/unit/fixtures`
+- Fixtures data path: `@tests/unit/fixtures/data`
+- Template files path: `@tests/unit/templates/fixtures`
+- Namespace: `tests\unit\fixtures`
+
+Where `@tests` refers to `@app/tests/codeception`.
+
 Code coverage support
 ---------------------
 
