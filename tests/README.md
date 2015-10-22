@@ -24,7 +24,7 @@ After creating the basic application, follow these steps to prepare for the test
 2. Install faker extension by running the following from template root directory where `composer.json` is:
 
    ```
-   composer require --dev yiisoft/yii2-faker:*
+   composer require --dev "yiisoft/yii2-faker:*"
    ```
 
 3. Create `yii2_basic_tests` database and update it by applying migrations (you may skip this step if you do not have created any migrations yet):
