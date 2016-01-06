@@ -15,6 +15,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
+        "ext-gd": "*",
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*"
