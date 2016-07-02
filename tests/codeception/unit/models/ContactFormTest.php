@@ -26,7 +26,7 @@ class ContactFormTest extends TestCase
 
     public function testContact()
     {
-        $model = $this->getMock('app\models\ContactForm', ['validate']);
+        $model = $this->createMock('app\models\ContactForm', ['validate']);
         $model->expects($this->once())->method('validate')->will($this->returnValue(true));
 
         $model->attributes = [
