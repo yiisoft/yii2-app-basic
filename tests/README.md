@@ -42,11 +42,11 @@ After creating the basic application, follow these steps to prepare for the test
    codecept build
    ```
 
-5. In order to be able to run acceptance tests you need to start a webserver. The simplest way is to use PHP built in
-webserver. In the `web` directory execute the following:
+5. In order to be able to run acceptance tests you need to start a webserver. The simplest way is to use built-in Yii
+command:
 
    ```
-   php -S localhost:8080
+   ./yii serve
    ```
 
 6. Now you can run the tests with the following commands:
