@@ -30,6 +30,7 @@ After creating the basic application, follow these steps to prepare for the test
 3. Create `yii2_basic_tests` database and update it by applying migrations (you may skip this step if you do not have created any migrations yet):
 
    ```
+   cd tests
    codeception/bin/yii migrate
    ```
 
