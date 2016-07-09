@@ -24,7 +24,10 @@ install:
   - travis_retry composer global require "codeception/codeception=2.0.*" "codeception/specify=*" "codeception/verify=*"
 # setup application:
   - |
-    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
+    cp config/templates/console-local.php config/console-local.php
+    cp config/templates/web-local.php config/web-local.php
+    cp config/templates/db-local.php config/db-local.php
+    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
     cd tests
     codecept build
     cd ..
