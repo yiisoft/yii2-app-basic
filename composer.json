@@ -29,6 +29,12 @@
         "process-timeout": 1800
     },
     "scripts": {
+         "post-install-cmd": [
+            "php -r \"if(!file_exists('config/console-local.php')){copy('config/templates/console-local.php', 'config/console-local.php');}\"",
+            "php -r \"if(!file_exists('config/web-local.php')){copy('config/templates/web-local.php', 'config/web-local.php');}\"",
+            "php -r \"if(!file_exists('config/db-local.php')){copy('config/templates/db-local.php', 'config/db-local.php');}\"",
+            "yii\\composer\\Installer::postCreateProject"
+        ],
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject"
         ]
@@ -43,7 +49,7 @@
                 }
             ],
             "generateCookieValidationKey": [
-                "config/web.php"
+                "config/web-local.php"
             ]
         },
         "asset-installer-paths": {

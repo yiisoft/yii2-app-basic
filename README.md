@@ -43,7 +43,7 @@ INSTALLATION
 Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
 a directory named `basic` that is directly under the Web root.
 
-Set cookie validation key in `config/web.php` file to some random secret string:
+Set cookie validation key in `config/web-local.php` file to some random secret string:
 
 ```php
 'request' => [
@@ -84,7 +84,7 @@ CONFIGURATION
 
 ### Database
 
-Edit the file `config/db.php` with real data, for example:
+Edit the file `config/db-local.php` with real data, for example:
 
 ```php
 return [
