@@ -9,6 +9,17 @@ nbproject
 .project
 .settings
 
+# Vagrant directory
+/.vagrant
+
+# configs
+/config/db.php
+/config/params.php
+
+# index-files
+/web/index.php
+/web/index-test.php
+
 # windows thumbnail cache
 Thumbs.db
 
