@@ -25,3 +25,5 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+
+tests/_output/*

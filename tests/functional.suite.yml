@@ -10,7 +10,5 @@ class_name: FunctionalTester
 modules:
     enabled:
       - Filesystem
-      - Yii2
-    config:
-        Yii2:
-            configFile: 'codeception/config/functional.php'
+      - Yii2:
+            configFile: 'config/test.php'
