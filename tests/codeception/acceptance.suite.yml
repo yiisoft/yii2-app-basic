@@ -12,6 +12,8 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser
+#        - Yii2:
+#           configFile: '/codeception/config/acceptance.php'
 # you can use WebDriver instead of PhpBrowser to test javascript and ajax.
 # This will require you to install selenium. See http://codeception.com/docs/03-AcceptanceTests#selenium-webdriver
 # "restart" option is used by the WebDriver to start each time per test-file new session and cookies,
