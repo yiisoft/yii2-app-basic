@@ -8,5 +8,4 @@ modules:
     enabled:
       - Asserts
       - Yii2:
-            configFile: 'config/test.php'
             part: orm

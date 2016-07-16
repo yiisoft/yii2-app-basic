@@ -1,4 +1,18 @@
 actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    helpers: tests/_support
+settings:
+    bootstrap: _bootstrap.php
+    memory_limit: 1024M
+    colors: true
+modules:
+    config:
+        Yii2:
+            configFile: 'config/test.php'
+
 # To enable code coverage:
 #coverage:
 #    #c3_url: http://localhost:8080/index-test.php/
@@ -20,12 +34,3 @@ actor: Tester
 #            - ../views/*
 #            - ../web/*
 #            - ../tests/*
-paths:
-    tests: tests
-    log: tests/_output
-    data: tests/_data
-    helpers: tests/_support
-settings:
-    bootstrap: _bootstrap.php
-    memory_limit: 1024M
-    colors: true

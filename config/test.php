@@ -1,9 +1,6 @@
 <?php
 $params = require(__DIR__ . '/params.php');
-$dbParams = require(__DIR__ . '/db.php');
-
-// test database! Important not to run tests on production or development databases
-$dbParams['dsn'] = 'mysql:host=localhost;dbname=yii2_basic_tests';
+$dbParams = require(__DIR__ . '/test_db.php');
 
 /**
  * Application configuration shared by all test types
@@ -20,8 +17,11 @@ return [
         'urlManager' => [
             'showScriptName' => true,
         ],
+        'user' => [
+            'identityClass' => 'app\models\User',
+        ],        
         'request' => [
-            // it's not recommended to run functional tests with CSRF validation enabled
+            'cookieValidationKey' => 'test',
             'enableCsrfValidation' => false,
             // but if you absolutely need it set cookie domain to localhost
             /*

@@ -20,8 +20,7 @@
         "yiisoft/yii2-swiftmailer": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
-        "codeception/specify": "*",
+        "codeception/base": "^2.2.3",
         "codeception/verify": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",

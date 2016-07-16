@@ -1,11 +1,12 @@
 <?php
+use yii\helpers\Url as Url;
 
 class AboutCest
 {
     public function ensureThatAboutWorks(AcceptanceTester $I)
     {
-        //$I->amOnPage(['site/about']);
-        $I->amOnPage('index.php?r=site%2Fabout');
+        $I->amOnPage(Url::toRoute('/site/about'));
+        $I->pauseExecution();
         $I->see('About', 'h1');
     }
 }

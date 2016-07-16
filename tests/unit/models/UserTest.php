@@ -1,17 +1,43 @@
 <?php
+namespace tests\models;
+use app\models\User;
 
-namespace tests\codeception\unit\models;
-
-use yii\codeception\TestCase;
-
-class UserTest extends TestCase
+class UserTest extends \Codeception\Test\Unit
 {
-    protected function setUp()
+    public function testFindUserById()
     {
-        parent::setUp();
-        // uncomment the following to load fixtures for user table
-        //$this->loadFixtures(['user']);
+        expect_that($user = User::findIdentity(100));
+        expect($user->username)->equals('admin');
+
+        expect_not(User::findIdentity(999));
     }
 
-    // TODO add test methods here
+    public function testFindUserByAccessToken()
+    {
+        expect_that($user = User::findIdentityByAccessToken('100-token'));
+        expect($user->username)->equals('admin');
+
+        expect_not(User::findIdentityByAccessToken('non-existing'));        
+    }
+
+    public function testFindUserByUsername()
+    {
+        expect_that($user = User::findByUsername('admin'));
+        expect_not(User::findByUsername('not-admin'));
+    }
+
+    /**
+     * @depends testFindUserByUsername
+     */
+    public function testValidateUser($user)
+    {
+        $user = User::findByUsername('admin');
+        expect_that($user->validateAuthKey('test100key'));
+        expect_not($user->validateAuthKey('test102key'));
+
+        expect_that($user->validatePassword('admin'));
+        expect_not($user->validatePassword('123456'));
+        
+    }
+
 }
