@@ -19,7 +19,7 @@ modules:
 #    enabled: true
 #    #remote: true
 #    #remote_config: '../tests/codeception.yml'
-#    white_list:
+#    whitelist:
 #        include:
 #            - ../models/*
 #            - ../controllers/*
