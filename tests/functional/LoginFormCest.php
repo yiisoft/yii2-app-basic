@@ -9,6 +9,23 @@ class LoginFormCest
     public function openLoginPage(\FunctionalTester $I)
     {
         $I->see('Login', 'h1');
+
+    }
+
+    // demonstrates `amLoggedAs` method
+    public function internalLoginById(\FunctionalTester $I)
+    {
+        $I->amLoggedAs(100);
+        $I->amOnPage('/');
+        $I->see('Logout (admin)');
+    }
+
+    // demonstrates `amLoggedAs` method
+    public function internalLoginBy(\FunctionalTester $I)
+    {
+        $I->amLoggedAs(\app\models\User::findByUsername('admin'));
+        $I->amOnPage('/');
+        $I->see('Logout (admin)');
     }
 
     public function loginWithEmptyCredentials(\FunctionalTester $I)

@@ -36,8 +36,7 @@ class UserTest extends \Codeception\Test\Unit
         expect_not($user->validateAuthKey('test102key'));
 
         expect_that($user->validatePassword('admin'));
-        expect_not($user->validatePassword('123456'));
-        
+        expect_not($user->validatePassword('123456'));        
     }
 
 }
