@@ -7,18 +7,10 @@ use app\models\ContactForm;
 class ContactFormTest extends \Codeception\Test\Unit
 {
     private $model;
-
-    protected function _before()
-    {
-        \Yii::$app->mailer->fileTransportCallback = function () {
-            return 'testing_message.eml';
-        };
-    }
-
-    protected function _after()
-    {
-        unlink($this->getMessageFile());
-    }
+    /**
+     * @var \UnitTester
+     */
+    public $tester;
 
     public function testEmailIsSentOnContact()
     {
@@ -39,18 +31,15 @@ class ContactFormTest extends \Codeception\Test\Unit
         ];
 
         expect_that($this->model->contact('admin@example.com'));
-        expect_that(file_exists($this->getMessageFile()));
 
-        $emailMessage = file_get_contents($this->getMessageFile());
+        // using Yii2 module actions to check email was sent
+        $this->tester->seeEmailIsSent();
 
-        expect($emailMessage)->contains($this->model->name);
-        expect($emailMessage)->contains($this->model->email);
-        expect($emailMessage)->contains($this->model->subject);
-        expect($emailMessage)->contains($this->model->body);
-    }
-
-    private function getMessageFile()
-    {
-        return \Yii::getAlias(\Yii::$app->mailer->fileTransportPath) . '/testing_message.eml';
+        $emailMessage = $this->tester->grabLastSentEmail();
+        expect('valid email is sent', $emailMessage)->isInstanceOf('yii\mail\MessageInterface');
+        expect($emailMessage->getTo())->hasKey('admin@example.com');
+        expect($emailMessage->getFrom())->hasKey('tester@example.com');
+        expect($emailMessage->getSubject())->equals('very important letter subject');
+        expect($emailMessage->toString())->contains('body of current message');
     }
 }

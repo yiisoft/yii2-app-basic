@@ -3,7 +3,7 @@ class LoginFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnPage(['site/login']);
+        $I->amOnRoute('site/login');
     }
 
     public function openLoginPage(\FunctionalTester $I)
@@ -12,18 +12,18 @@ class LoginFormCest
 
     }
 
-    // demonstrates `amLoggedAs` method
+    // demonstrates `amLoggedInAs` method
     public function internalLoginById(\FunctionalTester $I)
     {
-        $I->amLoggedAs(100);
+        $I->amLoggedInAs(100);
         $I->amOnPage('/');
         $I->see('Logout (admin)');
     }
 
-    // demonstrates `amLoggedAs` method
-    public function internalLoginBy(\FunctionalTester $I)
+    // demonstrates `amLoggedInAs` method
+    public function internalLoginByInstance(\FunctionalTester $I)
     {
-        $I->amLoggedAs(\app\models\User::findByUsername('admin'));
+        $I->amLoggedInAs(\app\models\User::findByUsername('admin'));
         $I->amOnPage('/');
         $I->see('Logout (admin)');
     }
@@ -36,7 +36,7 @@ class LoginFormCest
         $I->see('Password cannot be blank.');
     }
 
-    public function loginWithWringCredentials(\FunctionalTester $I)
+    public function loginWithWrongCredentials(\FunctionalTester $I)
     {
         $I->submitForm('#login-form', [
             'LoginForm[username]' => 'admin',

@@ -7,3 +7,4 @@ modules:
         - Yii2:
             part: orm
             entryScript: index-test.php
+            cleanup: false
