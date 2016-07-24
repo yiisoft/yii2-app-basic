@@ -257,16 +257,16 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.7.0",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "ae1828d955112356f7677c465f94f7deb7d27a40"
+                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/ae1828d955112356f7677c465f94f7deb7d27a40",
-                "reference": "ae1828d955112356f7677c465f94f7deb7d27a40",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2015-08-05 01:03:42"
+            "time": "2016-07-16 12:58:58"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -624,16 +624,16 @@
         },
         {
             "name": "codeception/verify",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Verify.git",
-                "reference": "d3721cfc668d96b41acbda3ecd01d3499381db64"
+                "reference": "dc19c8722f3756341e5b0ce0590f09fda1d63719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Verify/zipball/d3721cfc668d96b41acbda3ecd01d3499381db64",
-                "reference": "d3721cfc668d96b41acbda3ecd01d3499381db64",
+                "url": "https://api.github.com/repos/Codeception/Verify/zipball/dc19c8722f3756341e5b0ce0590f09fda1d63719",
+                "reference": "dc19c8722f3756341e5b0ce0590f09fda1d63719",
                 "shasum": ""
             },
             "require-dev": {
@@ -653,7 +653,7 @@
                 }
             ],
             "description": "BDD assertion library for PHPUnit",
-            "time": "2015-11-26 23:23:25"
+            "time": "2016-07-13 09:34:15"
         },
         {
             "name": "fzaninotto/faker",

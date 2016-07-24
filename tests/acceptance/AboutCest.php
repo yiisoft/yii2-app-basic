@@ -6,7 +6,6 @@ class AboutCest
     public function ensureThatAboutWorks(AcceptanceTester $I)
     {
         $I->amOnPage(Url::toRoute('/site/about'));
-        $I->pauseExecution();
         $I->see('About', 'h1');
     }
 }
