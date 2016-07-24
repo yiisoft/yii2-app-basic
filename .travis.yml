@@ -18,14 +18,12 @@ cache:
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - travis_retry composer install --dev --prefer-dist --no-interaction
+  - travis_retry composer update --dev --prefer-dist --no-interaction
 # setup application:
   - |
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
 
 script:
   - |
-    cd web
-    php -S localhost:8080 > /dev/null 2>&1 &
-    codecept run
+    php -S localhost:8080 -t web > /dev/null 2>&1 &
+    composer exec codecept run
