@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.5",
@@ -21,11 +21,11 @@
     },
     "require-dev": {
         "codeception/base": "^2.2.3",
-        "codeception/verify": "*",
+        "codeception/verify": "~0.3.1",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*",
-        "codeception/specify": "*"
+        "codeception/specify": "~0.4.3"
     },
     "config": {
         "process-timeout": 1800

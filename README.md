@@ -106,21 +106,32 @@ return [
 TESTING
 -------
 
-Tests are located in `tests` directory, developed with [Codeception PHP Testing Framework](http://codeception.com/).
-By default there are 3 test suites: `unit`, `functional` and `acceptance`. Tests can be executed by running
+Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+By default there are 3 test suites:
 
-   ```
-   composer exec codecept run
-   ``` 
+- `unit`
+- `functional`
+- `acceptance`
 
-This will execute unit and functional tests. Unit tests are testing the system components, while functional tests are for testing user interaction.
-Acceptance tests are disabled by default as they require additional setup as they perform testing in real browser. 
+Tests can be executed by running
+
+```
+composer exec codecept run
+``` 
+
+The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
+tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
+they perform testing in real browser. 
+
+
+### Running  acceptance tests
 
 To execute acceptance tests do the following:  
 
 1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
 
-2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured version of Codeception.
+2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured
+   version of Codeception
 
 3. Update dependencies with Composer 
 
@@ -162,8 +173,7 @@ To execute acceptance tests do the following:
    composer exec codecept run unit,functional
    ```
 
-Code coverage support
----------------------
+### Code coverage support
 
 By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
 to collect code coverage. You can run your tests and collect coverage with the following command:
