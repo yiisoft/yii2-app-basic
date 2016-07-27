@@ -142,7 +142,7 @@ To execute acceptance tests do the following:
 4. Download [Selenium Server](http://www.seleniumhq.org/download/) and launch it:
 
     ```
-    java -jar java -jar ~/selenium-server-standalone-x.xx.x.jar
+    java -jar ~/selenium-server-standalone-x.xx.x.jar
     ``` 
 
 5. (Optional) Create `yii2_basic_tests` database and update it by applying migrations if you have them.
