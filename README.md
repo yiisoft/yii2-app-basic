@@ -180,13 +180,13 @@ to collect code coverage. You can run your tests and collect coverage with the f
 
 ```
 #collect coverage for all tests
-composer exec codecept run --coverage-html --coverage-xml
+composer exec codecept run -- --coverage-html --coverage-xml
 
 #collect coverage only for unit tests
-composer exec codecept run unit --coverage-html --coverage-xml
+composer exec codecept run unit -- --coverage-html --coverage-xml
 
 #collect coverage for unit and functional tests
-composer exec codecept run functional,unit --coverage-html --coverage-xml
+composer exec codecept run functional,unit -- --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
