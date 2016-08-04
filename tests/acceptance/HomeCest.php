@@ -1,10 +1,11 @@
 <?php
+use yii\helpers\Url as Url;
 
 class HomeCest
 {
     public function ensureThatHomePageWorks(AcceptanceTester $I)
     {
-        $I->amOnPage('index.php?r=site%2Findex');        
+        $I->amOnPage(Url::toRoute('/site/index'));        
         $I->see('My Company');
         
         $I->seeLink('About');
