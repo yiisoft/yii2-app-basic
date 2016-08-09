@@ -21,16 +21,16 @@ modules:
 #    #remote_config: '../tests/codeception.yml'
 #    whitelist:
 #        include:
-#            - ../models/*
-#            - ../controllers/*
-#            - ../commands/*
-#            - ../mail/*
+#            - models/*
+#            - controllers/*
+#            - commands/*
+#            - mail/*
 #    blacklist:
 #        include:
-#            - ../assets/*
-#            - ../config/*
-#            - ../runtime/*
-#            - ../vendor/*
-#            - ../views/*
-#            - ../web/*
-#            - ../tests/*
+#            - assets/*
+#            - config/*
+#            - runtime/*
+#            - vendor/*
+#            - views/*
+#            - web/*
+#            - tests/*
