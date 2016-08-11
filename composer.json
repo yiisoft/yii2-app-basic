@@ -20,10 +20,12 @@
         "yiisoft/yii2-swiftmailer": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "codeception/specify": "~0.4.3"
     },
     "config": {
         "process-timeout": 1800
