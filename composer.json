@@ -20,10 +20,12 @@
         "yiisoft/yii2-swiftmailer": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "codeception/specify": "~0.4.3"
     },
     "config": {
         "process-timeout": 1800
@@ -33,6 +35,8 @@
             "php -r \"if(!file_exists('config/console-local.php')){copy('config/templates/console-local.php', 'config/console-local.php');}\"",
             "php -r \"if(!file_exists('config/web-local.php')){copy('config/templates/web-local.php', 'config/web-local.php');}\"",
             "php -r \"if(!file_exists('config/db-local.php')){copy('config/templates/db-local.php', 'config/db-local.php');}\"",
+            "php -r \"if(!file_exists('config/testdb-local.php')){copy('config/templates/testdb-local.php', 'config/testdb-local.php');}\"",
+            "php -r \"if(!file_exists('config/test-local.php')){copy('config/templates/test-local.php', 'config/test-local.php');}\"",
             "yii\\composer\\Installer::postCreateProject"
         ],
         "post-create-project-cmd": [
