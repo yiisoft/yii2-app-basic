@@ -82,6 +82,24 @@ http://localhost/basic/web/
 CONFIGURATION
 -------------
 
+### Local config files
+
+Usually each application has some configuration that should not be shared between different installations
+and should not be stored in [version control system](https://en.wikipedia.org/wiki/Version_control), for
+example personal keys or configuration specific for a particular server. In `config` directory you can find
+a set of config files prefixed by `-local.php` - these files are designed for storing such a configuration.
+These local configs are added to `.gitignore` and never will be pushed to source code repository, so you can safely
+use it for override some general config. For example `config/web-local.php` will override some settings
+from `config/web.php` (see [ArrayHelper::merge()](http://www.yiiframework.com/doc-2.0/guide-helper-array.html#merging-arrays)
+for more details). Then `config/web.php` contains general configuration of web application shared with
+all installations and `config/web-local.php` contains configuration specific only for local installation.
+
+In `config/templates` directory you can find templates for local config files. On first run `composer install`
+these files will be copied to `config` directory. You can edit these templates to adjust default content of
+local config files, but **you should not store any private data in templates** - these should be put into
+`config/*-local.php` files after installation.
+
+
 ### Database
 
 Edit the file `config/db-local.php` with real data, for example:
@@ -96,10 +114,7 @@ return [
 ];
 ```
 
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+Yii won't create the database for you, this has to be done manually before you can access it.
 
 
 
