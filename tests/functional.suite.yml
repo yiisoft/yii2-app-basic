@@ -10,5 +10,5 @@ class_name: FunctionalTester
 modules:
     enabled:
       - Filesystem
-      - Yii2:
+      - Yii2
           cleanup: false
