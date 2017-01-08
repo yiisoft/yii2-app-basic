@@ -16,6 +16,7 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-composer": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0"
     },
@@ -32,16 +33,15 @@
         "process-timeout": 1800
     },
     "scripts": {
-         "post-install-cmd": [
-            "php -r \"if(!file_exists('config/console-local.php')){copy('config/templates/console-local.php', 'config/console-local.php');}\"",
-            "php -r \"if(!file_exists('config/web-local.php')){copy('config/templates/web-local.php', 'config/web-local.php');}\"",
-            "php -r \"if(!file_exists('config/db-local.php')){copy('config/templates/db-local.php', 'config/db-local.php');}\"",
-            "php -r \"if(!file_exists('config/testdb-local.php')){copy('config/templates/testdb-local.php', 'config/testdb-local.php');}\"",
-            "php -r \"if(!file_exists('config/test-local.php')){copy('config/templates/test-local.php', 'config/test-local.php');}\"",
-            "yii\\composer\\Installer::postCreateProject"
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-update-cmd": [
+            "yii\\composer\\Installer::postInstall"
         ],
         "post-create-project-cmd": [
-            "yii\\composer\\Installer::postCreateProject"
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
         ]
     },
     "extra": {
@@ -51,6 +51,17 @@
                     "runtime": "0777",
                     "web/assets": "0777",
                     "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "copyFiles": [
+                {
+                    "config/templates/console-local.php": "config/console-local.php",
+                    "config/templates/web-local.php": "config/web-local.php",
+                    "config/templates/db-local.php": "config/db-local.php",
+                    "config/templates/testdb-local.php": "config/testdb-local.php",
+                    "config/templates/test-local.php": "config/test-local.php"
                 }
             ],
             "generateCookieValidationKey": [
