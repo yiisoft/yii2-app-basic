@@ -19,14 +19,6 @@ install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
   - travis_retry composer update --dev --prefer-dist --no-interaction
-# setup application:
-  - |
-    cp config/templates/console-local.php config/console-local.php
-    cp config/templates/web-local.php config/web-local.php
-    cp config/templates/db-local.php config/db-local.php
-    cp config/templates/test-local.php config/test-local.php
-    cp config/templates/testdb-local.php config/testdb-local.php
-    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
 
 script:
   - |
