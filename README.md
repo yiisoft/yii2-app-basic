@@ -116,7 +116,7 @@ By default there are 3 test suites:
 Tests can be executed by running
 
 ```
-composer exec codecept run
+vendor/bin/codecept run
 ``` 
 
 The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
@@ -164,13 +164,13 @@ To execute acceptance tests do the following:
 
    ```
    # run all available tests
-   composer exec codecept run
+   vendor/bin/codecept run
 
    # run acceptance tests
-   composer exec codecept run acceptance
+   vendor/bin/codecept run acceptance
 
    # run only unit and functional tests
-   composer exec codecept run unit,functional
+   vendor/bin/codecept run unit,functional
    ```
 
 ### Code coverage support
@@ -180,13 +180,13 @@ to collect code coverage. You can run your tests and collect coverage with the f
 
 ```
 #collect coverage for all tests
-composer exec codecept run -- --coverage-html --coverage-xml
+vendor/bin/codecept run -- --coverage-html --coverage-xml
 
 #collect coverage only for unit tests
-composer exec codecept run unit -- --coverage-html --coverage-xml
+vendor/bin/codecept run unit -- --coverage-html --coverage-xml
 
 #collect coverage for unit and functional tests
-composer exec codecept run functional,unit -- --coverage-html --coverage-xml
+vendor/bin/codecept run functional,unit -- --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
