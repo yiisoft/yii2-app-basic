@@ -19,7 +19,7 @@ modules:
 #    #c3_url: http://localhost:8080/index-test.php/
 #    enabled: true
 #    #remote: true
-#    #remote_config: '../tests/codeception.yml'
+#    #remote_config: '../codeception.yml'
 #    whitelist:
 #        include:
 #            - models/*
