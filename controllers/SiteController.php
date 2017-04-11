@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
@@ -66,7 +67,7 @@ class SiteController extends Controller
     /**
      * Login action.
      *
-     * @return string
+     * @return Response|string
      */
     public function actionLogin()
     {
@@ -86,7 +87,7 @@ class SiteController extends Controller
     /**
      * Logout action.
      *
-     * @return string
+     * @return Response
      */
     public function actionLogout()
     {
@@ -98,7 +99,7 @@ class SiteController extends Controller
     /**
      * Displays contact page.
      *
-     * @return string
+     * @return Response|string
      */
     public function actionContact()
     {
