@@ -16,6 +16,7 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-composer": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0"
     },
@@ -32,6 +33,12 @@
         "process-timeout": 1800
     },
     "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-update-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject"
         ]
@@ -44,9 +51,20 @@
                     "web/assets": "0777",
                     "yii": "0755"
                 }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "copyFiles": [
+                {
+                    "config/templates/console-local.php": "config/console-local.php",
+                    "config/templates/web-local.php": "config/web-local.php",
+                    "config/templates/db-local.php": "config/db-local.php",
+                    "config/templates/testdb-local.php": "config/testdb-local.php",
+                    "config/templates/test-local.php": "config/test-local.php"
+                }
             ],
             "generateCookieValidationKey": [
-                "config/web.php"
+                "config/web-local.php"
             ]
         },
         "asset-installer-paths": {

@@ -5,6 +5,7 @@ php:
   - 5.5
   - 5.6
   - 7.0
+  - 7.1
 #  - hhvm
 
 # faster builds on new travis setup not using sudo
@@ -17,11 +18,8 @@ cache:
 
 install:
   - travis_retry composer self-update && composer --version
-  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
+  - travis_retry composer global require "fxp/composer-asset-plugin:^1.2.0"
   - travis_retry composer update --dev --prefer-dist --no-interaction
-# setup application:
-  - |
-    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
 
 script:
   - |
