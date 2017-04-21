@@ -1,5 +1,6 @@
 <?php
 $params = require(__DIR__ . '/params.php');
+$modules = require(__DIR__ . '/modules.php');
 $dbParams = require(__DIR__ . '/test_db.php');
 
 /**
@@ -35,4 +36,5 @@ return [
         ],        
     ],
     'params' => $params,
+    'modules' => $modules,
 ];
