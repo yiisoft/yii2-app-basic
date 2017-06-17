@@ -1,0 +1,14 @@
+{
+	"name": "yidas/yii2-composer-bower-skip",
+	"description": "A meta package that allows you to install yii2 without bower-asset (without composer-asset-plugin).",
+	"type": "library",
+  	"license": "BSD-3-Clause",
+	"provide": {
+		"bower-asset/jquery": "*",
+		"bower-asset/jquery.inputmask": "*",
+		"bower-asset/punycode": "*",
+		"bower-asset/yii2-pjax": "*",
+		"bower-asset/bootstrap": "*",
+		"bower-asset/typeahead.js": "*"
+	}
+}
