@@ -1,3 +1,45 @@
+Yii2-App-Basic (Fixed Bower version)
+===
+
+Yii 2 Basic Application Template with fixed Bower ([yidas/yii2-composer-bower-skip](https://github.com/yidas/yii2-composer-bower-skip)) .
+
+This template is a branch of [Yii 2](http://www.yiiframework.com/) basic application including vendor with fixed Bower, which fixes Bower-Asset updating problem. 
+
+In this template, Bower packages are fixed for current version of Yii2 core, so you need to manually update Bower-Asset when needed.
+
+---
+
+## Install via Composer
+
+If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
+at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
+
+You can then install this project template using the following command:
+
+```
+php composer.phar create-project yidas/yii2-app-lite
+```
+
+---
+
+## Install from an Archive File
+
+[Download yii2-app-lite ZIP](https://github.com/yidas/yii2-app-basic/archive/master.zip)
+
+Extract the archive file downloaded from [GitHub](https://github.com/yidas/yii2-app-lite/archive/master.zip) to a directory that is directly under the Web root.
+
+Set cookie validation key in `config/web.php` file to some random secret string:
+
+```
+'request' => [
+    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+    'cookieValidationKey' => '<secret random string goes here>',
+],
+```
+
+---
+
+
 Yii 2 Basic Project Template
 ============================
 
