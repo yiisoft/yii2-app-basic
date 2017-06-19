@@ -1,0 +1,17 @@
+{
+    "name": "codeception/verify",
+    "description": "BDD assertion library for PHPUnit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Bodnarchuk",
+            "email": "davert.php@mailican.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "files": ["src/Codeception/function.php"]
+    }
+}
