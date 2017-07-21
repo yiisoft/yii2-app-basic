@@ -1,4 +1,5 @@
 <?php
+
 class ContactFormCest 
 {
     public function _before(\FunctionalTester $I)

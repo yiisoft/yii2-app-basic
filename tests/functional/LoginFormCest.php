@@ -1,4 +1,5 @@
 <?php
+
 class LoginFormCest
 {
     public function _before(\FunctionalTester $I)

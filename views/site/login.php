@@ -1,8 +1,10 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
+/**
+ * @var \yii\web\View $this
+ * @var \yii\bootstrap\ActiveForm $form
+ * @var \app\models\LoginForm $model
+ */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
