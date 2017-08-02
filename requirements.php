@@ -20,7 +20,7 @@ if (!is_dir($frameworkPath)) {
     echo '<p>Please refer to the <abbr title="' . dirname(__FILE__) . '/README.md">README</abbr> on how to install Yii.</p>';
 }
 
-require_once($frameworkPath . '/requirements/YiiRequirementChecker.php');
+require_once $frameworkPath . '/requirements/YiiRequirementChecker.php';
 $requirementsChecker = new YiiRequirementChecker();
 
 $gdMemo = $imagickMemo = 'Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required for image CAPTCHA.';
@@ -104,14 +104,14 @@ $requirements = array(
     'phpExposePhp' => array(
         'name' => 'Expose PHP',
         'mandatory' => false,
-        'condition' => $requirementsChecker->checkPhpIniOff("expose_php"),
+        'condition' => $requirementsChecker->checkPhpIniOff('expose_php'),
         'by' => 'Security reasons',
         'memo' => '"expose_php" should be disabled at php.ini',
     ),
     'phpAllowUrlInclude' => array(
         'name' => 'PHP allow url include',
         'mandatory' => false,
-        'condition' => $requirementsChecker->checkPhpIniOff("allow_url_include"),
+        'condition' => $requirementsChecker->checkPhpIniOff('allow_url_include'),
         'by' => 'Security reasons',
         'memo' => '"allow_url_include" should be disabled at php.ini',
     ),
