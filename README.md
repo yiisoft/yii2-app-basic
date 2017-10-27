@@ -82,6 +82,8 @@ You can then access the application through the following URL:
 http://localhost/basic/web/
 ~~~
 
+**NOTES:**
+- If you don not have `git` available on your machine, you can run composer commands with `FXP_ASSET__VCS_DRIVER_OPTIONS='{}' composer [...]` to use the GitHub API instead.
 
 CONFIGURATION
 -------------
@@ -104,7 +106,6 @@ return [
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
 - Refer to the README in the `tests` directory for information specific to basic application tests.
-
 
 
 TESTING
