@@ -62,6 +62,10 @@ http://localhost/basic/web/
 ~~~
 
 
+**NOTES:**
+- If you don not have `git` available on your machine, you can run composer commands with `FXP_ASSET__VCS_DRIVER_OPTIONS='{}' composer [...]` to use the GitHub API instead.
+
+
 ### Install from an Archive File
 
 Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
@@ -82,8 +86,6 @@ You can then access the application through the following URL:
 http://localhost/basic/web/
 ~~~
 
-**NOTES:**
-- If you don not have `git` available on your machine, you can run composer commands with `FXP_ASSET__VCS_DRIVER_OPTIONS='{}' composer [...]` to use the GitHub API instead.
 
 CONFIGURATION
 -------------
