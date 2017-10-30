@@ -28,11 +28,19 @@ if (!isset($frameworkPath)) {
     }
 }
 
-if (!is_dir($frameworkPath)) {
-    echo '<h1>Error</h1>';
-    echo '<p><strong>The path to yii framework seems to be incorrect.</strong></p>';
-    echo '<p>You need to install Yii framework via composer or adjust the framework path in file <abbr title="' . __FILE__ . '">' . basename(__FILE__) . '</abbr>.</p>';
-    echo '<p>Please refer to the <abbr title="' . dirname(__FILE__) . '/README.md">README</abbr> on how to install Yii.</p>';
+if (!isset($frameworkPath) || !is_dir($frameworkPath)) {
+    $message = "<h1>Error</h1>\n\n"
+        . "<p><strong>The path to yii framework seems to be incorrect.</strong></p>\n"
+        . '<p>You need to install Yii framework via composer or adjust the framework path in file <abbr title="' . __FILE__ . '">' . basename(__FILE__) . "</abbr>.</p>\n"
+        . '<p>Please refer to the <abbr title="' . dirname(__FILE__) . "/README.md\">README</abbr> on how to install Yii.</p>\n";
+
+    if (!empty($_SERVER['argv'])) {
+        // do not print HTML when used in console mode
+        echo strip_tags($message);
+    } else {
+        echo $message;
+    }
+    exit(1);
 }
 
 require_once($frameworkPath . '/requirements/YiiRequirementChecker.php');
