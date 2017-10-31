@@ -62,6 +62,10 @@ http://localhost/basic/web/
 ~~~
 
 
+**NOTES:**
+- If you don not have `git` available on your machine, you can run composer commands with `FXP_ASSET__VCS_DRIVER_OPTIONS='{}' composer [...]` to use the GitHub API instead.
+
+
 ### Install from an Archive File
 
 Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
@@ -104,7 +108,6 @@ return [
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
 - Refer to the README in the `tests` directory for information specific to basic application tests.
-
 
 
 TESTING
