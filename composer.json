@@ -29,7 +29,10 @@
         "codeception/specify": "~0.4.3"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
     },
     "scripts": {
         "post-install-cmd": [
