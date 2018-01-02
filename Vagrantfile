@@ -10,9 +10,11 @@ domains = {
   app: 'yii2basic.dev'
 }
 
+vagrantfile_dir_path = File.dirname(__FILE__)
+
 config = {
-  local: './vagrant/config/vagrant-local.yml',
-  example: './vagrant/config/vagrant-local.example.yml'
+  local: vagrantfile_dir_path + '/vagrant/config/vagrant-local.yml',
+  example: vagrantfile_dir_path + '/vagrant/config/vagrant-local.example.yml'
 }
 
 # copy config from example if local config not exists
