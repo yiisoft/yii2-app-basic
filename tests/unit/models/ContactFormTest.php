@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\models;
+namespace tests\unit\models;
 
 class ContactFormTest extends \Codeception\Test\Unit
 {
