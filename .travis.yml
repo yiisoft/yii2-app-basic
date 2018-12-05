@@ -16,6 +16,12 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+services:
+  - mysql
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS yii2_basic_tests;'
+
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer update --dev --prefer-dist --no-interaction
