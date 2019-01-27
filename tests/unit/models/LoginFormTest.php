@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\models;
+namespace tests\unit\models;
 
 use app\models\LoginForm;
 
