@@ -24,6 +24,7 @@ DIRECTORY STRUCTURE
       commands/           contains console commands (controllers)
       config/             contains application configurations
       controllers/        contains Web controller classes
+      environments/       contains environment-based overrides
       mail/               contains view files for e-mails
       models/             contains model classes
       runtime/            contains files generated during runtime
@@ -51,34 +52,133 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 You can then install this project template using the following command:
 
 ~~~
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic yii-application
 ~~~
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
+The command installs the application in a directory named `yii-application`. You can choose a different directory name if you want.
 
 ### Install from an Archive File
 
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
+Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to a directory named 
+`yii-application` that is directly under the Web root.
 
-Set cookie validation key in `config/web.php` file to some random secret string:
+Then follow the instructions given in the next subsection.
 
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
+### Preparing application
 
-You can then access the application through the following URL:
+After you install the application, you have to conduct the following steps to initialize
+the installed application. You only need to do these once for all.
+
+1. Open a console terminal, execute the `init` command and select `dev` as environment.
+
+   ```
+   /path/to/php-bin/php /path/to/yii-application/init
+   ```
+
+   If you automate it with a script you can execute `init` in non-interactive mode.
+
+   ```
+   /path/to/php-bin/php /path/to/yii-application/init --env=Development --overwrite=All
+   ```
+
+2. Create a new database and adjust the `components['db']` configuration in `/path/to/yii-application/config/main-local.php` accordingly.
+
+3. Open a console terminal, apply migrations with command `/path/to/php-bin/php /path/to/yii-application/yii migrate`.
+
+4. Set document roots of your web server:
+
+   For Apache it could be the following:
+
+   ```apache
+       <VirtualHost *:80>
+           ServerName yii-app.test
+           DocumentRoot "/path/to/yii-application/web/"
+           
+           <Directory "/path/to/yii-application/web/">
+               # use mod_rewrite for pretty URL support
+               RewriteEngine on
+               # If a directory or a file exists, use the request directly
+               RewriteCond %{REQUEST_FILENAME} !-f
+               RewriteCond %{REQUEST_FILENAME} !-d
+               # Otherwise forward the request to index.php
+               RewriteRule . index.php
+
+               # use index.php as index file
+               DirectoryIndex index.php
+
+               # ...other settings...
+               # Apache 2.4
+               Require all granted
+               
+               ## Apache 2.2
+               # Order allow,deny
+               # Allow from all
+           </Directory>
+       </VirtualHost>
+   ```
+
+   For nginx:
+
+   ```nginx
+       server {
+           charset utf-8;
+           client_max_body_size 128M;
+
+           listen 80; ## listen for ipv4
+           #listen [::]:80 default_server ipv6only=on; ## listen for ipv6
+
+           server_name yii-app.test;
+           root        /path/to/yii-application/web/;
+           index       index.php;
+
+           access_log  /path/to/yii-application/log/access.log;
+           error_log   /path/to/yii-application/log/error.log;
+
+           location / {
+               # Redirect everything that isn't a real file to index.php
+               try_files $uri $uri/ /index.php$is_args$args;
+           }
+
+           # uncomment to avoid processing of calls to non-existing static files by Yii
+           #location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
+           #    try_files $uri =404;
+           #}
+           #error_page 404 /404.html;
+
+           # deny accessing php files for the /assets directory
+           location ~ ^/assets/.*\.php$ {
+               deny all;
+           }
+
+           location ~ \.php$ {
+               include fastcgi_params;
+               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+               fastcgi_pass 127.0.0.1:9000;
+               #fastcgi_pass unix:/var/run/php5-fpm.sock;
+               try_files $uri =404;
+           }
+       
+           location ~* /\. {
+               deny all;
+           }
+       }
+   ```
+
+5. Change the hosts file to point the domain to your server.
+
+   - Windows: `c:\Windows\System32\Drivers\etc\hosts`
+   - Linux: `/etc/hosts`
+
+   Add the following line:
+
+   ```
+   127.0.0.1   yii-app.test
+   ```
+
+Now you should be able to access the application through the following URL:
 
 ~~~
-http://localhost/basic/web/
+http://yii-app.test
 ~~~
 
 
@@ -110,12 +210,12 @@ CONFIGURATION
 
 ### Database
 
-Edit the file `config/db.php` with real data, for example:
+Edit the file `config/main-local.php` with real data, for example:
 
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=yii2_basic',
     'username' => 'root',
     'password' => '1234',
     'charset' => 'utf8',
@@ -192,7 +292,7 @@ To execute acceptance tests do the following:
    tests/bin/yii migrate
    ```
 
-   The database configuration can be found at `config/test_db.php`.
+   The database configuration can be found at `config/main-test.php`.
 
 
 6. Start web server:

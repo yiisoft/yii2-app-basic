@@ -37,7 +37,7 @@ install:
     fi
 # setup application:
   - |
-    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
+    php init --env=Development --overwrite=n
 
 script:
   - |

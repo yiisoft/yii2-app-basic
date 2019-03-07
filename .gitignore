@@ -1,3 +1,6 @@
+# yii console commands
+/yii
+
 # phpstorm project files
 .idea
 
@@ -31,3 +34,8 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+# ignore generated files
+/web/index.php
+/web/index-test.php
+/web/robots.txt

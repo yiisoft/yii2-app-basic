@@ -1,20 +1,12 @@
 <?php
-$params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/test_db.php';
 
 /**
  * Application configuration shared by all test types
  */
-return [
+$config_test = [
     'id' => 'basic-tests',
-    'basePath' => dirname(__DIR__),
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-    ],
     'language' => 'en-US',
     'components' => [
-        'db' => $db,
         'mailer' => [
             'useFileTransport' => true,
         ],
@@ -38,5 +30,11 @@ return [
             */
         ],
     ],
-    'params' => $params,
 ];
+
+return yii\helpers\ArrayHelper::merge(
+    require __DIR__ . '/../config/main.php',
+    require __DIR__ . '/../config/main-local.php',
+    require __DIR__ . '/../config/main-test.php',
+    $config_test
+);
