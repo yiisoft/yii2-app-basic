@@ -20,7 +20,7 @@ if (!isset($frameworkPath)) {
         dirname(__FILE__) . '/vendor/yiisoft/yii2',
         dirname(__FILE__) . '/../vendor/yiisoft/yii2',
     ];
-    foreach($searchPaths as $path) {
+    foreach ($searchPaths as $path) {
         if (is_dir($path)) {
             $frameworkPath = $path;
             break;
