@@ -1,0 +1,114 @@
+iCurlHTTP v1.12
+
+URL: http://skinphoniqa.wixsite.com
+Date: Saturday 24 Aug 2562, 11:23 PM
+
+-- Trying 185.230.62.169...
+-- TCP_NODELAY set
+-- Connected to skinphoniqa.wixsite.com (185.230.62.169) port 80 (#0)
+>> GET / HTTP/1.1
+>> Host: skinphoniqa.wixsite.com
+>> User-Agent: iCurlHTTP/1.12 libcurl/7.64.1 OpenSSL/1.1.1b zlib/1.2.11 nghttp2/1.37.0
+>> Accept: */*
+>> Connection: Upgrade, HTTP2-Settings
+>> Upgrade: h2c
+>> HTTP2-Settings: AAMAAABkAARAAAAAAAIAAAAA
+>>
+>>
+HTTP/1.1 404 Not Found
+Date: Sat, 24 Aug 2019 20:23:09 GMT
+Content-Type: text/html;charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Language: en
+X-Wix-Request-Id: 1566678189.093118641362268217996
+Age: 0
+X-Seen-By: mUlYQp9kUOjNsdgiP37l/Q==,3TMUhjsii2xkJABbnIhCtrms73Ev6P5tBhqVof8gh4O8KsDSwSuRFS2t93HS9KS0,2d58ifebGbosy5xc+FRaloPX4ngKfQM8fEHbwELHijkvds0PC5My+5YTgNBEEjAY,2UNV7KOq4oGjA5+PKsX47Gzh5saLoQp8TIRIohc0Wac=,m0j2EEknGIVUW/liY8BLLoZbWU7G4EFZPGt6B5CQim8=,1wy2ILu/S4rlWT/R4rqCrRq6VnMlcHCxMj4hbe61OKs=,WSO+u2BWDrxZld83W5N69n/ZgkFrl8tKpmSFOL/RgySzPQDT38X/AjyXM7D8hIYMWIHlCalF7YnfvOr2cMPpyw==
+Set-Cookie: TS016e3841=0141ccf4855cb86cd77869b965f41b219d456b33ae2d3f209849ed078e9d1a57d5ac8695490e6a43aa86beda2164b5b52925070d45; Path=/; Domain=.wixsite.com
+Transfer-Encoding: chunked
+
+b75
+<!-- -->
+
+
+<!doctype html>
+<!--
+-->
+<html ng-app="wixErrorPagesApp">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title ng-bind="'page_title' | translate"></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<meta name="robots" content="noindex, nofollow">
+<!-- -->
+<link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon">
+<!-- -->
+<link href="//static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css" rel="stylesheet" type="text/css" />
+<!-- -->
+<link rel="stylesheet" href="//static.parastorage.com/services/wix-public/1.253.0/styles/error-pages/styles.css">
+<!-- -->
+</head>
+<body lang="en" ng-controller="ErrorPageController as errorPageCtrl" class="error-page-app" ng-class="{'secondary-background': isSecondaryBackground}">
+<!--[if lt IE 9]>
+<script src="//static.parastorage.com/services/third-party/es5-shim/2.1.0/es5-shim.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//static.parastorage.com/services/third-party/jquery/2.0.3/jquery.min.js"></script>
+<!--<![endif]-->
+
+<script src="//static.parastorage.com/services/third-party/angularjs/1.2.28/angular.min.js"></script>
+<!-- -->
+<script src="//static.parastorage.com/services/third-party/angularjs/1.2.28/i18n/angular-locale_en.js"></script>
+<script src="//static.parastorage.com/services/third-party/angular-translate/1.1.1/angular-translate.min.js"></script>
+
+<script src="//static.parastorage.com/services/wix-public/1.253.0/scripts/error-pages/locale/messages_en.js"></script>
+<!-- -->
+<script src="//static.parastorage.com/services/wix-public/1.253.0/scripts/error-pages/app.js"></script>
+<!-- -->
+
+<script>
+angular.module('wixErrorPagesApp').constant('staticsUrl', '//static.parastorage.com/services/wix-public/1.253.0/');
+angular.module('wixErrorPagesApp').constant('baseDomain', 'wix.com');
+angular.module('wixErrorPagesApp').constant('language', 'en');
+angular.module('wixErrorPagesApp').constant('errorCode', {code: '404'});
+angular.module('wixErrorPagesApp').constant('data', {});
+angular.module('wixErrorPagesApp').constant('exceptionName', '');
+angular.module('wixErrorPagesApp').constant('serverErrorCode', '404');
+</script>
+<div ng-cloak ng-include="errorPageCtrl.errorPageUrl">
+<div class="non-angular-supported-browser-wrapper">
+<h1 class="non-angular-supported-browser-header">Error 404 occurred</h1>
+<div class="non-angular-supported-browser-link">
+<span>Regardless, we recommend you to <a href="http://browsehappy.com/">update your browser.</a></span>
+</div>
+</div>
+</div>
+<!-- verification -->
+<!-- end verification -->
+</body>
+</html>
+0
+
+-- Closing connection 0
+
+** Timing Details **
+-- Name Lookup:	0.20s
+-- TCP Connect: 0.54s
+-- First Byte: 0.88s
+-- Total Download: 2.39s
+-- Size: 2933 bytes
+-- Speed: 1225 bytes/sec
+-- Using: HTTP/1.1
+** RESULT CODE: 404**
+
+
+
+SkinPhoniqa.Spacëpeople🐽projëкт!
+WœrkspacemanyΔq.··.··..·
+Teamalinsskinphoniqa.buisness.site
+SkinPhoniqa.beezer.com
+🧶🧩♟⛩🕳🧫🧿🧬🧪🧼🛋🧸📮💗✝️🆔☯️⚛️⛎🔯🆑☮️💲♾®️🔙🔝🔛🔚🔜◾️🇦🇶
