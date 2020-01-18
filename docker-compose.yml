@@ -7,3 +7,18 @@ services:
       - ./:/app:delegated
     ports:
       - '8000:80'
+    # uncomment two lines below, if you want to use a database(mysql) container.
+    # depends_on:
+    #   - 'db'
+  # uncomment this section, if you want to use a database(mysql) container. 
+  # db:
+  #   image: mysql:5.6
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=root
+  #     - MYSQL_DATABASE=yii2basic
+  #     - MYSQL_USER=user
+  #     - MYSQL_PASSWORD=password
+  #   expose:
+  #     - '3306'
+  #   ports:
+  #     - '3306:3306' # to debug on local env, open the 3306 port on host.
