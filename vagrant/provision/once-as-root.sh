@@ -22,8 +22,8 @@ info "Configure timezone"
 timedatectl set-timezone ${timezone} --no-ask-password
 
 info "Prepare root password for MySQL"
-debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password password \"''\""
-debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password_again password \"''\""
+debconf-set-selections <<< 'mariadb-server mysql-server/root_password password'
+debconf-set-selections <<< 'mariadb-server mysql-server/root_password_again password'
 echo "Done!"
 
 info "Update OS software"
@@ -34,11 +34,11 @@ info "Install additional software"
 apt-get install -y php7.0-curl php7.0-cli php7.0-intl php7.0-mysqlnd php7.0-gd php7.0-fpm php7.0-mbstring php7.0-xml unzip nginx mariadb-server-10.0 php.xdebug
 
 info "Configure MySQL"
-sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
-mysql -uroot <<< "CREATE USER 'root'@'%' IDENTIFIED BY ''"
-mysql -uroot <<< "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'"
-mysql -uroot <<< "DROP USER 'root'@'localhost'"
-mysql -uroot <<< "FLUSH PRIVILEGES"
+sed -i 's/.*bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+mysql <<< "CREATE USER 'root'@'%' IDENTIFIED BY ''"
+mysql <<< "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'"
+mysql <<< "DROP USER 'root'@'localhost'"
+mysql <<< 'FLUSH PRIVILEGES'
 echo "Done!"
 
 info "Configure PHP-FPM"
@@ -67,8 +67,8 @@ rm /etc/nginx/sites-enabled/default
 echo "Done!"
 
 info "Initailize databases for MySQL"
-mysql -uroot <<< "CREATE DATABASE yii2basic"
-mysql -uroot <<< "CREATE DATABASE yii2basic_test"
+mysql <<< 'CREATE DATABASE yii2basic'
+mysql <<< 'CREATE DATABASE yii2basic_test'
 echo "Done!"
 
 info "Install composer"
