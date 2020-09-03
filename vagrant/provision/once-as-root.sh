@@ -3,6 +3,7 @@
 #== Import script args ==
 
 timezone=$(echo "$1")
+readonly IP=$2
 
 #== Bash helpers ==
 
@@ -20,6 +21,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 info "Configure timezone"
 timedatectl set-timezone ${timezone} --no-ask-password
+
+info "Add the VM IP to the list of allowed IPs"
+awk -v ip=$IP -f /app/vagrant/provision/provision.awk /app/config/web.php
 
 info "Prepare root password for MySQL"
 debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password password \"''\""
