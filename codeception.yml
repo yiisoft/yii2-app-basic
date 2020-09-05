@@ -25,12 +25,3 @@ modules:
 #            - controllers/*
 #            - commands/*
 #            - mail/*
-#    blacklist:
-#        include:
-#            - assets/*
-#            - config/*
-#            - runtime/*
-#            - vendor/*
-#            - views/*
-#            - web/*
-#            - tests/*
