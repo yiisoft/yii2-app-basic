@@ -221,13 +221,13 @@ to collect code coverage. You can run your tests and collect coverage with the f
 
 ```
 #collect coverage for all tests
-vendor/bin/codecept run -- --coverage-html --coverage-xml
+vendor/bin/codecept run --coverage --coverage-html --coverage-xml
 
 #collect coverage only for unit tests
-vendor/bin/codecept run unit -- --coverage-html --coverage-xml
+vendor/bin/codecept run unit --coverage --coverage-html --coverage-xml
 
 #collect coverage for unit and functional tests
-vendor/bin/codecept run functional,unit -- --coverage-html --coverage-xml
+vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
