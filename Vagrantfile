@@ -12,7 +12,8 @@ end
 
 # IF plugin[s] was just installed - restart required
 if required_plugins_installed
-  system "vagrant up"
+  # Get CLI command[s] and call again
+  system 'vagrant' + ARGV.to_s.gsub(/\[\"|\", \"|\"\]/, ' ')
   exit
 end
 
