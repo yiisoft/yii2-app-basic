@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
+          - windows-latest
 
         php-version:
           - "5.6"
@@ -54,8 +54,8 @@ jobs:
           coverage: xdebug
           tools: composer:v2, pecl
 
-      - name: Determine composer cache directory on Linux
-        run: echo "::set-env name=COMPOSER_CACHE_DIR::$(composer config cache-dir)"
+      - name: Determine composer cache directory on Windows
+        run: ECHO "::set-env name=COMPOSER_CACHE_DIR::~\AppData\Local\Composer"
 
       - name: Cache dependencies installed with composer
         uses: actions/cache@v1
