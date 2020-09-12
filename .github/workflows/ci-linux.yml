@@ -2,7 +2,7 @@ on:
   - pull_request
   - push
 
-name: ci-ubuntu
+name: ci-linux
 
 jobs:
   tests:
