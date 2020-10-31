@@ -6,7 +6,7 @@ name: build
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php - matrix.os}}
     env:
       extensions: curl, dom, gd, imagick, intl, json, mbstring, libxml, xml, xmlwriter
       key: cache-v1
