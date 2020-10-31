@@ -2,13 +2,13 @@ on:
   - pull_request
   - push
 
-name: ci-windows
+name: build
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php-version }}
+    name: PHP ${{ matrix.php }}
     env:
-      extensions: curl, dom, gd, intl, json, mbstring, libxml, xml, xmlwriter
+      extensions: curl, dom, gd, imagick, intl, json, mbstring, libxml, xml, xmlwriter
       key: cache-v1
 
     runs-on: ${{ matrix.os }}
@@ -16,9 +16,10 @@ jobs:
     strategy:
       matrix:
         os:
+          - ubuntu-latest
           - windows-latest
 
-        php-version:
+        php:
           - "5.6"
           - "7.0"
           - "7.1"
@@ -34,7 +35,7 @@ jobs:
         id: cache-env
         uses: shivammathur/cache-extensions@v1
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: ${{ matrix.php }}
           extensions: ${{ env.extensions }}
           key: ${{ env.key }}
 
@@ -48,29 +49,28 @@ jobs:
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: ${{ matrix.php }}
           extensions: ${{ env.extensions }}
           ini-values: date.timezone='UTC'
           coverage: xdebug
           tools: composer:v2, pecl
 
-      - name: Determine composer cache directory on Windows
-        run: ECHO "::set-env name=COMPOSER_CACHE_DIR::~\AppData\Local\Composer"
+      - name: Determine composer cache directory on Linux
+        run: echo "::set-env name=COMPOSER_CACHE_DIR::$(composer config cache-dir)"
 
       - name: Cache dependencies installed with composer
         uses: actions/cache@v1
         with:
           path: ${{ env.COMPOSER_CACHE_DIR }}
-          key: php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}
+          key: php${{ matrix.php }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}
           restore-keys: |
-            php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+            php${{ matrix.php }}-composer-${{ matrix.dependencies }}-
 
       - name: Install dependencies with composer php PHP [5.6 - 7.4]
         run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
-      - name: Run tests with codeception on Windows PHP [5.6 - 7.4]
+      - name: Run tests with codeception
         run: |
           sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
           php -S 127.0.0.1:8080 -t public > ./runtime/yii.log 2>&1 &
           vendor/bin/codecept run
-        shell: bash

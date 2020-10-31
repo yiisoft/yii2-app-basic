@@ -15,8 +15,7 @@ features to your application.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![ci-linux](https://github.com/yiisoft/yii2-app-basic/workflows/ci-linux/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Aci-linux)
-[![ci-windows](https://github.com/yiisoft/yii2-app-basic/workflows/ci-windows/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Aci-windows)
+[![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
 
 DIRECTORY STRUCTURE
 -------------------
