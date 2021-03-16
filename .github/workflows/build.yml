@@ -67,6 +67,7 @@ jobs:
       - name: Cache dependencies installed with composer
         uses: actions/cache@v1
         with:
+          ref: ${{ github.head_ref }}
           path: ${{ env.COMPOSER_CACHE_DIR }}
           key: php${{ matrix.php }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}
           restore-keys: |
