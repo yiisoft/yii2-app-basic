@@ -1,9 +1,8 @@
 <?php
 
-namespace tests\models;
+namespace tests\unit\models;
 
 use app\models\LoginForm;
-use Codeception\Specify;
 
 class LoginFormTest extends \Codeception\Test\Unit
 {

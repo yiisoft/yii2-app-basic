@@ -16,11 +16,11 @@
 
 
 if (!isset($frameworkPath)) {
-    $searchPaths = [
+    $searchPaths = array(
         dirname(__FILE__) . '/vendor/yiisoft/yii2',
         dirname(__FILE__) . '/../vendor/yiisoft/yii2',
-    ];
-    foreach($searchPaths as $path) {
+    );
+    foreach ($searchPaths as $path) {
         if (is_dir($path)) {
             $frameworkPath = $path;
             break;
@@ -157,4 +157,6 @@ if (!version_compare(phpversion(), '5.5', '>=')) {
     );
 }
 
-$requirementsChecker->checkYii()->check($requirements)->render();
+$result = $requirementsChecker->checkYii()->check($requirements)->getResult();
+$requirementsChecker->render();
+exit($result['summary']['errors'] === 0 ? 0 : 1);
