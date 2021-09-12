@@ -61,8 +61,8 @@ class Alert extends \yii\bootstrap4\Widget
                     'body' => $message,
                     'closeButton' => $this->closeButton,
                     'options' => array_merge($this->options, [
-                        'id' => $this->getId().'-'.$type.'-'.$i,
-                        'class' => $this->alertTypes[$type].$appendClass,
+                        'id' => $this->getId() . '-' . $type . '-' . $i,
+                        'class' => $this->alertTypes[$type] . $appendClass,
                     ]),
                 ]);
             }
