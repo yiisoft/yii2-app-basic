@@ -3,15 +3,11 @@
 namespace tests\unit\widgets;
 
 use app\widgets\Alert;
+use PHPUnit\Framework\TestCase;
 use Yii;
 
-class AlertTest extends \Codeception\Test\Unit
+class AlertTest extends TestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    public $tester;
-
     public function testSingleErrorMessage()
     {
         $message = 'This is an error message';
@@ -20,12 +16,12 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($message, $renderingResult);
-        $this->tester->assertStringContainsString('alert-danger', $renderingResult);
+        expect($renderingResult)->stringContainsString($message);
+        expect($renderingResult)->stringContainsString('alert-danger');
 
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-info');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testMultipleErrorMessages()
@@ -37,13 +33,13 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($firstMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondMessage, $renderingResult);
-        $this->tester->assertStringContainsString('alert-danger', $renderingResult);
+        expect($renderingResult)->stringContainsString($firstMessage);
+        expect($renderingResult)->stringContainsString($secondMessage);
+        expect($renderingResult)->stringContainsString('alert-danger');
 
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-info');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testSingleDangerMessage()
@@ -54,12 +50,12 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($message, $renderingResult);
-        $this->tester->assertStringContainsString('alert-danger', $renderingResult);
+        expect($renderingResult)->stringContainsString($message);
+        expect($renderingResult)->stringContainsString('alert-danger');
 
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-info');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testMultipleDangerMessages()
@@ -71,13 +67,13 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($firstMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondMessage, $renderingResult);
-        $this->tester->assertStringContainsString('alert-danger', $renderingResult);
+        expect($renderingResult)->stringContainsString($firstMessage);
+        expect($renderingResult)->stringContainsString($secondMessage);
+        expect($renderingResult)->stringContainsString('alert-danger');
 
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-info');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testSingleSuccessMessage()
@@ -88,12 +84,12 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($message, $renderingResult);
-        $this->tester->assertStringContainsString('alert-success', $renderingResult);
+        expect($renderingResult)->stringContainsString($message);
+        expect($renderingResult)->stringContainsString('alert-success');
 
-        $this->tester->assertStringNotContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-danger');
+        expect($renderingResult)->stringNotContainsString('alert-info');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testMultipleSuccessMessages()
@@ -105,13 +101,13 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($firstMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondMessage, $renderingResult);
-        $this->tester->assertStringContainsString('alert-success', $renderingResult);
+        expect($renderingResult)->stringContainsString($firstMessage);
+        expect($renderingResult)->stringContainsString($secondMessage);
+        expect($renderingResult)->stringContainsString('alert-success');
 
-        $this->tester->assertStringNotContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-danger');
+        expect($renderingResult)->stringNotContainsString('alert-info');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testSingleInfoMessage()
@@ -122,12 +118,12 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($message, $renderingResult);
-        $this->tester->assertStringContainsString('alert-info', $renderingResult);
+        expect($renderingResult)->stringContainsString($message);
+        expect($renderingResult)->stringContainsString('alert-info');
 
-        $this->tester->assertStringNotContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-danger');
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testMultipleInfoMessages()
@@ -139,13 +135,13 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($firstMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondMessage, $renderingResult);
-        $this->tester->assertStringContainsString('alert-info', $renderingResult);
+        expect($renderingResult)->stringContainsString($firstMessage);
+        expect($renderingResult)->stringContainsString($secondMessage);
+        expect($renderingResult)->stringContainsString('alert-info');
 
-        $this->tester->assertStringNotContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-danger');
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-warning');
     }
 
     public function testSingleWarningMessage()
@@ -156,12 +152,12 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($message, $renderingResult);
-        $this->tester->assertStringContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringContainsString($message);
+        expect($renderingResult)->stringContainsString('alert-warning');
 
-        $this->tester->assertStringNotContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-danger');
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-info');
     }
 
     public function testMultipleWarningMessages()
@@ -173,13 +169,13 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($firstMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondMessage, $renderingResult);
-        $this->tester->assertStringContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringContainsString($firstMessage);
+        expect($renderingResult)->stringContainsString($secondMessage);
+        expect($renderingResult)->stringContainsString('alert-warning');
 
-        $this->tester->assertStringNotContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringNotContainsString('alert-info', $renderingResult);
+        expect($renderingResult)->stringNotContainsString('alert-danger');
+        expect($renderingResult)->stringNotContainsString('alert-success');
+        expect($renderingResult)->stringNotContainsString('alert-info');
     }
 
     public function testSingleMixedMessages() {
@@ -197,16 +193,16 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($errorMessage, $renderingResult);
-        $this->tester->assertStringContainsString($dangerMessage, $renderingResult);
-        $this->tester->assertStringContainsString($successMessage, $renderingResult);
-        $this->tester->assertStringContainsString($infoMessage, $renderingResult);
-        $this->tester->assertStringContainsString($warningMessage, $renderingResult);
+        expect($renderingResult)->stringContainsString($errorMessage);
+        expect($renderingResult)->stringContainsString($dangerMessage);
+        expect($renderingResult)->stringContainsString($successMessage);
+        expect($renderingResult)->stringContainsString($infoMessage);
+        expect($renderingResult)->stringContainsString($warningMessage);
 
-        $this->tester->assertStringContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringContainsString('alert-danger');
+        expect($renderingResult)->stringContainsString('alert-success');
+        expect($renderingResult)->stringContainsString('alert-info');
+        expect($renderingResult)->stringContainsString('alert-warning');
     }
 
     public function testMultipleMixedMessages() {
@@ -229,21 +225,21 @@ class AlertTest extends \Codeception\Test\Unit
 
         $renderingResult = Alert::widget();
 
-        $this->tester->assertStringContainsString($firstErrorMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondErrorMessage, $renderingResult);
-        $this->tester->assertStringContainsString($firstDangerMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondDangerMessage, $renderingResult);
-        $this->tester->assertStringContainsString($firstSuccessMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondSuccessMessage, $renderingResult);
-        $this->tester->assertStringContainsString($firstInfoMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondInfoMessage, $renderingResult);
-        $this->tester->assertStringContainsString($firstWarningMessage, $renderingResult);
-        $this->tester->assertStringContainsString($secondWarningMessage, $renderingResult);
+        expect($renderingResult)->stringContainsString($firstErrorMessage);
+        expect($renderingResult)->stringContainsString($secondErrorMessage);
+        expect($renderingResult)->stringContainsString($firstDangerMessage);
+        expect($renderingResult)->stringContainsString($secondDangerMessage);
+        expect($renderingResult)->stringContainsString($firstSuccessMessage);
+        expect($renderingResult)->stringContainsString($secondSuccessMessage);
+        expect($renderingResult)->stringContainsString($firstInfoMessage);
+        expect($renderingResult)->stringContainsString($secondInfoMessage);
+        expect($renderingResult)->stringContainsString($firstWarningMessage);
+        expect($renderingResult)->stringContainsString($secondWarningMessage);
 
-        $this->tester->assertStringContainsString('alert-danger', $renderingResult);
-        $this->tester->assertStringContainsString('alert-success', $renderingResult);
-        $this->tester->assertStringContainsString('alert-info', $renderingResult);
-        $this->tester->assertStringContainsString('alert-warning', $renderingResult);
+        expect($renderingResult)->stringContainsString('alert-danger');
+        expect($renderingResult)->stringContainsString('alert-success');
+        expect($renderingResult)->stringContainsString('alert-info');
+        expect($renderingResult)->stringContainsString('alert-warning');
     }
 
     public function testFlashIntegrity()
@@ -260,7 +256,7 @@ class AlertTest extends \Codeception\Test\Unit
         Yii::$app->session->close();
         Yii::$app->session->open();
 
-        $this->tester->assertNull(Yii::$app->session->getFlash('error'));
-        $this->tester->assertEquals($unrelatedMessage, Yii::$app->session->getFlash('unrelated'));
+        expect(Yii::$app->session->getFlash('error'))->null();
+        expect(Yii::$app->session->getFlash('unrelated'))->equals($unrelatedMessage);
     }
 }
