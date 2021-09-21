@@ -6,7 +6,7 @@
  */
 class Yii {
     /**
-     * @var \yii\web\Application|\yii\console\Application|__HostingApplication
+     * @var \yii\web\Application|\yii\console\Application|__Application
      */
     public static $app;
 }
