@@ -16,7 +16,7 @@ class Yii {
  * @property yii\queue\redis\Queue $queue
  * @property __WebUser $user
  */
-class __HostingApplication {
+class __Application {
 }
 
 /**
