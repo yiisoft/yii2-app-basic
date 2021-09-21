@@ -14,7 +14,7 @@ class Yii {
 /**
  * @property yii\rbac\DbManager $authManager
  * @property yii\queue\redis\Queue $queue
- * @property __WebUser $user
+ * @property \yii\web\User|__WebUser $user
  */
 class __Application {
 }
