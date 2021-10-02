@@ -132,7 +132,7 @@ TESTING
 -------
 
 Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
-By default there are 3 test suites:
+By default, there are 3 test suites:
 
 - `unit`
 - `functional`
@@ -155,7 +155,7 @@ To execute acceptance tests do the following:
 
 1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
 
-2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured
+2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full-featured
    version of Codeception
 
 3. Update dependencies with Composer 
