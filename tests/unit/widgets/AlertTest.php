@@ -255,7 +255,7 @@ class AlertTest extends \Codeception\Test\Unit
         Yii::$app->session->close();
         Yii::$app->session->open();
 
-        verify(Yii::$app->session->getFlash('error'))->isEmpty();
+        verify(Yii::$app->session->getFlash('error'))->empty();
         verify(Yii::$app->session->getFlash('unrelated'))->equals($unrelatedMessage);
     }
 }
