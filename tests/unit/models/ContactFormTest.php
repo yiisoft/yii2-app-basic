@@ -24,7 +24,7 @@ class ContactFormTest extends \Codeception\Test\Unit
             'verifyCode' => 'testme',
         ];
 
-        verify($model->sendEmail('admin@example.com'))->notEmpty();
+        verify($model->contact('admin@example.com'))->notEmpty();
 
         // using Yii2 module actions to check email was sent
         $this->tester->seeEmailIsSent();
