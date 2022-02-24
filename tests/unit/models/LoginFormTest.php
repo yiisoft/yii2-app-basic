@@ -20,8 +20,8 @@ class LoginFormTest extends \Codeception\Test\Unit
             'password' => 'not_existing_password',
         ]);
 
-        expect_not($this->model->login());
-        expect_that(\Yii::$app->user->isGuest);
+        verify($this->model->login())->false();
+        verify(\Yii::$app->user->isGuest)->true();
     }
 
     public function testLoginWrongPassword()
@@ -31,9 +31,9 @@ class LoginFormTest extends \Codeception\Test\Unit
             'password' => 'wrong_password',
         ]);
 
-        expect_not($this->model->login());
-        expect_that(\Yii::$app->user->isGuest);
-        expect($this->model->errors)->hasKey('password');
+        verify($this->model->login())->false();
+        verify(\Yii::$app->user->isGuest)->true();
+        verify($this->model->errors)->arrayHasKey('password');
     }
 
     public function testLoginCorrect()
@@ -43,9 +43,9 @@ class LoginFormTest extends \Codeception\Test\Unit
             'password' => 'demo',
         ]);
 
-        expect_that($this->model->login());
-        expect_not(\Yii::$app->user->isGuest);
-        expect($this->model->errors)->hasntKey('password');
+        verify($this->model->login())->true();
+        verify(\Yii::$app->user->isGuest)->false();
+        verify($this->model->errors)->arrayHasNotKey('password');
     }
 
 }
