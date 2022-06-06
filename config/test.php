@@ -16,6 +16,10 @@ return [
     'components' => [
         'db' => $db,
         'mailer' => [
+            'class' => 'yii\symfonymailer\Mailer',
+            // send all mails to a file by default. You have to set
+            // 'useFileTransport' to false and configure transport
+            // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
         'assetManager' => [
