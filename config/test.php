@@ -17,6 +17,7 @@ return [
         'db' => $db,
         'mailer' => [
             'useFileTransport' => true,
+            'messageClass' => 'yii\symfonymailer\Message'
         ],
         'assetManager' => [
             'basePath' => __DIR__ . '/../web/assets',
