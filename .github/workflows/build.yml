@@ -61,7 +61,7 @@ jobs:
         run: |
             echo "COMPOSER_CACHE_DIR=~\AppData\Local\Composer" >> $GITHUB_ENV
 
-      - name: Cache dependencies installed with composer
+      - name: Cache dependencies installed with Composer
         uses: actions/cache@v1
         with:
           path: ${{ steps.cache-env.outputs.dir }}
@@ -70,11 +70,12 @@ jobs:
             php${{ matrix.php }}-composer-${{ matrix.dependencies }}-
 
       - name: Install dependencies with Composer PHP [7.4 - 8.1]
-        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+        run: |
+          composer install --no-interaction --no-progress --optimize-autoloader
 
       - name: Run tests with Codeception
         run: |
-          sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
+          sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" ./config/web.php
           php -S 127.0.0.1:8080 -t public > ./runtime/yii.log 2>&1 &
           vendor/bin/codecept run
         shell: bash
