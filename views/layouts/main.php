@@ -1,9 +1,7 @@
 <?php
 
-/** 
- * @var yii\web\View $this
- * @var string $content
- */
+/** @var yii\web\View $this */
+/** @var string $content */
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
@@ -26,13 +24,13 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => '@w
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>    
+    <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
 <header id="header">
-    <?php 
+    <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -62,13 +60,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => '@w
 
 <main id="main" class="flex-shrink-0" role="main">
     <div class="container">
-        <?php
-        if (!empty($this->params['breadcrumbs'])) {
-            echo Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]);
-        }
-        Alert::widget();
-        echo $content;
-        ?>
+        <?php if (!empty($this->params['breadcrumbs'])): ?> {
+            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>        
+        <?php endif ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
     </div>
 </main>
 
