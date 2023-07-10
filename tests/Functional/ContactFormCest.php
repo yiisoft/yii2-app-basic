@@ -1,18 +1,20 @@
 <?php
 
-class ContactFormCest 
+declare(strict_types=1);
+
+final class ContactFormCest 
 {
-    public function _before(\FunctionalTester $I)
+    public function _before(FunctionalTester $I): void
     {
         $I->amOnRoute('site/contact');
     }
 
-    public function openContactPage(\FunctionalTester $I)
+    public function openContactPage(FunctionalTester $I): void
     {
         $I->see('Contact', 'h1');        
     }
 
-    public function submitEmptyForm(\FunctionalTester $I)
+    public function submitEmptyForm(FunctionalTester $I): void
     {
         $I->submitForm('#contact-form', []);
         $I->expectTo('see validations errors');
@@ -24,7 +26,7 @@ class ContactFormCest
         $I->see('The verification code is incorrect');
     }
 
-    public function submitFormWithIncorrectEmail(\FunctionalTester $I)
+    public function submitFormWithIncorrectEmail(FunctionalTester $I): void
     {
         $I->submitForm('#contact-form', [
             'ContactForm[name]' => 'tester',
@@ -41,7 +43,7 @@ class ContactFormCest
         $I->dontSee('The verification code is incorrect', '.help-inline');        
     }
 
-    public function submitFormSuccessfully(\FunctionalTester $I)
+    public function submitFormSuccessfully(FunctionalTester $I): void
     {
         $I->submitForm('#contact-form', [
             'ContactForm[name]' => 'tester',
