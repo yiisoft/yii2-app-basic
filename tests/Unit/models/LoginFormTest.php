@@ -1,19 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\unit\models;
 
 use app\models\LoginForm;
 
-class LoginFormTest extends \Codeception\Test\Unit
+final class LoginFormTest extends \Codeception\Test\Unit
 {
-    private \app\models\LoginForm|null $model = null;
+    private LoginForm|null $model = null;
 
-    protected function _after()
+    protected function _after(): void
     {
         \Yii::$app->user->logout();
     }
 
-    public function testLoginNoUser()
+    public function testLoginNoUser(): void
     {
         $this->model = new LoginForm([
             'username' => 'not_existing_username',
@@ -24,7 +26,7 @@ class LoginFormTest extends \Codeception\Test\Unit
         verify(\Yii::$app->user->isGuest)->true();
     }
 
-    public function testLoginWrongPassword()
+    public function testLoginWrongPassword(): void
     {
         $this->model = new LoginForm([
             'username' => 'demo',
@@ -36,7 +38,7 @@ class LoginFormTest extends \Codeception\Test\Unit
         verify($this->model->errors)->arrayHasKey('password');
     }
 
-    public function testLoginCorrect()
+    public function testLoginCorrect(): void
     {
         $this->model = new LoginForm([
             'username' => 'demo',

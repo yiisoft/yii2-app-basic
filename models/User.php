@@ -8,11 +8,11 @@ use yii\web\IdentityInterface;
 
 final class User extends \yii\base\BaseObject implements IdentityInterface
 {
-    public string $id;
-    public string $username;
-    public string $password;
-    public string $authKey;
-    public string $accessToken;
+    public string $id = '';
+    public string $username = '';
+    public string $password = '';
+    public string $authKey = '';
+    public string $accessToken = '';
 
     private static array $users = [
         '100' => [

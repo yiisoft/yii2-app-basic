@@ -52,7 +52,9 @@ final class Alert extends \yii\bootstrap5\Widget
      */
     public function run()
     {
+        /** @var \yii\web\Session $session */
         $session = Yii::$app->session;
+        
         $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
 
         foreach (array_keys($this->alertTypes) as $type) {
