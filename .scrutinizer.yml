@@ -4,6 +4,11 @@ checks:
 filter:
   paths:
     - "/*"
+  excluded_paths:
+    - "/config/*"
+    - "/runtime/*"
+    - "/vagrant/*"
+    - "/vendor/*"
 
 build:
   image: default-bionic
