@@ -6,7 +6,7 @@ use app\models\LoginForm;
 
 class LoginFormTest extends \Codeception\Test\Unit
 {
-    private $model;
+    private \app\models\LoginForm|null $model = null;
 
     protected function _after()
     {
