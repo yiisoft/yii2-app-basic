@@ -1,5 +1,7 @@
 <?php
 
+use yii\di\Instance;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -13,18 +15,17 @@ $config = [
     ],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'enableCookieValidation' => false,
+            'enableCsrfValidation' => false,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
@@ -42,16 +43,36 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                'GET api/news' => 'get-news-list/handle',
+                'POST api/news' => 'create-news/handle',
+                'PUT api/news/<id:\d+>' => 'update-news/handle',
+                'DELETE api/news/<id:\d+>' => 'delete-news/handle',
             ],
         ],
-        */
     ],
     'params' => $params,
+    'container' => [
+        'definitions' => [
+            app\services\NewsService\NewsModerator::class => [
+                '__construct()' => [
+                    [
+                        Instance::of(app\services\NewsService\Moderations\RemoveObsceneWordsModeration::class),
+                        Instance::of(app\services\NewsService\Moderations\ReplaceUrlToTagModeration::class),
+                        Instance::of(app\services\NewsService\Moderations\RemoveImgTagsModeration::class)
+                    ]
+                ]
+            ]
+        ],
+        'singletons' => [
+            // Конфигурация для единожды создающихся объектов
+        ]
+    ]
 ];
 
 if (YII_ENV_DEV) {

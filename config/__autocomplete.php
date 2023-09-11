@@ -25,9 +25,3 @@ class Yii {
  */
 class __Application {
 }
-
-/**
- * @property app\models\User $identity
- */
-class __WebUser {
-}
