@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+td div {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.column_title {
+    width: 20%;
+}
+
+.column_description {
+    width: 20%;
+}
+
+.column_text {
+    width: 40%;
+}
+
+.column_action {
+    width: 20%;
+}
+
+.actions button {
+    margin-right: 5px;
+}
+
+.actions button.edit {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.actions button.update {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.actions button.delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.form-container {
+    margin-bottom: 20px;
+    padding: 20px;
+
+}
+
+.form-container input[type="text"],
+.form-container textarea {
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    min-width: 100px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    width: 500px;
+    height: 300px;
+    background-color: #f2f2f2;
+    box-shadow: 5px 5px 10px #999999;
+    transform: translate(-50%, -50%);
+}
+
+.modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
