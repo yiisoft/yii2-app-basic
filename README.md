@@ -45,6 +45,9 @@ INSTALLATION
 
 ### Install via Composer
 
+This package requires [npm-asset](https://www.npmjs.com/) for [php-forge/foxy](https://www.github.com/php-forge/foxy),
+which manages the installation of npm packages and resource compilation.
+
 If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
 
