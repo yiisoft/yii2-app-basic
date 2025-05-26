@@ -28,8 +28,8 @@
         "codeception/module-yii2": "^1.1",
         "codeception/verify": "^3.0",
         "php-forge/foxy": "^0.1",
-        "symfony/browser-kit": "^7.3",
-        "symfony/process": "^7.3",
+        "symfony/browser-kit": "^6.4|^7.3",
+        "symfony/process": "^6.4|^7.3",
         "yiisoft/yii2-debug": "22.x-dev",
         "yiisoft/yii2-faker": "22.x-dev",
         "yiisoft/yii2-gii": "22.x-dev"
