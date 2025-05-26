@@ -37,7 +37,7 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 7.4.
+The minimum requirement by this project template that your Web server supports PHP 8.1.
 
 
 INSTALLATION
@@ -51,14 +51,14 @@ at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
 You can then install this project template using the following command:
 
 ~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+composer create-project --prefer-dist yiisoft/yii2-app-basic:22.x.dev basic
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `basic` is the directory
 directly under the Web root.
 
 ~~~
-http://localhost/basic/web/
+http://localhost:8080/basic/web/
 ~~~
 
 ### Install from an Archive File

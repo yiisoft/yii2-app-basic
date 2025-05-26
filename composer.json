@@ -15,6 +15,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.1.0",
+        "php-forge/foxy": "^0.1",
         "yiisoft/yii2": "22.0.x-dev",
         "yiisoft/yii2-bootstrap5": "22.x-dev",
         "yiisoft/yii2-symfonymailer": "22.x-dev"
@@ -27,7 +28,6 @@
         "codeception/module-filesystem": "^3.0",
         "codeception/module-yii2": "^1.1",
         "codeception/verify": "^3.0",
-        "php-forge/foxy": "^0.1",
         "symfony/browser-kit": "^6.4|^7.3",
         "symfony/process": "^6.4|^7.3",
         "yiisoft/yii2-debug": "22.x-dev",
