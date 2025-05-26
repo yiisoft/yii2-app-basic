@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\widgets;
 
 use Yii;
@@ -23,7 +25,7 @@ use Yii;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @author Alexander Makarov <sam@rmcreative.ru>
  */
-class Alert extends \yii\bootstrap5\Widget
+final class Alert extends \yii\bootstrap5\Widget
 {
     /**
      * @var array the alert types configuration for the flash messages.
@@ -31,7 +33,7 @@ class Alert extends \yii\bootstrap5\Widget
      * - key: the name of the session flash variable
      * - value: the bootstrap alert type (i.e. danger, success, info, warning)
      */
-    public $alertTypes = [
+    public array $alertTypes = [
         'error'   => 'alert-danger',
         'danger'  => 'alert-danger',
         'success' => 'alert-success',
@@ -42,7 +44,7 @@ class Alert extends \yii\bootstrap5\Widget
      * @var array the options for rendering the close button tag.
      * Array will be passed to [[\yii\bootstrap\Alert::closeButton]].
      */
-    public $closeButton = [];
+    public array $closeButton = [];
 
 
     /**
@@ -50,7 +52,9 @@ class Alert extends \yii\bootstrap5\Widget
      */
     public function run()
     {
+        /** @var \yii\web\Session $session */
         $session = Yii::$app->session;
+
         $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
 
         foreach (array_keys($this->alertTypes) as $type) {

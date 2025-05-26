@@ -14,25 +14,31 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.4.0",
-        "yiisoft/yii2": "~2.0.45",
-        "yiisoft/yii2-bootstrap5": "~2.0.2",
-        "yiisoft/yii2-symfonymailer": "~2.0.3"
+        "php": ">=8.1.0",
+        "yiisoft/yii2": "22.0.x-dev",
+        "yiisoft/yii2-bootstrap5": "22.x-dev",
+        "yiisoft/yii2-symfonymailer": "22.x-dev"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.1.0",
-        "yiisoft/yii2-gii": "~2.2.0",
-        "yiisoft/yii2-faker": "~2.0.0",
-        "codeception/codeception": "^5.0.0 || ^4.0",
-        "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^1.1",
-        "codeception/module-asserts": "^3.0 || ^1.1",
+        "codeception/c3": "^2.9",
+        "codeception/codeception": "^5.3",
+        "codeception/lib-innerbrowser": "^4.0",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-filesystem": "^3.0",
         "codeception/module-yii2": "^1.1",
-        "codeception/module-filesystem": "^3.0 || ^2.0 || ^1.1",
-        "codeception/verify": "^3.0 || ^2.2"
+        "codeception/verify": "^3.0",
+        "php-forge/foxy": "^0.1",
+        "symfony/browser-kit": "^7.3",
+        "symfony/process": "^7.3",
+        "yiisoft/yii2-debug": "22.x-dev",
+        "yiisoft/yii2-faker": "22.x-dev",
+        "yiisoft/yii2-gii": "22.x-dev"
     },
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer" : true
+            "yiisoft/yii2-composer": true,
+            "php-forge/foxy": true,
+            "codeception/c3": true
         },
         "process-timeout": 1800,
         "fxp-asset": {
@@ -63,11 +69,5 @@
                 "config/web.php"
             ]
         }
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ]
+    }
 }

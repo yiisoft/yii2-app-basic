@@ -31,3 +31,9 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+# node_modules
+node_modules
+
+#codeception
+/c3.php
