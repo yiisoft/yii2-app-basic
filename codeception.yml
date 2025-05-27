@@ -2,9 +2,9 @@ actor: Tester
 bootstrap: _bootstrap.php
 paths:
     tests: tests
-    output: tests/_output
-    data: tests/_data
-    helpers: tests/_support
+    output: runtime/_output
+    data: tests/Support/data
+    helpers: tests/Support
 settings:
     memory_limit: 1024M
     colors: true
@@ -12,6 +12,13 @@ modules:
     config:
         Yii2:
             configFile: 'config/test.php'
+coverage:
+    enabled: true
+    include:
+        - /*
+    exclude:
+        - tests/*
+        - vendor/*
 
 # To enable code coverage:
 #coverage:

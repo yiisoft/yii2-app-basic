@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\unit\models;
 
 use app\models\ContactForm;
+use UnitTester;
 use yii\mail\MessageInterface;
 
-class ContactFormTest extends \Codeception\Test\Unit
+final class ContactFormTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \UnitTester
-     */
-    public $tester;
+    public UnitTester $tester;
 
-    public function testEmailIsSentOnContact()
+    public function testEmailIsSentOnContact(): void
     {
         $model = new ContactForm();
 
