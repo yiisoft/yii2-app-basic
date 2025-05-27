@@ -40,7 +40,10 @@
             "php-forge/foxy": true,
             "codeception/c3": true
         },
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "foxy": {
+            "manager": "npm"
+        }
     },
     "scripts": {
         "post-install-cmd": [
