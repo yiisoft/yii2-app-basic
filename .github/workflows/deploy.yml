@@ -1,35 +1,33 @@
-name: Deploy Yii2 App to EC2
+name: Deploy to EC2
 
 on:
   push:
-    branches:
-      - main
+    branches: [master]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Setup SSH key
+    - name: Set up SSH
       run: |
-        echo "${{ secrets.EC2_SSH_KEY }}" > ec2_key.pem
-        chmod 600 ec2_key.pem
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-    - name: Deploy to EC2
+    - name: Copy files to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no -i ec2_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          # Setup repo if first time
-          cd ~/yii2-app-basic || (git clone https://github.com/harshit075/yii2-app-basic.git && cd yii2-app-basic)
+        rsync -avz --exclude '.git' --exclude 'vendor' -e "ssh -i ~/.ssh/id_rsa" ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/app/
 
-          git pull origin main
-
-          docker stop yii2 || true
-          docker rm yii2 || true
-
-          docker build -t yii2-app .
-          docker run -d -p 8080:80 --name yii2 yii2-app
+    - name: Build and restart Docker container on EC2
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+        cd /home/${{ secrets.EC2_USER }}/app
+        docker compose down
+        docker compose up --build -d
         EOF
 
