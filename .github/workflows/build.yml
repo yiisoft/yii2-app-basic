@@ -10,7 +10,7 @@ jobs:
 
     env:
       extensions: dom, json, gd, imagick
-      key: cache-v1
+      key: cache-v4
 
     runs-on: ${{ matrix.os }}
 
