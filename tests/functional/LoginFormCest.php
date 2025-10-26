@@ -10,7 +10,6 @@ class LoginFormCest
     public function openLoginPage(\FunctionalTester $I)
     {
         $I->see('Login', 'h1');
-
     }
 
     // demonstrates `amLoggedInAs` method
@@ -54,6 +53,6 @@ class LoginFormCest
             'LoginForm[password]' => 'admin',
         ]);
         $I->see('Logout (admin)');
-        $I->dontSeeElement('form#login-form');              
+        $I->dontSeeElement('form#login-form');
     }
 }

@@ -47,5 +47,4 @@ class LoginFormTest extends \Codeception\Test\Unit
         verify(\Yii::$app->user->isGuest)->false();
         verify($this->model->errors)->arrayHasNotKey('password');
     }
-
 }
