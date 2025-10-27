@@ -8,7 +8,7 @@ class ContactCest
     {
         $I->amOnPage(Url::toRoute('/site/contact'));
     }
-    
+
     public function contactPageWorks(AcceptanceTester $I)
     {
         $I->wantTo('ensure that contact page works');
@@ -25,7 +25,7 @@ class ContactCest
         $I->fillField('#contactform-verifycode', 'testme');
 
         $I->click('contact-button');
-        
+
         $I->wait(2); // wait for button to be clicked
 
         $I->dontSeeElement('#contact-form');
