@@ -1,0 +1,34 @@
+# editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.js]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.php]
+ij_php_space_before_short_closure_left_parenthesis = false
+ij_php_space_after_type_cast = true
+
+[*.yaml]
+indent_size = 2
+
+[*.yml]
+indent_size = 2
+
+[*.xml.dist]
+indent_size = 2
+
+[LICENSE*]
+indent_style = unset
+indent_size = unset

@@ -8,8 +8,7 @@ permissions:
 on:
   pull_request: &ignore-paths
     paths-ignore:
-      - ".appveyor.yml"
-      - ".dockerignore"
+      - ".bowerrc"
       - ".editorconfig"
       - ".git-blame-ignore-revs"
       - ".gitattributes"
@@ -19,13 +18,11 @@ on:
       - ".github/PULL_REQUEST_TEMPLATE.md"
       - ".github/SECURITY.md"
       - ".gitignore"
-      - ".gitlab-ci.yml"
-      - "code-of-conduct.md"
-      - "docs/**"
-      - "eslint.config.js"
+      - "docker-compose.yml"
       - "LICENSE.md"
       - "README.md"
-      - "ROADMAP.md"
+      - "requirements.php"
+      - "Vagrantfile"
 
   push: *ignore-paths
 
@@ -41,7 +38,7 @@ jobs:
 
     strategy:
       fail-fast: false
-      
+
       matrix:
         php: [8.5]
 
@@ -65,7 +62,7 @@ jobs:
         run: composer self-update
 
       - name: Install dependencies with composer.
-        run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader          
-    
+        run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader
+
       - name: Run PHP_CodeSniffer.
         run: vendor/bin/phpcs -q --report=checkstyle assets/ commands/ controllers/ mail/ models/ | cs2pr

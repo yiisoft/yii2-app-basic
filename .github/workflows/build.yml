@@ -8,8 +8,7 @@ permissions:
 on:
   pull_request: &ignore-paths
     paths-ignore:
-      - ".appveyor.yml"
-      - ".dockerignore"
+      - ".bowerrc"
       - ".editorconfig"
       - ".git-blame-ignore-revs"
       - ".gitattributes"
@@ -19,13 +18,11 @@ on:
       - ".github/PULL_REQUEST_TEMPLATE.md"
       - ".github/SECURITY.md"
       - ".gitignore"
-      - ".gitlab-ci.yml"
-      - "code-of-conduct.md"
-      - "docs/**"
-      - "eslint.config.js"
+      - "docker-compose.yml"
       - "LICENSE.md"
       - "README.md"
-      - "ROADMAP.md"
+      - "requirements.php"
+      - "Vagrantfile"
 
   push: *ignore-paths
 
@@ -47,8 +44,8 @@ jobs:
           - ubuntu-latest
           - windows-latest
 
-        php: [7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5]          
-          
+        php: [7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5]
+
     steps:
       - name: Checkout.
         uses: actions/checkout@v6
