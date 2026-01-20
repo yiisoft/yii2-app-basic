@@ -27,5 +27,5 @@ on:
 
 jobs:
   phpstan:
-    uses: yii2-framework/actions/.github/workflows/phpstan.yml@main
+    uses: yii2-framework/actions/.github/workflows/phpstan.yml@master
     tools: cs2pr
