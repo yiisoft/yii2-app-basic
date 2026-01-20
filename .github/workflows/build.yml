@@ -54,12 +54,13 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup PHP with Composer.
-        uses: yiisoft/yii2/.github/actions/php-setup@master
+        uses: shivammathur/setup-php@v2
         with:
-          coverage-driver: pcov
+          coverage: pcov
           extensions: dom, json, gd, imagick
           ini-values: date.timezone='UTC'
           php-version: ${{ matrix.php }}
+          tools: composer
 
       - name: Run tests with codeception
         run: |

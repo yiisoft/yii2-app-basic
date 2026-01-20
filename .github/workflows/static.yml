@@ -54,11 +54,11 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup PHP with Composer.
-        uses: yiisoft/yii2/.github/actions/php-setup@master
+        uses: shivammathur/setup-php@v2
         with:
-          extensions: dom, json, gd, imagick          
+          extensions: dom, json, gd, imagick
           ini-values: date.timezone='UTC'
-          php-version: ${{ matrix.php }}          
+          php-version: ${{ matrix.php }}    
 
       - name: Static analysis.
         run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr
