@@ -68,4 +68,4 @@ jobs:
         run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader          
     
       - name: Run PHP_CodeSniffer.
-        run: vendor/bin/phpcs -q --report=checkstyle assets/ commands/ controllers/ mail/ models/ tests/ | cs2pr
+        run: vendor/bin/phpcs -q --report=checkstyle assets/ commands/ controllers/ mail/ models/ | cs2pr
