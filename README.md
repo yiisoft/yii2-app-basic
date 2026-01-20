@@ -236,22 +236,14 @@ vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xm
 
 You can see code coverage output under the `tests/_output` directory.
 
-## In projects
+## Support the project
 
-If you are using Yii 2 as part of an OpenSource project, a way to acknowledge it is to
-[use a special badge](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii) in your README:    
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-sponsor-7eadf1?style=for-the-badge&logo=open%20collective&logoColor=7eadf1&labelColor=555555)](https://opencollective.com/yiisoft)
 
-[![Yii2](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
+## Follow updates
 
-If your code is hosted at GitHub, you can place the following in your README.md file to get the badge:
-
-```
-[![Yii2](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
-```
-
-## Sponsoring
-
-Support this project by becoming a sponsor or a backer. 
-
-[![Open Collective sponsors](https://img.shields.io/opencollective/sponsors/yiisoft?style=for-the-badge&logo=opencollective)](https://opencollective.com/yiisoft) 
-[![Open Collective backers](https://img.shields.io/opencollective/backers/yiisoft?style=for-the-badge&logo=opencollective)](https://opencollective.com/yiisoft)
+[![Official website](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
+[![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/yiiframework)
+[![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=for-the-badge&logo=telegram)](https://t.me/yii2en)
+[![Facebook](https://img.shields.io/badge/facebook-join-1DA1F2?style=for-the-badge&logo=facebook&logoColor=ffffff)](https://www.facebook.com/groups/yiitalk)
+[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=for-the-badge&logo=slack)](https://yiiframework.com/go/slack)
