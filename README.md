@@ -217,7 +217,7 @@ To execute acceptance tests do the following:
    # run only unit and functional tests
    vendor/bin/codecept run unit,functional
 
-8. You can also use composer scripts
+## Composer scripts
 
    ```
    # run all tests
