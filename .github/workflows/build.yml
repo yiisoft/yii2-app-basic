@@ -3,7 +3,6 @@ name: build
 
 permissions:
   contents: read
-  pull-requests: write
 
 on:
   pull_request: &ignore-paths
@@ -26,54 +25,11 @@ on:
 
   push: *ignore-paths
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  tests:
-    runs-on: ${{ matrix.os }}
-
-    name: PHP ${{ matrix.php }} - ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-
-        php: [7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5]
-
-    steps:
-      - name: Checkout.
-        uses: actions/checkout@v6
-
-      - name: Setup PHP with Composer.
-        uses: shivammathur/setup-php@v2
-        with:
-          coverage: pcov
-          extensions: dom, json, gd, imagick
-          ini-values: date.timezone='UTC'
-          php-version: ${{ matrix.php }}
-          tools: composer
-
-      - name: Update composer.
-        run: composer self-update
-
-      - name: Install dependencies with composer.
-        run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader
-
-      - name: Run tests with codeception
-        run: |
-          sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
-          php -S 127.0.0.1:8080 -t public > ./runtime/yii.log 2>&1 &
-          vendor/bin/codecept run
-
-      - name: Upload coverage to Codecov.
-        if: ${{!cancelled()}}
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: tests/_output/coverage.xml
+  codeception:
+    uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    with:
+      coverage-file: tests/_output/coverage.xml
+      extensions: dom, json, gd, imagick
