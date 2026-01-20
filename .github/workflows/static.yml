@@ -58,7 +58,8 @@ jobs:
         with:
           extensions: dom, json, gd, imagick
           ini-values: date.timezone='UTC'
-          php-version: ${{ matrix.php }}    
+          php-version: ${{ matrix.php }}
+          tools: cs2pr    
 
       - name: Update composer.
         run: composer self-update
