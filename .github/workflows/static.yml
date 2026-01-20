@@ -27,4 +27,4 @@ on:
 
 jobs:
   phpstan:
-    uses: yii2-framework/actions/.github/workflows/phpstan.yml@master
+    uses: yiisoft/yii2-actions/.github/workflows/phpstan.yml@master
