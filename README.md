@@ -237,19 +237,19 @@ You can see code coverage output under the `tests/_output` directory.
 
 ## Composer scripts
 
-   ```
-   # run all tests
-   composer tests
+```
+# run all tests
+composer tests
 
-   # run static analysis
-   composer static
+# run static analysis
+composer static
 
-   # run phpcs
-   composer phpcs
+# run phpcs
+composer phpcs
 
-   # run phpcs-fixer
-   composer phpcs-fixer
-   ```
+# run phpcbf
+composer phpcbf
+```
 
 ## Support the project
 
