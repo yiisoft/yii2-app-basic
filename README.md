@@ -13,9 +13,9 @@ The template contains the basic features including user login/logout and a conta
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
+[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Downloads)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![build](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/build.yml?style=for-the-badge&logo=github&label=Build)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
 
 DIRECTORY STRUCTURE
 -------------------
@@ -43,7 +43,11 @@ The minimum requirement by this project template that your Web server supports P
 INSTALLATION
 ------------
 
-### Install via Composer
+> [!IMPORTANT]
+> - The minimum required [PHP](https://www.php.net/) version of Yii is PHP `7.4`.
+> - It works best with PHP `8`.
+
+## Install via Composer
 
 If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
@@ -61,7 +65,7 @@ directly under the Web root.
 http://localhost/basic/web/
 ~~~
 
-### Install from an Archive File
+## Install from an Archive File
 
 Extract the archive file downloaded from [yiiframework.com](https://www.yiiframework.com/download/) to
 a directory named `basic` that is directly under the Web root.
@@ -82,7 +86,7 @@ http://localhost/basic/web/
 ~~~
 
 
-### Install with Docker
+## Install with Docker
 
 Update your vendor packages
 
@@ -108,7 +112,7 @@ You can then access the application through the following URL:
 CONFIGURATION
 -------------
 
-### Database
+## Database
 
 Edit the file `config/db.php` with real data, for example:
 
@@ -149,7 +153,7 @@ tests are for testing user interaction. Acceptance tests are disabled by default
 they perform testing in real browser. 
 
 
-### Running  acceptance tests
+## Running  acceptance tests
 
 To execute acceptance tests do the following:  
 
@@ -212,9 +216,8 @@ To execute acceptance tests do the following:
 
    # run only unit and functional tests
    vendor/bin/codecept run unit,functional
-   ```
 
-### Code coverage support
+## Code coverage support
 
 By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
 to collect code coverage. You can run your tests and collect coverage with the following command:
@@ -231,3 +234,30 @@ vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xm
 ```
 
 You can see code coverage output under the `tests/_output` directory.
+
+## Composer scripts
+
+```
+# run all tests
+composer tests
+
+# run static analysis
+composer static
+
+# run phpcs
+composer phpcs
+
+# run phpcbf
+composer phpcbf
+```
+
+## Support the project
+
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-sponsor-7eadf1?style=for-the-badge&logo=open%20collective&logoColor=7eadf1&labelColor=555555)](https://opencollective.com/yiisoft)
+
+## Follow updates
+
+[![Official website](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
+[![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/yiiframework)
+[![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=for-the-badge&logo=telegram)](https://t.me/yii2en)
+[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=for-the-badge&logo=slack)](https://yiiframework.com/go/slack)

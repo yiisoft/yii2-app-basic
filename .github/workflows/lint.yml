@@ -1,5 +1,5 @@
 ---
-name: build
+name: lint
 
 permissions:
   contents: read
@@ -31,33 +31,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  tests:
-    runs-on: ${{ matrix.os }}
+  phpcs:
+    runs-on: ubuntu-latest
 
-    name: PHP ${{ matrix.php }} - ${{ matrix.os }}
+    name: PHP ${{ matrix.php }}-PHP_CodeSniffer
 
     strategy:
       fail-fast: false
 
       matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-
-        php: [7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5]
+        php: [8.5]
 
     steps:
+      - name: Monitor action permissions.
+        if: runner.os != 'Windows'
+        uses: GitHubSecurityLab/actions-permissions/monitor@v1
+
       - name: Checkout.
         uses: actions/checkout@v6
 
       - name: Setup PHP with Composer.
         uses: shivammathur/setup-php@v2
         with:
-          coverage: pcov
           extensions: dom, json, gd, imagick
           ini-values: date.timezone='UTC'
           php-version: ${{ matrix.php }}
-          tools: composer
+          tools: cs2pr
 
       - name: Update composer.
         run: composer self-update
@@ -65,15 +64,5 @@ jobs:
       - name: Install dependencies with composer.
         run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
-      - name: Run tests with codeception
-        run: |
-          sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
-          php -S 127.0.0.1:8080 -t public > ./runtime/yii.log 2>&1 &
-          vendor/bin/codecept run
-
-      - name: Upload coverage to Codecov.
-        if: ${{!cancelled()}}
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: tests/_output/coverage.xml
+      - name: Run PHP_CodeSniffer.
+        run: vendor/bin/phpcs -q --report=checkstyle assets/ commands/ controllers/ mail/ models/ | cs2pr
