@@ -216,6 +216,21 @@ To execute acceptance tests do the following:
 
    # run only unit and functional tests
    vendor/bin/codecept run unit,functional
+
+8. You can also use composer scripts
+
+   ```
+   # run all tests
+   composer tests
+
+   # run static analysis
+   composer static
+
+   # run phpcs
+   composer phpcs
+
+   # run phpcs-fixer
+   composer phpcs-fixer
    ```
 
 ## Code coverage support
