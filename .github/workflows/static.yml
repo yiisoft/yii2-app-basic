@@ -1,5 +1,5 @@
 ---
-name: build
+name: static analysis
 
 permissions:
   contents: read
@@ -34,42 +34,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  tests:
-    runs-on: ${{ matrix.os }}
+  phpstan:
+    name: PHP ${{ matrix.php }}-PHPStan
 
-    name: PHP ${{ matrix.php }} - ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
 
       matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
+        php: [7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5]
 
-        php: [7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5]          
-          
     steps:
+      - name: Monitor action permissions.
+        if: runner.os != 'Windows'
+        uses: GitHubSecurityLab/actions-permissions/monitor@v1
+
       - name: Checkout.
         uses: actions/checkout@v6
 
       - name: Setup PHP with Composer.
         uses: yiisoft/yii2/.github/actions/php-setup@master
         with:
-          coverage-driver: pcov
-          extensions: dom, json, gd, imagick
+          extensions: dom, json, gd, imagick          
           ini-values: date.timezone='UTC'
-          php-version: ${{ matrix.php }}
+          php-version: ${{ matrix.php }}          
 
-      - name: Run tests with codeception
-        run: |
-          sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
-          php -S 127.0.0.1:8080 -t public > ./runtime/yii.log 2>&1 &
-          vendor/bin/codecept run
-
-      - name: Upload coverage to Codecov.
-        if: ${{!cancelled()}}
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: tests/_output/coverage.xml
+      - name: Static analysis.
+        run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr

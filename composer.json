@@ -15,20 +15,22 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.4.0",
-        "yiisoft/yii2": "~2.0.45",
+        "yiisoft/yii2": "~2.0.54",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
         "yiisoft/yii2-symfonymailer": "~2.0.3"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.1.0",
-        "yiisoft/yii2-gii": "~2.2.0",
-        "yiisoft/yii2-faker": "~2.0.0",
         "codeception/codeception": "^5.0.0 || ^4.0",
         "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^1.1",
         "codeception/module-asserts": "^3.0 || ^1.1",
-        "codeception/module-yii2": "^1.1",
         "codeception/module-filesystem": "^3.0 || ^2.0 || ^1.1",
-        "codeception/verify": "^3.0 || ^2.2"
+        "codeception/module-yii2": "^1.1",
+        "codeception/verify": "^3.0 || ^2.2",
+        "phpstan/phpstan": "^2.1",
+        "yiisoft/yii2-coding-standards": "^3.0",
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.2.0"
     },
     "config": {
         "allow-plugins": {
@@ -40,13 +42,17 @@
         }
     },
     "scripts": {
+        "phpcs": "./vendor/bin/phpcs -q assets/ commands/ controllers/ mail/ models/",        
+        "phpcs-fixer": "./vendor/bin/phpcbf -q assets/ commands/ controllers/ mail/ models/",
         "post-install-cmd": [
             "yii\\composer\\Installer::postInstall"
         ],
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
-        ]
+        ],
+        "static": "./vendor/bin/phpstan --memory-limit=-1",
+        "tests": "./vendor/bin/codecept run"
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {

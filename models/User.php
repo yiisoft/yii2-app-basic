@@ -10,7 +10,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
 
-    private static $users = [
+    private static $_users = [
         '100' => [
             'id' => '100',
             'username' => 'admin',
@@ -33,7 +33,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return isset(self::$_users[$id]) ? new static(self::$_users[$id]) : null;
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
+        foreach (self::$_users as $user) {
             if ($user['accessToken'] === $token) {
                 return new static($user);
             }
@@ -58,7 +58,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
+        foreach (self::$_users as $user) {
             if (strcasecmp($user['username'], $username) === 0) {
                 return new static($user);
             }
