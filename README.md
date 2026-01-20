@@ -217,22 +217,6 @@ To execute acceptance tests do the following:
    # run only unit and functional tests
    vendor/bin/codecept run unit,functional
 
-## Composer scripts
-
-   ```
-   # run all tests
-   composer tests
-
-   # run static analysis
-   composer static
-
-   # run phpcs
-   composer phpcs
-
-   # run phpcs-fixer
-   composer phpcs-fixer
-   ```
-
 ## Code coverage support
 
 By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
@@ -250,6 +234,22 @@ vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xm
 ```
 
 You can see code coverage output under the `tests/_output` directory.
+
+## Composer scripts
+
+   ```
+   # run all tests
+   composer tests
+
+   # run static analysis
+   composer static
+
+   # run phpcs
+   composer phpcs
+
+   # run phpcs-fixer
+   composer phpcs-fixer
+   ```
 
 ## Support the project
 
