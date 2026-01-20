@@ -60,6 +60,12 @@ jobs:
           ini-values: date.timezone='UTC'
           php-version: ${{ matrix.php }}
           tools: cs2pr
+
+      - name: Update composer.
+        run: composer self-update
+
+      - name: Install dependencies with composer.
+        run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader          
     
       - name: Run PHP_CodeSniffer.
         run: vendor/bin/phpcs -q --report=checkstyle assets/ commands/ controllers/ mail/ models/ tests/ | cs2pr

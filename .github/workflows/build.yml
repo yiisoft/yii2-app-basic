@@ -62,6 +62,12 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: composer
 
+      - name: Update composer.
+        run: composer self-update
+
+      - name: Install dependencies with composer.
+        run: composer update --prefer-dist --no-progress --no-suggest --optimize-autoloader
+
       - name: Run tests with codeception
         run: |
           sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
