@@ -12,6 +12,9 @@ parameters:
         - tests/Functional
         - tests/Unit
 
+	excludePaths:
+		- tests/Support
+
     bootstrapFiles:
         - tests/_bootstrap.php
 
