@@ -28,6 +28,8 @@ on:
 jobs:
   codeception:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     with:
       codeception-command: vendor/bin/codecept run --env php-builtin --coverage-xml
       coverage-file: tests/Support/output/coverage.xml
