@@ -13,7 +13,7 @@ The template contains the basic features including user login/logout and a conta
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable&logo=packagist)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Downloads)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![build](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/build.yml?style=for-the-badge&logo=github&label=Build)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
 [![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?style=for-the-badge&label=Static&logo=github)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/static.yml)
@@ -174,7 +174,7 @@ To run acceptance tests in a real browser, switch the `acceptance` suite to use 
 `tests/Acceptance.suite.yml` contains an example WebDriver configuration (commented).
 
 1. Download and start [Selenium Server](https://www.selenium.dev/downloads/).
-2. Install the corresponding browser driver (e.g. [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or
+2. Install the corresponding browser driver (for example. [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or
    [ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/)).
 3. Update `tests/Acceptance.suite.yml` to enable `WebDriver` and disable `PhpBrowser`.
 4. Run:
