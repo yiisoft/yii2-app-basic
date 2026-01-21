@@ -14,27 +14,37 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=8.1.0",
         "yiisoft/yii2": "~2.0.54",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
         "yiisoft/yii2-symfonymailer": "~2.0.3"
     },
     "require-dev": {
+        "codeception/c3": "^2.8",
         "codeception/codeception": "^5.0.0 || ^4.0",
-        "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^1.1",
-        "codeception/module-asserts": "^3.0 || ^1.1",
-        "codeception/module-filesystem": "^3.0 || ^2.0 || ^1.1",
+        "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^2.0",
+        "codeception/module-asserts": "^3.0 || ^2.0",
+        "codeception/module-filesystem": "^3.0 || ^2.0",
+        "codeception/module-phpbrowser": "^3.0 || ^2.0",
         "codeception/module-yii2": "^1.1",
-        "codeception/verify": "^3.0 || ^2.2",
+        "codeception/verify": "^3.0",
+        "symfony/browser-kit": "^6.3 || ^5.4",
+        "symfony/process": "^6.3 || ^5.4",
         "phpstan/phpstan": "^2.1",
         "yiisoft/yii2-coding-standards": "^3.0",
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "yiisoft/yii2-gii": "~2.2.0"
     },
+    "autoload-dev": {
+        "psr-4": {
+            "app\\tests\\": "tests/"
+        }
+    },
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer" : true
+            "yiisoft/yii2-composer": true,
+            "codeception/c3": true
         },
         "process-timeout": 1800,
         "fxp-asset": {
@@ -52,7 +62,7 @@
             "yii\\composer\\Installer::postInstall"
         ],
         "static": "./vendor/bin/phpstan --memory-limit=-1",
-        "tests": "./vendor/bin/codecept run"
+        "tests": "./vendor/bin/codecept run --env php-builtin"
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {

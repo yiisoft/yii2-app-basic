@@ -8,6 +8,9 @@ parameters:
         - mail
         - models
         - widgets
+        - tests/Acceptance
+        - tests/Functional
+        - tests/Unit
 
     bootstrapFiles:
         - tests/_bootstrap.php
@@ -21,3 +24,5 @@ parameters:
 
     ignoreErrors:
         - '#Unsafe usage of new static\(\).#'
+
+    tmpDir: %currentWorkingDirectory%/runtime

@@ -1,27 +1,30 @@
-actor: Tester
+---
+namespace: app\tests
 bootstrap: _bootstrap.php
+support_namespace: Support
 paths:
-    tests: tests
-    output: tests/_output
-    data: tests/_data
-    helpers: tests/_support
+  tests: tests
+  output: tests/Support/output
+  data: tests/Support/data
+  support: tests/Support
+  envs: tests/Support/envs
+actor_suffix: Tester
 settings:
-    memory_limit: 1024M
-    colors: true
+  memory_limit: 1024M
+  colors: true
 modules:
-    config:
-        Yii2:
-            configFile: 'config/test.php'
-
-# To enable code coverage:
-#coverage:
-#    #c3_url: http://localhost:8080/index-test.php/
-#    enabled: true
-#    #remote: true
-#    #remote_config: '../codeception.yml'
-#    whitelist:
-#        include:
-#            - models/*
-#            - controllers/*
-#            - commands/*
-#            - mail/*
+  config:
+    Yii2:
+      configFile: config/test.php
+extensions:
+  enabled:
+    - Codeception\Extension\RunFailed
+coverage:
+  enabled: true
+  include:
+    - /commands/*
+    - /controllers/*
+    - /mail/*
+    - /models/*
+    - /views/*
+    - /widgets/*

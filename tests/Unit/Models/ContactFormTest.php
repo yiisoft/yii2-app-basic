@@ -1,16 +1,15 @@
 <?php
 
-namespace tests\unit\models;
+declare(strict_types=1);
+
+namespace app\tests\Unit\Models;
 
 use app\models\ContactForm;
 use yii\mail\MessageInterface;
 
-class ContactFormTest extends \Codeception\Test\Unit
+final class ContactFormTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \UnitTester
-     */
-    public $tester;
+    public mixed $tester = null;
 
     public function testEmailIsSentOnContact()
     {
@@ -31,6 +30,7 @@ class ContactFormTest extends \Codeception\Test\Unit
 
         /** @var MessageInterface $emailMessage */
         $emailMessage = $this->tester->grabLastSentEmail();
+
         verify($emailMessage)->instanceOf('yii\mail\MessageInterface');
         verify($emailMessage->getTo())->arrayHasKey('admin@example.com');
         verify($emailMessage->getFrom())->arrayHasKey('noreply@example.com');
