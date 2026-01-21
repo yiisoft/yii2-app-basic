@@ -12,6 +12,9 @@ parameters:
         - tests/Functional
         - tests/Unit
 
+    scanDirectories:
+        - tests/Support
+
     bootstrapFiles:
         - tests/_bootstrap.php
 
