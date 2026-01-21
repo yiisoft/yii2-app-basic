@@ -13,7 +13,7 @@ parameters:
         - tests/Unit
 
 	excludePaths:
-		- tests/Support
+        - tests/Support
 
     bootstrapFiles:
         - tests/_bootstrap.php
