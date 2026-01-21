@@ -12,7 +12,7 @@ parameters:
         - tests/Functional
         - tests/Unit
 
-	excludePaths:
+    excludePaths:
         - tests/Support
 
     bootstrapFiles:
