@@ -8,7 +8,7 @@ actor: AcceptanceTester
 modules:
   enabled:
     - PhpBrowser:
-        url: localhost:8080
+        url: localhost:8000
     - Yii2:
         part: orm
         entryScript: index-test.php
