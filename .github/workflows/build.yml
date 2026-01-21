@@ -26,6 +26,13 @@ on:
   push: *ignore-paths
 
 jobs:
+  codeception-PHP-7.4:
+    uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
+    with:
+      codeception-command: vendor/bin/codecept run Functional,Unit --env php-builtin
+      coverage-driver: none
+      extensions: dom, json, gd, imagick
+      php-version: '["8.0","8.1","8.2","8.3","8.4","8.5"]'
   codeception:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
     secrets:
@@ -34,3 +41,4 @@ jobs:
       codeception-command: vendor/bin/codecept run --env php-builtin --coverage-xml
       coverage-file: tests/Support/output/coverage.xml
       extensions: dom, json, gd, imagick
+      php-version: '["7.4"]'
