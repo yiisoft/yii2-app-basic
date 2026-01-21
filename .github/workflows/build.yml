@@ -29,4 +29,5 @@ jobs:
   codeception:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
     with:
+      codeception-command: vendor/bin/codecept run --env php-builtin --coverage-xml
       extensions: dom, json, gd, imagick
