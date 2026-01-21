@@ -29,7 +29,7 @@ jobs:
   codeception-PHP74:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
     with:
-      codeception-command: vendor/bin/codecept run Functional,Unit --env php-builtin -c=codeception74.yml
+      codeception-command: vendor/bin/codecept run Functional,Unit --env php-builtin -c=./codeception74.yml
       concurrency-group: codeception-PHP74-${{ github.workflow }}-${{ github.ref }}
       coverage-driver: none
       extensions: dom, json, gd, imagick
