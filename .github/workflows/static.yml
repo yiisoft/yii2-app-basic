@@ -28,3 +28,5 @@ on:
 jobs:
   phpstan:
     uses: yiisoft/yii2-actions/.github/workflows/phpstan.yml@master
+  with:
+    php-version: '["8.4"]'
