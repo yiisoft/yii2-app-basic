@@ -33,11 +33,11 @@ jobs:
       - name: Checkout.
         uses: actions/checkout@v6
 
-      - name: Composer install.
-        run: docker compose run --rm php composer install --prefer-dist --no-progress --no-suggest --no-interaction
-
       - name: Build and start containers.
         run: docker compose up -d --build --wait
+
+      - name: Composer update.
+        run: docker compose run --rm php composer update --prefer-dist --no-progress --no-suggest --no-interaction
 
       - name: Codeception build.
         run: docker compose exec -T php vendor/bin/codecept build
