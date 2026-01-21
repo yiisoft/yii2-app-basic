@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace app\tests\Acceptance;
+
 use app\tests\Support\AcceptanceTester;
 use yii\helpers\Url;
 

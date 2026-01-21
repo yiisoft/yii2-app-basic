@@ -29,4 +29,4 @@ jobs:
   phpcs:
     uses: yiisoft/yii2-actions/.github/workflows/linter.yml@master
     with:
-      directories: assets/ commands/ controllers/ mail/ models/
+      directories: assets/ commands/ controllers/ mail/ models/ tests/

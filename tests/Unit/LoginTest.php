@@ -7,7 +7,10 @@ namespace app\tests\Unit;
 use app\controllers\SiteController;
 use app\models\User;
 use Yii;
+use yii\console\Application;
 use yii\web\View;
+
+use function dirname;
 
 final class LoginTest extends \Codeception\Test\Unit
 {
