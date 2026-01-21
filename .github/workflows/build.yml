@@ -28,5 +28,4 @@ on:
 jobs:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
     with:
-      coverage-driver: pcov
       extensions: dom, json, gd, imagick
