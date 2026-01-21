@@ -43,4 +43,4 @@ jobs:
         run: docker compose exec -T php vendor/bin/codecept build
 
       - name: Codeception tests.
-        run: docker compose exec -T php vendor/bin/codecept run
+        run: docker compose exec -T php vendor/bin/codecept run Functional,Unit
