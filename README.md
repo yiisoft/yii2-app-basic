@@ -19,6 +19,10 @@ features to your application.
 [![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?style=for-the-badge&label=Static&logo=github)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/static.yml)
 [![codecov](https://img.shields.io/codecov/c/github/yiisoft/yii2-app-basic.svg?style=for-the-badge&logo=codecov&logoColor=white&label=Codecov)](https://codecov.io/gh/yiisoft/yii2-app-basic)
 
+## Docker
+
+[![Apache](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/docker.yml?style=for-the-badge&logo=apache&label=Apache)](https://github.com/yiisoft/yii2-app-basic/tree/apache)
+
 DIRECTORY STRUCTURE
 -------------------
 
@@ -38,7 +42,6 @@ REQUIREMENTS
 ------------
 
 The minimum requirement by this project template that your Web server supports PHP 8.2.
-
 
 INSTALLATION
 ------------
@@ -84,7 +87,6 @@ You can then access the application through the following URL:
 http://localhost/basic/web/
 ~~~
 
-
 ## Install with Docker
 
 Update your vendor packages
@@ -129,7 +131,6 @@ return [
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
 - Refer to the README in the `tests` directory for information specific to basic application tests.
-
 
 TESTING
 -------
