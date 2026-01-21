@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bda28ed2a134682dbd52a1a1b29375a",
+    "content-hash": "568d0c18ea8408ad6a45962b70141999",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -3109,8 +3109,8 @@
             "version": "2.1.x-dev",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0e00d4b2530482e54570733b968b8705888bd79a",
-                "reference": "0e00d4b2530482e54570733b968b8705888bd79a",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8bd196902f107c69bc2ac774935dbccc02d1f7a4",
+                "reference": "8bd196902f107c69bc2ac774935dbccc02d1f7a4",
                 "shasum": ""
             },
             "require": {
@@ -3156,7 +3156,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-01-20T20:02:20+00:00"
+            "time": "2026-01-21T12:42:33+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -6297,7 +6297,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.0"
+        "php": ">=8.2"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"

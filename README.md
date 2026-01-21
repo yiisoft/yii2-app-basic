@@ -37,15 +37,14 @@ DIRECTORY STRUCTURE
 REQUIREMENTS
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 8.0.
+The minimum requirement by this project template that your Web server supports PHP 8.2.
 
 
 INSTALLATION
 ------------
 
 > [!IMPORTANT]
-> - The minimum required [PHP](https://www.php.net/) version of Yii is PHP `8.0`.
-> - It works best with PHP `8.2`.
+> - The minimum required [PHP](https://www.php.net/) version of Yii is PHP `8.2`.
 
 ## Install via Composer
 
