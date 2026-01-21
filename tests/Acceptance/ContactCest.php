@@ -31,8 +31,6 @@ final class ContactCest
 
         $I->click('contact-button');
 
-        # $I->wait(2); // wait for button to be clicked --- use in webdriver ---
-
         $I->dontSeeElement('#contact-form');
         $I->see('Thank you for contacting us. We will respond to you as soon as possible.');
     }

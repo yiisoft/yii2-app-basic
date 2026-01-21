@@ -19,8 +19,6 @@ final class LoginCest
         $I->fillField('input[name="LoginForm[password]"]', 'admin');
         $I->click('login-button');
 
-        # $I->wait(2); // wait for button to be clicked --- use in webdriver ---
-
         $I->expectTo('see user info');
         $I->see('Logout');
     }
