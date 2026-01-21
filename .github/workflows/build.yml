@@ -32,5 +32,6 @@ jobs:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     with:
       codeception-command: vendor/bin/codecept run --env php-builtin --coverage-xml
+      composer-command: install
       coverage-file: runtime/output/coverage.xml
       extensions: dom, json, gd, imagick
