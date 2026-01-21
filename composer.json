@@ -22,7 +22,7 @@
     "require-dev": {
         "codeception/c3": "^2.8",
         "codeception/codeception": "^5.0.0 || ^4.0",
-        "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^2.0",
+        "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^2.0 || ^1.0",
         "codeception/module-asserts": "^3.0 || ^2.0",
         "codeception/module-filesystem": "^3.0 || ^2.0",
         "codeception/module-phpbrowser": "^3.0 || ^2.0",
