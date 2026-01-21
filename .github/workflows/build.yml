@@ -30,5 +30,6 @@ jobs:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
     with:
       codeception-command: vendor/bin/codecept run --env php-builtin --coverage-xml
+      coverage-file: tests/Support/output/coverage.xml
       extensions: dom, json, gd, imagick
       php-version: '["8.2","8.3","8.4","8.5"]'

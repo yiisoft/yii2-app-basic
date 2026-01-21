@@ -16,6 +16,8 @@ features to your application.
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Downloads)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![build](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/build.yml?style=for-the-badge&logo=github&label=Build)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
+[![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?style=for-the-badge&label=Static&logo=github)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/static.yml)
+[![codecov](https://img.shields.io/codecov/c/github/yiisoft/yii2-app-basic.svg?style=for-the-badge&logo=codecov&logoColor=white&label=Codecov)](https://codecov.io/gh/yiisoft/yii2-app-basic)
 
 DIRECTORY STRUCTURE
 -------------------
@@ -31,8 +33,6 @@ DIRECTORY STRUCTURE
       vendor/             contains dependent 3rd-party packages
       views/              contains view files for the Web application
       web/                contains the entry script and Web resources
-
-
 
 REQUIREMENTS
 ------------
