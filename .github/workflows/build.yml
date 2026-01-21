@@ -26,9 +26,18 @@ on:
   push: *ignore-paths
 
 jobs:
+  codeception-PHP74:
+    uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
+    with:
+      codeception-command: vendor/bin/codecept run Functional,Unit --env php-builtin -c=codeception74.yml
+      concurrency-group: codeception-PHP74-${{ github.workflow }}-${{ github.ref }}
+      coverage-driver: none
+      extensions: dom, json, gd, imagick
+      php-version: '["7.4"]'
   codeception:
     uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
     with:
-      codeception-command: vendor/bin/codecept run Functional,Unit --env php-builtin
-      coverage-driver: none
+      concurrency-group: codeception-${{ github.workflow }}-${{ github.ref }}
+      coverage-driver: pcov
       extensions: dom, json, gd, imagick
+      php-version: '["8.0","8.1","8.2","8.3","8.4","8.5"]'
