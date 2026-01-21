@@ -5,6 +5,7 @@ paths:
   tests: tests
   output: tests/Support/output
   data: tests/Support/data
+  helpers: tests/Support
 settings:
   memory_limit: 1024M
   colors: true
