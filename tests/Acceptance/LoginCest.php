@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+namespace app\tests\Acceptance;
+
+use app\tests\Support\AcceptanceTester;
 use yii\helpers\Url;
 
-class LoginCest
+final class LoginCest
 {
     public function ensureThatLoginWorks(AcceptanceTester $I)
     {
@@ -13,7 +18,6 @@ class LoginCest
         $I->fillField('input[name="LoginForm[username]"]', 'admin');
         $I->fillField('input[name="LoginForm[password]"]', 'admin');
         $I->click('login-button');
-        $I->wait(2); // wait for button to be clicked
 
         $I->expectTo('see user info');
         $I->see('Logout');

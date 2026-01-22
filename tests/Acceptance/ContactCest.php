@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+namespace app\tests\Acceptance;
+
+use app\tests\Support\AcceptanceTester;
 use yii\helpers\Url;
 
-class ContactCest
+final class ContactCest
 {
-    public function _before(\AcceptanceTester $I)
+    public function _before(AcceptanceTester $I)
     {
         $I->amOnPage(Url::toRoute('/site/contact'));
     }
@@ -25,8 +30,6 @@ class ContactCest
         $I->fillField('#contactform-verifycode', 'testme');
 
         $I->click('contact-button');
-
-        $I->wait(2); // wait for button to be clicked
 
         $I->dontSeeElement('#contact-form');
         $I->see('Thank you for contacting us. We will respond to you as soon as possible.');
