@@ -33,14 +33,17 @@ jobs:
       - name: Checkout.
         uses: actions/checkout@v6
 
+      - name: Set PHP_USER_ID for Docker.
+        run: echo "PHP_USER_ID=$(id -u)" >> "$GITHUB_ENV"
+
       - name: Build and start containers.
         run: docker compose up -d --build --wait
 
-      - name: Composer update.
-        run: docker compose run --rm php composer update --prefer-dist --no-progress --no-suggest --no-interaction
+      - name: Composer install.
+        run: docker-compose run --rm php composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
       - name: Codeception build.
         run: docker compose exec -T php vendor/bin/codecept build
 
       - name: Codeception tests.
-        run: docker compose exec -T php vendor/bin/codecept run Functional,Unit
+        run: docker compose exec -T php vendor/bin/codecept run
