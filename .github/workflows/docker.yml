@@ -40,7 +40,7 @@ jobs:
         run: docker compose up -d --build --wait
 
       - name: Composer install.
-        run: docker compose run --rm php composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
+        run: docker compose run --rm php composer install --prefer-dist --no-progress --optimize-autoloader
 
       - name: Codeception build.
         run: docker compose exec -T php vendor/bin/codecept build
