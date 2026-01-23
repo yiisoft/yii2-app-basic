@@ -6,14 +6,17 @@ services:
       - ./:/app:delegated
       - runtime:/app/runtime
       - assets:/app/web/assets
-    # ensure the writable directories are owned by the web user on every start.
-    command: [
-      "bash",
-      "-lc",
-      "chown -R www-data:www-data /app/runtime /app/web/assets && chmod -R ug+rwX /app/runtime /app/web/assets && exec apache2-foreground",
-    ]
     ports:
       - '8000:80'
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "if [ \"$(stat -c '%U' /app/runtime)\" != 'www-data' ] || [ \"$(stat -c '%U' /app/web/assets)\" != 'www-data' ]; then chown -R www-data:www-data /app/runtime /app/web/assets && chmod -R ug+rwX /app/runtime /app/web/assets; fi && runuser -u www-data -- touch /app/runtime/test_write && rm /app/runtime/test_write && exit 0 || exit 1",
+      ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s  # Give time for entrypoint to run
 
 volumes:
   runtime:

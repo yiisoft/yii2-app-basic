@@ -112,7 +112,7 @@ Run tests inside the container
 
 **NOTES:** 
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
+- The default configuration uses a host-volume in your home directory `~/.composer-docker/cache` for Composer caches
 
 
 CONFIGURATION

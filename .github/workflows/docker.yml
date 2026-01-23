@@ -33,9 +33,6 @@ jobs:
       - name: Checkout.
         uses: actions/checkout@v6
 
-      - name: Set PHP_USER_ID for Docker.
-        run: echo "PHP_USER_ID=$(id -u)" >> "$GITHUB_ENV"
-
       - name: Build and start containers.
         run: docker compose up -d --build --wait
 
