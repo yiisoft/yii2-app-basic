@@ -1,8 +1,17 @@
 services:
   php:
-    image: yiisoftware/yii2-php:8.2-apache
+    image: yiisoftware/yii2-php:8.5-apache-latest
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
     ports:
       - '8000:80'
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "if [ \"$(stat -c '%U' /app/runtime)\" != 'www-data' ] || [ \"$(stat -c '%U' /app/web/assets)\" != 'www-data' ]; then chown -R www-data:www-data /app/runtime /app/web/assets && chmod -R ug+rwX /app/runtime /app/web/assets; fi && runuser -u www-data -- touch /app/runtime/test_write && rm /app/runtime/test_write && exit 0 || exit 1",
+      ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

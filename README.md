@@ -16,8 +16,8 @@ features to your application.
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable&logo=packagist)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Downloads)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![build](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/build.yml?style=for-the-badge&logo=github&label=Build)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
-[![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?style=for-the-badge&label=Static&logo=github)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/static.yml)
 [![codecov](https://img.shields.io/codecov/c/github/yiisoft/yii2-app-basic.svg?style=for-the-badge&logo=codecov&logoColor=white&label=Codecov)](https://codecov.io/gh/yiisoft/yii2-app-basic)
+[![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?style=for-the-badge&label=Static)](https://github.com/yiisoft/yii2-app-basic/actions/workflows/static.yml)
 
 ## Docker
 
@@ -105,9 +105,14 @@ You can then access the application through the following URL:
 
     http://127.0.0.1:8000
 
+Run tests inside the container
+
+    docker compose exec -T php vendor/bin/codecept build
+    docker compose exec -T php vendor/bin/codecept run
+
 **NOTES:** 
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
+- The default configuration uses a host-volume in your home directory `~/.composer-docker/cache` for Composer caches
 
 
 CONFIGURATION
