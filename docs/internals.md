@@ -7,7 +7,6 @@ Tool references:
 - [Codeception](https://codeception.com/) for unit tests.
 - [PHPCodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) for code style checks.
 - [PHPStan](https://phpstan.org/) for static analysis.
-- [PHPUnit](https://phpunit.de/) for unit tests.
 
 ## Code style checks (PHPCodeSniffer)
 
