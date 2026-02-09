@@ -46,8 +46,8 @@
         }
     },
     "scripts": {
-        "phpcbf": "./vendor/bin/phpcbf -q assets/ commands/ controllers/ mail/ models/ tests/",
-        "phpcs": "./vendor/bin/phpcs -q assets/ commands/ controllers/ mail/ models/ tests/",
+        "cs": "./vendor/bin/phpcs -q assets/ commands/ controllers/ mail/ models/ tests/",
+        "cs-fix": "./vendor/bin/phpcbf -q assets/ commands/ controllers/ mail/ models/ tests/",
         "post-install-cmd": [
             "yii\\composer\\Installer::postInstall"
         ],
