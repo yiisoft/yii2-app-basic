@@ -1,7 +1,9 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.yiiframework.com/image/yii_logo_light.svg">
+        <source media="(prefers-color-scheme: light)" srcset="https://www.yiiframework.com/image/yii_logo_dark.svg">
+        <img src="https://www.yiiframework.com/image/yii_logo_dark.svg" alt="Yii Framework" height="100px">
+    </picture>
     <h1 align="center">Yii 2 Basic Project Template</h1>
     <br>
 </p>
@@ -206,21 +208,9 @@ vendor/bin/codecept run Functional,Unit --coverage --coverage-html --coverage-xm
 
 You can see code coverage output under the `tests/Support/output` directory.
 
-## Composer scripts
+## Documentation
 
-```
-# run all tests
-composer tests
-
-# run static analysis
-composer static
-
-# run phpcs
-composer phpcs
-
-# run phpcbf
-composer phpcbf
-```
+- [Internals](docs/internals.md)
 
 ## Support the project
 
@@ -229,6 +219,6 @@ composer phpcbf
 ## Follow updates
 
 [![Official website](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
-[![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/yiiframework)
+[![Follow on X](https://img.shields.io/badge/-Follow%20on%20X-1DA1F2.svg?style=for-the-badge&logo=x&logoColor=white&labelColor=000000)](https://x.com/yiiframework)
 [![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=for-the-badge&logo=telegram)](https://t.me/yii_framework_in_english)
 [![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=for-the-badge&logo=slack)](https://yiiframework.com/go/slack)
