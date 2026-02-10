@@ -1,8 +1,8 @@
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://www.yiiframework.com/image/yii_logo_light.svg">
-        <source media="(prefers-color-scheme: light)" srcset="https://www.yiiframework.com/image/yii_logo_dark.svg">
-        <img src="https://www.yiiframework.com/image/yii_logo_dark.svg" alt="Yii Framework" height="100px">
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.yiiframework.com/image/yii_logo_dark.svg">
+        <source media="(prefers-color-scheme: light)" srcset="https://www.yiiframework.com/image/yii_logo_light.svg">
+        <img src="https://www.yiiframework.com/image/yii_logo_light.svg" alt="Yii Framework" height="100px">
     </picture>
     <h1 align="center">Yii 2 Basic Project Template</h1>
     <br>
