@@ -40,7 +40,7 @@ $iconTemplate = static fn (string $unicode): string =>
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-6">
 
-                <p class="text-center text-muted mb-4">
+                <p class="text-center text-body-secondary mb-4">
                     If you have business inquiries or other questions, please fill out the following form to contact us.
                     Thank you.
                 </p>

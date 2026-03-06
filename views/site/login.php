@@ -21,7 +21,7 @@ $iconTemplate = static fn (string $unicode): string =>
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-6">
 
-            <p class="text-center text-muted mb-4">Please fill out the following fields to login:</p>
+            <p class="text-center text-body-secondary mb-4">Please fill out the following fields to login:</p>
 
             <div class="card border-0 bg-body p-4" style="border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,.08)">
 
@@ -47,7 +47,7 @@ $iconTemplate = static fn (string $unicode): string =>
 
                 <?php ActiveForm::end(); ?>
 
-                <div class="text-muted mt-3">
+                <div class="text-body-secondary mt-3">
                     You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
                     To modify the username/password, please check out the code <code>app\models\User::$users</code>.
                 </div>
