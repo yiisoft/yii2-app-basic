@@ -6,9 +6,9 @@
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
-use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Html;
 
 AppAsset::register($this);
 
@@ -54,7 +54,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     . '</li>'
         ]
     ]);
-    echo '<button id="theme-toggle" type="button" class="btn btn-link nav-link fs-5" aria-label="Switch to dark mode">&#127769;</button>';
+    echo Html::button('&#127769;', [
+        'id' => 'theme-toggle',
+        'class' => 'btn btn-link nav-link fs-5',
+        'aria-label' => 'Switch to dark mode',
+    ]);
     NavBar::end();
     ?>
 </header>

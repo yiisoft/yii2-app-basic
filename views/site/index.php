@@ -2,6 +2,8 @@
 
 /** @var yii\web\View $this */
 
+use yii\helpers\Html;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index d-flex flex-column justify-content-center h-100">
@@ -12,7 +14,7 @@ $this->title = 'My Yii Application';
         <p class="lead col-lg-8 mx-auto">You have successfully created your Yii-powered application.</p>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a>
+            <?= Html::a('Get started with Yii', 'https://www.yiiframework.com', ['class' => 'btn btn-lg btn-success']) ?>
         </div>
     </div>
 
@@ -30,7 +32,7 @@ $this->title = 'My Yii Application';
                             fugiat nulla pariatur.</p>
                     </div>
                     <div class="card-footer bg-transparent border-0">
-                        <a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a>
+                        <?= Html::a('Yii Documentation &raquo;', 'https://www.yiiframework.com/doc/', ['class' => 'btn btn-outline-secondary']) ?>
                     </div>
                 </div>
             </div>
@@ -45,7 +47,7 @@ $this->title = 'My Yii Application';
                             fugiat nulla pariatur.</p>
                     </div>
                     <div class="card-footer bg-transparent border-0">
-                        <a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a>
+                        <?= Html::a('Yii Forum &raquo;', 'https://www.yiiframework.com/forum/', ['class' => 'btn btn-outline-secondary']) ?>
                     </div>
                 </div>
             </div>
@@ -60,7 +62,7 @@ $this->title = 'My Yii Application';
                             fugiat nulla pariatur.</p>
                     </div>
                     <div class="card-footer bg-transparent border-0">
-                        <a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a>
+                        <?= Html::a('Yii Extensions &raquo;', 'https://www.yiiframework.com/extensions/', ['class' => 'btn btn-outline-secondary']) ?>
                     </div>
                 </div>
             </div>

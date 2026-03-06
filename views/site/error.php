@@ -24,6 +24,6 @@ $this->title = $name;
         Please contact us if you think this is a server error. Thank you.
     </p>
 
-    <a class="btn btn-outline-primary" href="<?= Html::encode(Yii::$app->homeUrl) ?>">Go to Homepage</a>
+    <?= Html::a('Go to Homepage', Yii::$app->homeUrl, ['class' => 'btn btn-outline-primary']) ?>
 
 </div>
