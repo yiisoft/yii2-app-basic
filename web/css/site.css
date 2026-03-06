@@ -1,5 +1,6 @@
 main > .container {
     padding: 70px 15px 20px;
+    height: 100%;
 }
 
 .not-set {
@@ -69,6 +70,13 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+/* form cards */
+.site-login .card,
+.site-contact .card {
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
 }
 
 /* dark mode: elevate form cards against dark background */

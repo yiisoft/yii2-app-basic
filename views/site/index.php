@@ -4,7 +4,7 @@
 
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index d-flex flex-column justify-content-center" style="min-height: calc(100vh - 160px)">
+<div class="site-index d-flex flex-column justify-content-center h-100">
 
     <div class="p-5 mb-5 text-center bg-body-tertiary rounded-3">
         <h1 class="display-4 fw-bold">Congratulations!</h1>

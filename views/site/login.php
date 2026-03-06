@@ -23,7 +23,7 @@ $iconTemplate = static fn (string $unicode): string =>
 
             <p class="text-center text-body-secondary mb-4">Please fill out the following fields to login:</p>
 
-            <div class="card border-0 bg-body p-4" style="border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,.08)">
+            <div class="card border-0 bg-body p-4">
 
                 <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
