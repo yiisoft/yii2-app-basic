@@ -24,12 +24,15 @@ $this->title = 'My Yii Application';
             <div class="col-lg-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h2 class="h5">Heading</h2>
+                        <h2 class="h5"><?= Yii::t('app', 'Definitive Guide') ?></h2>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur.</p>
+                        <p><?= Yii::t('app', 'Learn Yii step by step: MVC structure, ActiveRecord, migrations, form validation, authentication, RBAC, REST APIs, caching, and testing. Everything you need is covered in one place, from basics to advanced topics.') ?></p>
+
+                        <ul class="list-unstyled small">
+                            <li><?= Html::a(Yii::t('app', 'Definitive Guide'), 'https://www.yiiframework.com/doc/guide/2.0/en', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a(Yii::t('app', 'API Reference'), 'https://www.yiiframework.com/doc/api/2.0', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a(Yii::t('app', 'Getting Started'), 'https://www.yiiframework.com/doc/guide/2.0/en/start-installation', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                        </ul>
                     </div>
                     <div class="card-footer bg-transparent border-0">
                         <?= Html::a('Yii Documentation &raquo;', 'https://www.yiiframework.com/doc/', ['class' => 'btn btn-outline-secondary']) ?>
@@ -39,12 +42,15 @@ $this->title = 'My Yii Application';
             <div class="col-lg-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h2 class="h5">Heading</h2>
+                        <h2 class="h5"><?= Yii::t('app', 'Community Forum') ?></h2>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur.</p>
+                        <p><?= Yii::t('app', 'The Yii Forum is where thousands of developers share solutions, discuss best practices, and help each other. Before opening a GitHub issue, chances are someone already solved your problem there.') ?></p>
+
+                        <ul class="list-unstyled small">
+                            <li><?= Html::a(Yii::t('app', 'Forum'), 'https://forum.yiiframework.com/', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a(Yii::t('app', 'GitHub'), 'https://github.com/yiisoft/yii2', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a(Yii::t('app', 'Telegram'), 'https://t.me/yii_framework_in_english', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                        </ul>
                     </div>
                     <div class="card-footer bg-transparent border-0">
                         <?= Html::a('Yii Forum &raquo;', 'https://www.yiiframework.com/forum/', ['class' => 'btn btn-outline-secondary']) ?>
@@ -54,12 +60,16 @@ $this->title = 'My Yii Application';
             <div class="col-lg-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h2 class="h5">Heading</h2>
+                        <h2 class="h5"><?= Yii::t('app', 'Official Extensions') ?></h2>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur.</p>
+                        <p><?= Yii::t('app', 'Supercharge your app with battle-tested packages maintained by the core team.') ?></p>
+
+                        <ul class="list-unstyled small">
+                            <li><?= Html::a('yii2-debug', 'https://www.yiiframework.com/extension/yiisoft/yii2-debug', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a('yii2-gii', 'https://www.yiiframework.com/extension/yiisoft/yii2-gii', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a('yii2-queue', 'https://www.yiiframework.com/extension/yiisoft/yii2-queue', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                            <li><?= Html::a('yii2-redis', 'https://www.yiiframework.com/extension/yiisoft/yii2-redis', ['target' => '_blank', 'rel' => 'noopener']) ?></li>
+                        </ul>
                     </div>
                     <div class="card-footer bg-transparent border-0">
                         <?= Html::a('Yii Extensions &raquo;', 'https://www.yiiframework.com/extensions/', ['class' => 'btn btn-outline-secondary']) ?>
