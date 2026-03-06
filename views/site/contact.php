@@ -10,10 +10,10 @@ use yii\captcha\Captcha;
 
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
-
-$iconTemplate = static fn (string $unicode): string =>
-    '<span class="input-group-text">' . $unicode . '</span>'
-    . '<div class="form-floating flex-grow-1">{input}{label}</div>{error}{hint}';
+$htmlIcon = <<<HTML
+<span class="input-group-text">%s</span>
+<div class="form-floating flex-grow-1">{input}{label}</div>{error}{hint}
+HTML;
 ?>
 <div class="site-contact py-5">
     <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
@@ -51,19 +51,19 @@ $iconTemplate = static fn (string $unicode): string =>
 
                     <?= $form->field($model, 'name', [
                         'options' => ['class' => 'input-group has-validation mb-3'],
-                        'template' => $iconTemplate('&#128100;'),
+                        'template' => sprintf($htmlIcon, '&#128100;'),
                         'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Name', 'autofocus' => true],
                     ])->textInput() ?>
 
                     <?= $form->field($model, 'email', [
                         'options' => ['class' => 'input-group has-validation mb-3'],
-                        'template' => $iconTemplate('&#9993;'),
+                        'template' => sprintf($htmlIcon, '&#9993;'),
                         'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Email'],
                     ]) ?>
 
                     <?= $form->field($model, 'subject', [
                         'options' => ['class' => 'input-group has-validation mb-3'],
-                        'template' => $iconTemplate('&#128172;'),
+                        'template' => sprintf($htmlIcon, '&#128172;'),
                         'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Subject'],
                     ]) ?>
 
@@ -71,7 +71,7 @@ $iconTemplate = static fn (string $unicode): string =>
                         'options' => ['class' => 'form-floating mb-4'],
                         'template' => '{input}{label}{error}{hint}',
                         'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Body'],
-                    ])->textarea(['style' => 'height: 140px']) ?>
+                    ])->textarea() ?>
 
                     <div class="d-flex align-items-center gap-3 flex-wrap">
                         <?= $form->field($model, 'verifyCode', [

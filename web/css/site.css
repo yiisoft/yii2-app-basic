@@ -72,6 +72,11 @@ a.desc:after {
     outline: none;
 }
 
+/* contact form textarea height */
+.site-contact textarea.form-control {
+    height: 140px;
+}
+
 /* form cards */
 .site-login .card,
 .site-contact .card {
@@ -85,8 +90,7 @@ a.desc:after {
     box-shadow: 0 0 0 1px var(--bs-border-color), 0 2px 16px rgba(0, 0, 0, .3);
 }
 
-/* dark mode: invert captcha image colors */
+/* dark mode: invert captcha text color for visibility on dark background */
 [data-bs-theme="dark"] .site-contact img[src*="captcha"] {
-    filter: invert(1) hue-rotate(180deg) contrast(0.75);
-    border-radius: 4px;
+    filter: invert(1) hue-rotate(180deg);
 }

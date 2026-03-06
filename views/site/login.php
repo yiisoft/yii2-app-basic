@@ -10,10 +10,10 @@ use yii\bootstrap5\Html;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
-
-$iconTemplate = static fn (string $unicode): string =>
-    '<span class="input-group-text">' . $unicode . '</span>'
-    . '<div class="form-floating flex-grow-1">{input}{label}</div>{error}{hint}';
+$htmlIcon = <<<HTML
+<span class="input-group-text">%s</span>
+<div class="form-floating flex-grow-1">{input}{label}</div>{error}{hint}
+HTML;
 ?>
 <div class="site-login py-5">
     <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
@@ -29,13 +29,13 @@ $iconTemplate = static fn (string $unicode): string =>
 
                 <?= $form->field($model, 'username', [
                     'options' => ['class' => 'input-group has-validation mb-3'],
-                    'template' => $iconTemplate('&#128100;'),
+                    'template' => sprintf($htmlIcon, '&#128100;'),
                     'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => true],
                 ])->textInput() ?>
 
                 <?= $form->field($model, 'password', [
                     'options' => ['class' => 'input-group has-validation mb-3'],
-                    'template' => $iconTemplate('&#128274;'),
+                    'template' => sprintf($htmlIcon, '&#128274;'),
                     'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Password'],
                 ])->passwordInput() ?>
 
