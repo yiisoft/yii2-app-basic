@@ -4,4 +4,12 @@
 
     <!-- generate relative paths -->
     <arg name="basepath" value="."/>
+
+    <!-- directories to check -->
+    <file>assets</file>
+    <file>commands</file>
+    <file>controllers</file>
+    <file>mail</file>
+    <file>models</file>
+    <file>tests</file>
 </ruleset>

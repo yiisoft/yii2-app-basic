@@ -13,15 +13,17 @@ $this->title = $name;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert">
         <?= nl2br(Html::encode($message)) ?>
     </div>
 
-    <p>
+    <p class="text-body-secondary">
         The above error occurred while the Web server was processing your request.
     </p>
-    <p>
+    <p class="text-body-secondary">
         Please contact us if you think this is a server error. Thank you.
     </p>
+
+    <a class="btn btn-outline-primary" href="<?= Html::encode(Yii::$app->homeUrl) ?>">Go to Homepage</a>
 
 </div>

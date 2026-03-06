@@ -2,19 +2,8 @@ main > .container {
     padding: 70px 15px 20px;
 }
 
-.footer {
-    background-color: #f5f5f5;
-    font-size: .9em;
-    height: 60px;
-}
-
-.footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
 .not-set {
-    color: #c55;
+    color: var(--bs-danger);
     font-style: italic;
 }
 
@@ -31,12 +20,12 @@ a.asc:after, a.desc:after {
 }
 
 a.asc:after {
-    border-bottom: solid 7px #212529;
+    border-bottom: solid 7px var(--bs-body-color);
     border-top-width: 0;
 }
 
 a.desc:after {
-    border-top: solid 7px #212529;
+    border-top: solid 7px var(--bs-body-color);
     border-bottom-width: 0;
 }
 
@@ -47,13 +36,13 @@ a.desc:after {
 .hint-block {
     display: block;
     margin-top: 5px;
-    color: #999;
+    color: var(--bs-secondary-color);
 }
 
 .error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
+    color: var(--bs-danger-text-emphasis);
+    background: var(--bs-danger-bg-subtle);
+    border-left: 3px solid var(--bs-danger-border-subtle);
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
@@ -61,12 +50,12 @@ a.desc:after {
 /* align the logout "link" (button in form) of the navbar */
 .nav li > form > button.logout {
     padding-top: 7px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--bs-navbar-color);
 }
 
-@media(max-width:767px) {
+@media (max-width: 767.98px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 0;
@@ -75,14 +64,21 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--bs-navbar-hover-color);
 }
 
 .nav > li > form > button.logout:focus {
     outline: none;
 }
 
-.form-group {
-    margin-bottom: 1rem;
+/* dark mode: elevate form cards against dark background */
+[data-bs-theme="dark"] .site-login .card,
+[data-bs-theme="dark"] .site-contact .card {
+    box-shadow: 0 0 0 1px var(--bs-border-color), 0 2px 16px rgba(0, 0, 0, .3);
+}
+
+/* dark mode: invert captcha image colors */
+[data-bs-theme="dark"] .site-contact img[src*="captcha"] {
+    filter: invert(1) hue-rotate(180deg) contrast(0.75);
+    border-radius: 4px;
 }
