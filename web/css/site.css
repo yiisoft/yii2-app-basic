@@ -72,6 +72,12 @@ a.desc:after {
     outline: none;
 }
 
+/* footer logo: light logo by default (light bg-body-tertiary), dark logo for dark theme */
+.footer-logo-dark { display: none; }
+
+[data-bs-theme="dark"] .footer-logo-light { display: none; }
+[data-bs-theme="dark"] .footer-logo-dark  { display: inline-block; }
+
 /* contact form textarea height */
 .site-contact textarea.form-control {
     height: 140px;

@@ -77,7 +77,13 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <div class="container">
         <div class="row text-body-secondary">
             <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center text-md-end">
+                <a href="https://www.yiiframework.com/" rel="external" class="text-body-secondary text-decoration-none">
+                    <?= Yii::t('yii', 'Powered by {yii}', ['yii' => '']) ?>
+                    <?= Html::img('@web/images/yii_logo_light.svg', ['alt' => 'Yii Framework', 'height' => '28', 'class' => 'align-text-bottom footer-logo-light']) ?>
+                    <?= Html::img('@web/images/yii_logo_dark.svg', ['alt' => 'Yii Framework', 'height' => '28', 'class' => 'align-text-bottom footer-logo-dark']) ?>
+                </a>
+            </div>
         </div>
     </div>
 </footer>
