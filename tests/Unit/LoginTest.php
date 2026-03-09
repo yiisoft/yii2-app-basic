@@ -27,7 +27,7 @@ final class LoginTest extends \Codeception\Test\Unit
         $controller->actionLogin();
 
         self::assertStringNotContainsString(
-            '<button type="submit" class="nav-link btn btn-link logout">Logout (admin)</button>',
+            '<button type="submit" class="nav-link btn btn-link logout text-decoration-none">Logout (admin)</button>',
             $view->render('//layouts/main.php', ['content' => 'Hello World°']),
             'Failed asserting that the logout link is rendered for a logged-in user.',
         );

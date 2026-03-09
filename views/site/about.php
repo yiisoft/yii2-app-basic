@@ -14,5 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
         This is the About page. You may modify the following file to customize its content:
     </p>
 
-    <code><?= __FILE__ ?></code>
+    <div class="alert alert-info d-flex align-items-center">
+        <code><?= __FILE__ ?></code>
+    </div>
 </div>
