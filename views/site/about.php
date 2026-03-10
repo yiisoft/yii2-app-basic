@@ -13,7 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <p class="text-body-secondary mb-4">
             You may modify the following file to customize its content:
-            <code class="d-block mt-2"><?= __FILE__ ?></code>
+            <?php if (YII_DEBUG): ?>
+                <code class="d-block mt-2"><?= __FILE__ ?></code>
+            <?php endif; ?>
         </p>
 
         <?= Html::a(
