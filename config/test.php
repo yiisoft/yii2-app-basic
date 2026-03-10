@@ -9,6 +9,17 @@ $db = require __DIR__ . '/test_db.php';
 return [
     'id' => 'basic-tests',
     'basePath' => dirname(__DIR__),
+    'container' => [
+        'singletons' => [
+            \yii\mail\MailerInterface::class => [
+                'class' => \yii\symfonymailer\Mailer::class,
+                // send all mails to a file by default.
+                'messageClass' => \yii\symfonymailer\Message::class,
+                'useFileTransport' => true,
+                'viewPath' => '@app/mail',
+            ],
+        ],
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -16,13 +27,7 @@ return [
     'language' => 'en-US',
     'components' => [
         'db' => $db,
-        'mailer' => [
-            'class' => \yii\symfonymailer\Mailer::class,
-            'viewPath' => '@app/mail',
-            // send all mails to a file by default.
-            'useFileTransport' => true,
-            'messageClass' => 'yii\symfonymailer\Message'
-        ],
+        'mailer' => \yii\mail\MailerInterface::class,
         'assetManager' => [
             'basePath' => __DIR__ . '/../web/assets',
         ],
@@ -30,7 +35,7 @@ return [
             'showScriptName' => true,
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => \app\models\User::class,
         ],
         'request' => [
             'cookieValidationKey' => 'test',

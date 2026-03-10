@@ -15,27 +15,36 @@ $htmlIcon = <<<HTML
 <div class="form-floating flex-grow-1">{input}{label}</div>{error}{hint}
 HTML;
 ?>
-<div class="site-contact py-5">
-    <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+<?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+<div class="site-contact-success d-flex align-items-center justify-content-center text-center">
+    <div class="site-contact-success-content mx-auto">
+        <h1 class="display-6 fw-semibold mb-3">Message sent</h1>
 
-        <div class="alert alert-success">
+        <p class="text-body-secondary mb-4">
             Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
         </p>
 
-    <?php else: ?>
+        <?php if (YII_DEBUG && Yii::$app->mailer->useFileTransport): ?>
+            <p class="text-body-tertiary small mb-4">
+                Development mode: email saved under
+                <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>
+            </p>
+        <?php endif; ?>
+
+        <?= Html::a(
+            'Send another message',
+            ['contact'],
+            ['class' => 'btn btn-outline-primary btn-lg'],
+        ) ?>
+    </div>
+</div>
+
+<?php else: ?>
+
+<div class="site-contact py-5">
+
+        <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
 
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-6">
@@ -50,27 +59,40 @@ HTML;
                     <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                     <?= $form->field($model, 'name', [
+                        'inputOptions' => [
+                            'class' => 'form-control',
+                            'placeholder' => 'Name',
+                            'autofocus' => true,
+                        ],
                         'options' => ['class' => 'input-group has-validation mb-3'],
                         'template' => sprintf($htmlIcon, '&#128100;'),
-                        'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Name', 'autofocus' => true],
-                    ])->textInput() ?>
+                    ]) ?>
 
                     <?= $form->field($model, 'email', [
+                        'inputOptions' => [
+                            'class' => 'form-control',
+                            'placeholder' => 'Email',
+                        ],
                         'options' => ['class' => 'input-group has-validation mb-3'],
                         'template' => sprintf($htmlIcon, '&#9993;'),
-                        'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Email'],
                     ]) ?>
 
                     <?= $form->field($model, 'subject', [
+                        'inputOptions' => [
+                            'class' => 'form-control',
+                            'placeholder' => 'Subject',
+                        ],
                         'options' => ['class' => 'input-group has-validation mb-3'],
                         'template' => sprintf($htmlIcon, '&#128172;'),
-                        'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Subject'],
                     ]) ?>
 
                     <?= $form->field($model, 'body', [
+                        'inputOptions' => [
+                            'class' => 'form-control',
+                            'placeholder' => 'Body',
+                        ],
                         'options' => ['class' => 'form-floating mb-4'],
                         'template' => '{input}{label}{error}{hint}',
-                        'inputOptions' => ['class' => 'form-control', 'placeholder' => 'Body'],
                     ])->textarea() ?>
 
                     <div class="d-flex align-items-center gap-3 flex-wrap">
@@ -81,7 +103,13 @@ HTML;
                             'template' => '<div class="d-flex align-items-center gap-2">{image}{input}</div>',
                         ]) ?>
 
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary px-4 ms-auto', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton(
+                            'Submit',
+                            [
+                                'class' => 'btn btn-primary px-4 ms-auto',
+                                'name' => 'contact-button',
+                            ],
+                        ) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>
@@ -89,6 +117,6 @@ HTML;
                 </div>
             </div>
         </div>
-
-    <?php endif; ?>
 </div>
+
+<?php endif; ?>

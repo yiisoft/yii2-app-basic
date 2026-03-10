@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\tests\Unit\Models;
 
 use app\models\ContactForm;
+use Yii;
 use yii\mail\MessageInterface;
 
 final class ContactFormTest extends \Codeception\Test\Unit
@@ -23,7 +24,7 @@ final class ContactFormTest extends \Codeception\Test\Unit
             'verifyCode' => 'testme',
         ];
 
-        verify($model->contact('admin@example.com'))->notEmpty();
+        verify($model->contact(Yii::$app->mailer, 'admin@example.com', 'noreply@example.com', 'Example.com mailer'))->notEmpty();
 
         // using Yii2 module actions to check email was sent
         $this->tester->seeEmailIsSent();

@@ -1,26 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
+use yii\mail\MailerInterface;
 
 /**
  * ContactForm is the model behind the contact form.
  */
 class ContactForm extends Model
 {
-    public $name;
-    public $email;
-    public $subject;
-    public $body;
-    public $verifyCode;
-
+    public string $name = '';
+    public string $email = '';
+    public string $subject = '';
+    public string $body = '';
+    public string $verifyCode = '';
 
     /**
      * @return array the validation rules.
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             // name, email, subject and body are required
@@ -35,7 +36,7 @@ class ContactForm extends Model
     /**
      * @return array customized attribute labels
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'verifyCode' => 'Verification Code',
@@ -44,15 +45,20 @@ class ContactForm extends Model
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
-     * @param string $email the target email address
-     * @return bool whether the model passes validation
+     *
+     * @param MailerInterface $mailer the mailer component.
+     * @param string $email the target email address.
+     * @param string $senderEmail the sender email address.
+     * @param string $senderName the sender name.
+     *
+     * @return bool whether the model passes validation.
      */
-    public function contact($email)
+    public function contact(MailerInterface $mailer, string $email, string $senderEmail, string $senderName): bool
     {
         if ($this->validate()) {
-            Yii::$app->mailer->compose()
+            $mailer->compose()
                 ->setTo($email)
-                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
+                ->setFrom([$senderEmail => $senderName])
                 ->setReplyTo([$this->email => $this->name])
                 ->setSubject($this->subject)
                 ->setTextBody($this->body)
@@ -60,6 +66,7 @@ class ContactForm extends Model
 
             return true;
         }
+
         return false;
     }
 }

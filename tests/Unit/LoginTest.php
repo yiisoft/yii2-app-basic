@@ -16,7 +16,7 @@ final class LoginTest extends \Codeception\Test\Unit
 {
     public function testRenderLoginWrongUsername(): void
     {
-        $controller = new SiteController('site', Yii::$app);
+        $controller = new SiteController('site', Yii::$app, Yii::$app->mailer);
 
         Yii::$app->controller = $controller;
 

@@ -16,7 +16,7 @@ final class LogoutTest extends \Codeception\Test\Unit
     {
         $user = User::findIdentity('100');
 
-        $controller = new SiteController('site', Yii::$app);
+        $controller = new SiteController('site', Yii::$app, Yii::$app->mailer);
 
         Yii::$app->controller = $controller;
 
@@ -35,7 +35,7 @@ final class LogoutTest extends \Codeception\Test\Unit
         Yii::$app->user->login($user);
 
         self::assertStringContainsString(
-            '<button type="submit" class="nav-link btn btn-link logout text-decoration-none">Logout (admin)</button>',
+            '<a class="logout nav-link" href="/index-test.php?r=site%2Flogout" data-method="post">Logout (admin)</a>',
             $view->render('//layouts/main.php', ['content' => 'Hello World°']),
             'Failed asserting that the logout link is rendered for a logged-in user.',
         );
@@ -43,7 +43,7 @@ final class LogoutTest extends \Codeception\Test\Unit
         $controller->actionLogout();
 
         self::assertStringNotContainsString(
-            '<button type="submit" class="nav-link btn btn-link logout text-decoration-none">Logout (admin)</button>',
+            '<a class="logout nav-link" href="/index-test.php?r=site%2Flogout" data-method="post">Logout (admin)</a>',
             $view->render('//layouts/main.php', ['content' => 'Hello World°']),
             'Failed asserting that the logout link is rendered for a logged-in user.',
         );

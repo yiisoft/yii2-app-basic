@@ -1,6 +1,8 @@
 main > .container {
     padding: 70px 15px 20px;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 .not-set {
@@ -99,4 +101,43 @@ a.desc:after {
 /* dark mode: invert captcha text color for visibility on dark background */
 [data-bs-theme="dark"] .site-contact img[src*="captcha"] {
     filter: invert(1) hue-rotate(180deg);
+}
+
+/* centered page layout: error, about, contact success */
+.site-index,
+.site-error,
+.site-about,
+.site-contact-success {
+    flex: 1;
+}
+
+.site-error .site-error-content,
+.site-about .site-about-content,
+.site-contact-success .site-contact-success-content {
+    width: 100%;
+    max-width: 90%;
+}
+
+@media (min-width: 576px) {
+    .site-error .site-error-content,
+    .site-about .site-about-content,
+    .site-contact-success .site-contact-success-content {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .site-error .site-error-content,
+    .site-about .site-about-content,
+    .site-contact-success .site-contact-success-content {
+        max-width: 60%;
+    }
+}
+
+@media (min-width: 992px) {
+    .site-error .site-error-content,
+    .site-about .site-about-content,
+    .site-contact-success .site-contact-success-content {
+        max-width: 50%;
+    }
 }
