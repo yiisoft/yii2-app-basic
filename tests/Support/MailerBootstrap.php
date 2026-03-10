@@ -23,8 +23,6 @@ final class MailerBootstrap implements BootstrapInterface
      */
     public function bootstrap($app): void
     {
-        $app->mailer->useFileTransport = true;
-
         Yii::$container->setSingleton(MailerInterface::class, $app->mailer);
     }
 }
