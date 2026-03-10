@@ -27,7 +27,7 @@ $items = [
         'visible' => Yii::$app->user->isGuest,
     ],
     [
-        'label' => 'Logout (' . Html::encode(Yii::$app->user->identity->username ?? '') . ')',
+        'label' => 'Logout (' . Html::encode(Yii::$app->user->identity?->username ?? '') . ')',
         'url' => ['/site/logout'],
         'linkOptions' => [
             'data-method' => 'post',
