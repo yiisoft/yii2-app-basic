@@ -96,5 +96,4 @@ class User extends BaseObject implements IdentityInterface
     {
         return $this->authKey === $authKey;
     }
-
 }
