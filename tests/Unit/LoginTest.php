@@ -7,18 +7,19 @@ namespace app\tests\Unit;
 use app\controllers\SiteController;
 use app\models\User;
 use Yii;
-use yii\console\Application;
+use yii\base\Security;
 use yii\web\View;
-
-use function dirname;
 
 final class LoginTest extends \Codeception\Test\Unit
 {
     public function testRenderLoginWrongUsername(): void
     {
-        $controller = new SiteController('site', Yii::$app);
-
-        Yii::$app->controller = $controller;
+        $controller = new SiteController(
+            'site',
+            Yii::$app,
+            Yii::$app->mailer,
+            new Security(),
+        );
 
         $view = new View(['context' => $controller]);
 
@@ -27,9 +28,9 @@ final class LoginTest extends \Codeception\Test\Unit
         $controller->actionLogin();
 
         self::assertStringNotContainsString(
-            '<button type="submit" class="nav-link btn btn-link logout text-decoration-none">Logout (admin)</button>',
+            'Logout (admin)',
             $view->render('//layouts/main.php', ['content' => 'Hello World°']),
-            'Failed asserting that the logout link is rendered for a logged-in user.',
+            'Failed asserting that the logout link is not rendered for a wrong username.',
         );
     }
 }
