@@ -11,7 +11,7 @@ class User extends BaseObject implements IdentityInterface
 {
     public int|string $id = '';
     public string $username = '';
-    public string $password = '';
+    public string $passwordHash = '';
     public string $authKey = '';
     public string $accessToken = '';
 
@@ -19,14 +19,16 @@ class User extends BaseObject implements IdentityInterface
         '100' => [
             'id' => '100',
             'username' => 'admin',
-            'password' => 'admin',
+            // password: admin
+            'passwordHash' => '$2y$13$gYAywKSkhfZDq9FLNdm7buKnvlRxDexf5xipSMAxQPDUxpaptmZJu',
             'authKey' => 'test100key',
             'accessToken' => '100-token',
         ],
         '101' => [
             'id' => '101',
             'username' => 'demo',
-            'password' => 'demo',
+            // password: demo
+            'passwordHash' => '$2y$13$alRLq1PGVMlGYwS/Y3iy3ewQns1Z8ol8Iq6Zb5k7ZwEhblA1aL29y',
             'authKey' => 'test101key',
             'accessToken' => '101-token',
         ],
@@ -95,14 +97,4 @@ class User extends BaseObject implements IdentityInterface
         return $this->authKey === $authKey;
     }
 
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword(string $password): bool
-    {
-        return $this->password === $password;
-    }
 }

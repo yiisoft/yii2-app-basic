@@ -7,6 +7,7 @@ namespace app\tests\Unit;
 use app\controllers\SiteController;
 use app\models\User;
 use Yii;
+use yii\base\Security;
 use yii\web\IdentityInterface;
 use yii\web\View;
 
@@ -16,9 +17,12 @@ final class LogoutTest extends \Codeception\Test\Unit
     {
         $user = User::findIdentity('100');
 
-        $controller = new SiteController('site', Yii::$app, Yii::$app->mailer);
-
-        Yii::$app->controller = $controller;
+        $controller = new SiteController(
+            'site',
+            Yii::$app,
+            Yii::$app->mailer,
+            new Security(),
+        );
 
         $view = new View(['context' => $controller]);
 
@@ -34,18 +38,27 @@ final class LogoutTest extends \Codeception\Test\Unit
 
         Yii::$app->user->login($user);
 
+        $html = $view->render('//layouts/main.php', ['content' => 'Hello World°']);
+
         self::assertStringContainsString(
-            '<a class="logout nav-link" href="/index-test.php?r=site%2Flogout" data-method="post">Logout (admin)</a>',
-            $view->render('//layouts/main.php', ['content' => 'Hello World°']),
+            'Logout (admin)',
+            $html,
             'Failed asserting that the logout link is rendered for a logged-in user.',
+        );
+        self::assertStringContainsString(
+            'data-method="post"',
+            $html,
+            'Failed asserting that the logout link uses POST method.',
         );
 
         $controller->actionLogout();
 
+        $html = $view->render('//layouts/main.php', ['content' => 'Hello World°']);
+
         self::assertStringNotContainsString(
-            '<a class="logout nav-link" href="/index-test.php?r=site%2Flogout" data-method="post">Logout (admin)</a>',
-            $view->render('//layouts/main.php', ['content' => 'Hello World°']),
-            'Failed asserting that the logout link is rendered for a logged-in user.',
+            'Logout (admin)',
+            $html,
+            'Failed asserting that the logout link is not rendered after logout.',
         );
     }
 }

@@ -6,6 +6,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\base\Security;
 
 /**
  * LoginForm is the model behind the login form.
@@ -20,6 +21,11 @@ class LoginForm extends Model
 
     private User|null $_user = null;
     private bool $_userLoaded = false;
+
+    public function __construct(private readonly Security $security, $config = [])
+    {
+        parent::__construct($config);
+    }
 
     /**
      * @return array the validation rules.
@@ -48,7 +54,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
-            if (!$user || !$user->validatePassword($this->password)) {
+            if (!$user || !$this->security->validatePassword($this->password, $user->passwordHash)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }

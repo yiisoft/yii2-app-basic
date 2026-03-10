@@ -47,7 +47,5 @@ final class UserTest extends \Codeception\Test\Unit
 
         verify($user->validateAuthKey('test100key'))->notEmpty();
         verify($user->validateAuthKey('test102key'))->empty();
-        verify($user->validatePassword('admin'))->notEmpty();
-        verify($user->validatePassword('123456'))->empty();
     }
 }
