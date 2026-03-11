@@ -54,6 +54,10 @@ class Alert extends \yii\bootstrap5\Widget
     {
         $session = Yii::$app->session;
 
+        if (!$session->getIsActive() && !$session->getHasSessionId()) {
+            return;
+        }
+
         $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
 
         foreach (array_keys($this->alertTypes) as $type) {
