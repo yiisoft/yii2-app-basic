@@ -15,15 +15,11 @@ $htmlIcon = <<<HTML
 <div class="form-floating flex-grow-1">{input}{label}</div>{error}{hint}
 HTML;
 ?>
-<?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+<?php if (Yii::$app->session->hasFlash('success')): ?>
 
 <div class="site-contact-success d-flex align-items-center justify-content-center text-center">
     <div class="site-contact-success-content mx-auto">
         <h1 class="display-6 fw-semibold mb-3">Message sent</h1>
-
-        <p class="text-body-secondary mb-4">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </p>
 
         <?php if (YII_DEBUG && Yii::$app->mailer->useFileTransport): ?>
             <p class="text-body-tertiary small mb-4">
