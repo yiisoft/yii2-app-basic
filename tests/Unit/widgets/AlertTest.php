@@ -243,6 +243,24 @@ class AlertTest extends \Codeception\Test\Unit
         verify($renderingResult)->stringContainsString('alert-warning');
     }
 
+    public function testSkipsSessionStartWhenNoSessionExists()
+    {
+        $session = Yii::$app->session;
+
+        // Ensure the session is closed and no session cookie is present.
+        $session->close();
+
+        unset($_COOKIE[$session->getName()]);
+
+        verify($session->getIsActive())->false();
+        verify($session->getHasSessionId())->false();
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->equals('');
+        verify($session->getIsActive())->false();
+    }
+
     public function testFlashIntegrity()
     {
         $errorMessage = 'This is an error message';
