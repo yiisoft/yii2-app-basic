@@ -59,7 +59,7 @@ HTML;
                                 ],
                             ) ?>
                         </div>
-                        <h1 class="h3 fw-bold mb-1">Login to your account</h1>
+                        <h1 class="h3 fw-bold mb-1"><?= Html::encode($this->title) ?></h1>
                         <p class="text-body-secondary small">Enter your credentials to continue</p>
                     </div>
 
