@@ -13,8 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['meta_description'] = 'Get in touch with us. Send us a message using the contact form.';
 $this->params['meta_keywords'] = 'yii, yii2, contact, support, feedback';
 $htmlIcon = <<<HTML
-<div class="input-group"><span class="input-group-text" aria-hidden="true">%s</span>{input}</div>{error}{hint}
+{label}<div class="input-group"><span class="input-group-text" aria-hidden="true">%s</span>{input}</div>{error}{hint}
 HTML;
+$labelOptions = ['class' => 'form-label fw-semibold small'];
 ?>
 <?php if (Yii::$app->session->hasFlash('success')): ?>
 
@@ -81,7 +82,7 @@ HTML;
                                 ],
                             ) ?>
                         </div>
-                        <h1 class="h3 fw-bold mb-1">Contact us</h1>
+                        <h1 class="h3 fw-bold mb-1"><?= Html::encode($this->title) ?></h1>
                         <p class="text-body-secondary small">Fill out the form below and we will get back to you</p>
                     </div>
 
@@ -89,7 +90,6 @@ HTML;
 
                     <div class="row">
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label fw-semibold small" for="contactform-name">Your Name</label>
                             <?= $form->field($model, 'name', [
                                 'options' => ['class' => 'mb-0'],
                                 'template' => sprintf($htmlIcon, '&#128100;'),
@@ -98,11 +98,10 @@ HTML;
                                     'placeholder' => 'Name',
                                     'autofocus' => true,
                                 ],
-                            ]) ?>
+                            ])->label('Your Name', $labelOptions) ?>
                         </div>
 
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label fw-semibold small" for="contactform-email">Your Email</label>
                             <?= $form->field($model, 'email', [
                                 'options' => ['class' => 'mb-0'],
                                 'template' => sprintf($htmlIcon, '&#9993;'),
@@ -110,12 +109,11 @@ HTML;
                                     'class' => 'form-control',
                                     'placeholder' => 'email@example.com',
                                 ],
-                            ]) ?>
+                            ])->label('Your Email', $labelOptions) ?>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label fw-semibold small" for="contactform-subject">Subject</label>
                         <?= $form->field($model, 'subject', [
                             'options' => ['class' => 'mb-0'],
                             'template' => sprintf($htmlIcon, '&#128172;'),
@@ -123,19 +121,18 @@ HTML;
                                 'class' => 'form-control',
                                 'placeholder' => 'Subject',
                             ],
-                        ]) ?>
+                        ])->label('Subject', $labelOptions) ?>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label fw-semibold small" for="contactform-body">Message</label>
                         <?= $form->field($model, 'body', [
                             'options' => ['class' => 'mb-0'],
-                            'template' => '{input}{error}{hint}',
+                            'template' => '{label}{input}{error}{hint}',
                             'inputOptions' => [
                                 'class' => 'form-control',
                                 'placeholder' => 'Your message...',
                             ],
-                        ])->textarea() ?>
+                        ])->textarea()->label('Message', $labelOptions) ?>
                     </div>
 
                     <div class="d-flex align-items-center gap-3 flex-wrap">
