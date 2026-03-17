@@ -12,7 +12,7 @@ final class HomeCest
     public function ensureThatHomePageWorks(AcceptanceTester $I)
     {
         $I->amOnPage(Url::toRoute('/site/index'));
-        $I->see('My Company');
+        $I->see(\Yii::$app->name);
 
         $I->seeLink('About');
         $I->click('About');
