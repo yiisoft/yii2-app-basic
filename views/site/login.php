@@ -8,7 +8,7 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$this->title = 'Login';
+$this->title = 'Login to your account';
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['meta_description'] = 'Log in to access your Yii2 application account.';
 $this->params['meta_keywords'] = 'yii, yii2, login, sign in, authentication';

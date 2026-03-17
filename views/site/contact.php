@@ -8,7 +8,7 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = 'Contact us';
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['meta_description'] = 'Get in touch with us. Send us a message using the contact form.';
 $this->params['meta_keywords'] = 'yii, yii2, contact, support, feedback';
