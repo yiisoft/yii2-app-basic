@@ -80,89 +80,6 @@ a.desc:after {
 [data-bs-theme="dark"] .footer-logo-light { display: none; }
 [data-bs-theme="dark"] .footer-logo-dark  { display: inline-block; }
 
-/* Yii brand button */
-.btn-yii {
-    background: linear-gradient(135deg, #40B3D8, #3a9cbd);
-    border: none;
-    font-weight: 600;
-    letter-spacing: .02em;
-    transition: opacity .2s, transform .1s;
-}
-
-.btn-yii:hover {
-    opacity: .9;
-    transform: translateY(-1px);
-}
-
-.btn-yii:active {
-    transform: translateY(0);
-}
-
-/* form inputs: seamless icon inside input (Volt style) */
-.form-card .input-group {
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: var(--bs-border-radius);
-    overflow: hidden;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.form-card .input-group .input-group-text {
-    background: var(--bs-body-bg);
-    border: 0;
-    padding-left: 1rem;
-    padding-right: .75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-card .input-group .form-control {
-    border: 0;
-}
-
-.form-card .input-group .form-control:focus {
-    box-shadow: none;
-}
-
-.form-card .input-group:focus-within {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
-}
-
-/* validation styles for browsers that support :has() */
-@supports selector(.input-group:has(.is-invalid)) {
-    .form-card .input-group:has(.is-invalid) ~ .invalid-feedback {
-        display: block;
-        margin-top: .35rem;
-        margin-bottom: .5rem;
-    }
-
-    .form-card .input-group:has(.is-invalid) {
-        border-color: var(--bs-danger);
-    }
-
-    .form-card .input-group:has(.is-invalid):focus-within {
-        box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25);
-    }
-}
-
-/* fallback validation styles for browsers without :has() support */
-@supports not selector(.input-group:has(.is-invalid)) {
-    .form-card .invalid-feedback:not(:empty) {
-        display: block;
-        margin-top: .35rem;
-        margin-bottom: .5rem;
-    }
-
-    .form-card .input-group .form-control.is-invalid {
-        border: var(--bs-border-width) solid var(--bs-danger);
-    }
-
-    .form-card .input-group .form-control.is-invalid:focus {
-        box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25);
-    }
-}
-
 /* login inputs: seamless icon inside input (Volt style) */
 .login-split-card .input-group {
     border: var(--bs-border-width) solid var(--bs-border-color);
@@ -297,17 +214,6 @@ a.desc:after {
 /* contact form textarea height */
 .site-contact textarea.form-control {
     height: 140px;
-}
-
-/* form cards */
-.form-card {
-    border-radius: 1rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, .10);
-}
-
-/* dark mode: elevate form cards against dark background */
-[data-bs-theme="dark"] .form-card {
-    box-shadow: 0 0 0 1px var(--bs-border-color), 0 4px 24px rgba(0, 0, 0, .4);
 }
 
 /* captcha: blend with card background */
