@@ -31,7 +31,7 @@ $items = [
         'url' => ['/site/logout'],
         'linkOptions' => [
             'data-method' => 'post',
-            'class' => 'logout',
+            'class' => 'nav-link logout',
         ],
         'visible' => !Yii::$app->user->isGuest,
     ],
