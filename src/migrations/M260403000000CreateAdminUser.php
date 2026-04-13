@@ -14,7 +14,7 @@ final class M260403000000CreateAdminUser extends Migration
 {
     public function safeDown(): bool
     {
-        $this->delete('{{%user}}', ['username' => 'admin']);
+        $this->delete('{{%user}}', ['username' => \Yii::$app->params['admin.username']]);
 
         return true;
     }
@@ -26,10 +26,12 @@ final class M260403000000CreateAdminUser extends Migration
         $this->insert(
             '{{%user}}',
             [
-                'username' => 'admin',
-                'auth_key' => 'admin-auth-key-seed-value-ok32',
-                'password_hash' => \Yii::$app->security->generatePasswordHash('admin'),
-                'email' => 'admin@example.com',
+                'username' => \Yii::$app->params['admin.username'],
+                'auth_key' => \Yii::$app->security->generateRandomString(),
+                'password_hash' => \Yii::$app->security->generatePasswordHash(
+                    \Yii::$app->params['admin.password'],
+                ),
+                'email' => \Yii::$app->params['admin.email'],
                 'status' => User::STATUS_ACTIVE,
                 'created_at' => $time,
                 'updated_at' => $time,

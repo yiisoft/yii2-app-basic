@@ -9,6 +9,9 @@ declare(strict_types=1);
  */
 
 return [
+    'admin.email' => 'admin@example.com',
+    'admin.password' => 'admin',
+    'admin.username' => 'admin',
     'adminEmail' => 'admin@example.com',
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',

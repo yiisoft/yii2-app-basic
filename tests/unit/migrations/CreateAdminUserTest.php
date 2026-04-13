@@ -26,7 +26,7 @@ final class CreateAdminUserTest extends \Codeception\Test\Unit
 
         $migration->up();
 
-        $admin = User::find()->where(['username' => 'admin'])->one();
+        $admin = User::find()->where(['username' => Yii::$app->params['admin.username']])->one();
 
         verify($admin)
             ->notNull(
@@ -35,7 +35,7 @@ final class CreateAdminUserTest extends \Codeception\Test\Unit
 
         $migration->down();
 
-        $admin = User::find()->where(['username' => 'admin'])->one();
+        $admin = User::find()->where(['username' => Yii::$app->params['admin.username']])->one();
 
         verify($admin)
             ->null(
@@ -48,13 +48,13 @@ final class CreateAdminUserTest extends \Codeception\Test\Unit
         $db = Yii::$app->db;
 
         // clean up if admin already exists from fixtures.
-        $db->createCommand()->delete('{{%user}}', ['username' => 'admin'])->execute();
+        $db->createCommand()->delete('{{%user}}', ['username' => Yii::$app->params['admin.username']])->execute();
 
         $migration = new M260403000000CreateAdminUser(['db' => $db]);
 
         $migration->up();
 
-        $admin = User::find()->where(['username' => 'admin'])->one();
+        $admin = User::find()->where(['username' => Yii::$app->params['admin.username']])->one();
 
         self::assertInstanceOf(
             User::class,
@@ -68,22 +68,22 @@ final class CreateAdminUserTest extends \Codeception\Test\Unit
             );
         verify($admin->username)
             ->equals(
-                'admin',
-                "Failed asserting that 'username' is 'admin'.",
+                Yii::$app->params['admin.username'],
+                "Failed asserting that 'username' matches params.",
             );
         verify($admin->email)
             ->equals(
-                'admin@example.com',
-                "Failed asserting that 'email' is 'admin@example.com'.",
+                Yii::$app->params['admin.email'],
+                "Failed asserting that 'email' matches params.",
             );
         verify($admin->status)
             ->equals(
                 User::STATUS_ACTIVE,
                 "Failed asserting that 'status' is 'active'.",
             );
-        verify(Yii::$app->security->validatePassword('admin', $admin->password_hash))
+        verify(Yii::$app->security->validatePassword(Yii::$app->params['admin.password'], $admin->password_hash))
             ->true(
-                "Failed asserting that 'admin' password is 'admin'.",
+                "Failed asserting that password matches params.",
             );
 
         // clean up for other tests.
