@@ -81,7 +81,7 @@ at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
 You can then install this project template using the following command:
 
 ```
-composer create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+composer create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic:^22.0 basic
 ```
 
 ### Run database migrations
