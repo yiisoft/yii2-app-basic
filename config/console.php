@@ -26,6 +26,7 @@ $config = [
         '@tests' => dirname(__DIR__) . '/tests',
     ],
     'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
     'components' => [
         'authManager' => [
             'class' => PhpManager::class,
