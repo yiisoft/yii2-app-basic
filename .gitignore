@@ -1,39 +1,52 @@
-# phpstorm project files
-.idea
+# codecoverage (if present)
+code_coverage
 
-# netbeans project files
+# codeception (if present)
+c3.php
+tests/Support/_generated
+tests/Support/output
+
+# composer
+composer.lock
+
+# database
+*.sqlite
+
+# gitHub copilot config (if present)
+.copilot/
+.github/copilot/**
+
+# mac ds_store (if present)
+.DS_Store
+
+# netbeans project (if present)
 nbproject
 
-# zend studio for eclipse project files
+# node_modules (if present)
+node_modules
+package-lock.json
+
+# phpstorm project (if present)
+.idea
+
+# phpunit (if present)
+.phpunit.cache
+.phpunit.result.cache
+phpunit.xml*
+
+# vagrant (if present)
+.vagrant
+
+# vendor
+vendor
+
+# vscode project (if present)
+.vscode
+
+# windows thumbnail cache (if present)
+Thumbs.db
+
+# zend studio for eclipse project (if present)
 .buildpath
 .project
 .settings
-
-# windows thumbnail cache
-Thumbs.db
-
-# composer vendor dir
-/vendor
-
-# composer itself is not needed
-composer.phar
-
-# Mac DS_Store Files
-.DS_Store
-
-# phpunit itself is not needed
-phpunit.phar
-# local phpunit config
-/phpunit.xml
-
-tests/_output/*
-tests/_support/_generated
-
-#vagrant folder
-/.vagrant
-
-# node_modules
-node_modules
-
-#codeception
-/c3.php

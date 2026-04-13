@@ -1,6 +1,16 @@
 <?php
-$db = require __DIR__ . '/db.php';
-// test database! Important not to run tests on production or development databases
-$db['dsn'] = 'mysql:host=localhost;dbname=yii2basic_test';
 
-return $db;
+declare(strict_types=1);
+
+/**
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
+use yii\db\Connection;
+
+return [
+    'class' => Connection::class,
+    'dsn' => 'sqlite:' . dirname(__DIR__) . '/tests/support/data/test.sqlite',
+];

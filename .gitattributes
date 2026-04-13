@@ -1,6 +1,44 @@
-# Ignore all test and documentation for archive
-/.github            export-ignore
-/.gitattributes     export-ignore
-/.scrutinizer.yml   export-ignore
-/.travis.yml        export-ignore
-/docs               export-ignore
+# Autodetect text files
+* text=auto eol=lf
+
+# ...Unless the name matches the following overriding patterns
+
+# Definitively text files
+*.php  text
+*.css  text
+*.js   text
+*.txt  text
+*.md   text
+*.xml  text
+*.json text
+*.bat  text
+*.sql  text
+*.yml  text
+
+# Ensure those won't be messed up with
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.ttf  binary
+
+# Avoid merge conflicts in CHANGELOG
+# https://about.gitlab.com/2015/02/10/gitlab-reduced-merge-conflicts-by-90-percent-with-changelog-placeholders/
+/CHANGELOG.md		merge=union
+
+# Exclude files from the archive
+/.editorconfig                  export-ignore
+/.gitattributes                 export-ignore
+/.github                        export-ignore
+/.gitignore                     export-ignore
+/.styleci.yml                   export-ignore
+/codeception.yml                export-ignore
+/composer-require-checker.json  export-ignore
+/docs                           export-ignore
+/ecs.php                        export-ignore
+/infection.json*                export-ignore
+/phpstan*.neon*                 export-ignore
+/phpunit.xml.dist               export-ignore
+/psalm.xml                      export-ignore
+/rector.php                     export-ignore
+/runtime                        export-ignore
+/tests                          export-ignore

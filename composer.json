@@ -1,7 +1,13 @@
 {
     "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "description": "Yii2 Basic Project Template.",
+    "keywords": [
+        "yii2",
+        "framework",
+        "basic",
+        "jquery",
+        "project template"
+    ],
     "homepage": "https://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -14,38 +20,59 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=8.1.0",
-        "php-forge/foxy": "^0.1",
-        "yiisoft/yii2": "22.0.x-dev",
-        "yiisoft/yii2-bootstrap5": "22.x-dev",
-        "yiisoft/yii2-symfonymailer": "22.x-dev"
+        "php": ">=8.3",
+        "php-forge/foxy": "^0.2",
+        "yiisoft/yii2": "^22.0@dev",
+        "yiisoft/yii2-bootstrap5": "^22.0@dev",
+        "yiisoft/yii2-jquery": "^1.0@dev",
+        "yiisoft/yii2-symfonymailer": "^22@dev"
     },
     "require-dev": {
-        "codeception/c3": "^2.9",
+        "codeception/c3": "^2.8",
         "codeception/codeception": "^5.0",
         "codeception/lib-innerbrowser": "^4.0",
-        "codeception/module-asserts": "^3.0",
+        "codeception/module-asserts": "^3.3",
         "codeception/module-filesystem": "^3.0",
+        "codeception/module-phpbrowser": "^4.0",
         "codeception/module-yii2": "^1.1",
-        "codeception/verify": "^3.0",
-        "symfony/browser-kit": "^6.4|^7.3",
-        "symfony/process": "^6.4|^7.3",
-        "yiisoft/yii2-debug": "22.x-dev",
-        "yiisoft/yii2-faker": "22.x-dev",
-        "yiisoft/yii2-gii": "22.x-dev"
+        "codeception/verify": "^3.3",
+        "maglnet/composer-require-checker": "^4.17",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-strict-rules": "^2.0.3",
+        "symfony/browser-kit": "^7.3",
+        "symfony/process": "^7.3",
+        "symplify/easy-coding-standard": "^13.0",
+        "yii2-extensions/phpstan": "^0.5",
+        "yiisoft/yii2-debug": "^22.0@dev",
+        "yiisoft/yii2-gii": "^22.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "app\\tests\\": "tests"
+        }
     },
     "config": {
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "php-forge/foxy": true,
-            "codeception/c3": true
-        },
+        "sort-packages": true,
         "process-timeout": 1800,
+        "allow-plugins": {
+            "codeception/c3": true,
+            "php-forge/foxy": true,
+            "phpstan/extension-installer": true,
+            "yiisoft/yii2-composer": true
+        },
         "foxy": {
             "manager": "npm"
         }
     },
     "scripts": {
+        "ecs": "./vendor/bin/ecs --fix",
+        "static": "./vendor/bin/phpstan --memory-limit=512M",
+        "tests": "vendor/bin/codecept run --env php-builtin --coverage-xml",
         "post-install-cmd": [
             "yii\\composer\\Installer::postInstall"
         ],
@@ -59,7 +86,7 @@
             "setPermission": [
                 {
                     "runtime": "0777",
-                    "web/assets": "0777",
+                    "public/assets": "0777",
                     "yii": "0755"
                 }
             ]

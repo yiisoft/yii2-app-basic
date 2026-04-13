@@ -1,0 +1,42 @@
+name: docker
+
+permissions:
+  contents: read
+
+on:
+  pull_request: &ignore-paths
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - "docs/**"
+      - "LICENSE"
+      - "README.md"
+
+  push: *ignore-paths
+
+jobs:
+  apache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout.
+        uses: actions/checkout@v6
+
+      - name: Build and start containers.
+        run: docker compose up -d --build
+
+      - name: Fix permissions.
+        run: docker compose exec -T php bash -c "chown -R www-data:www-data /app/runtime /app/web/assets && chmod -R ug+rwX /app/runtime /app/web/assets"
+
+      - name: Install Node.js and npm.
+        run: docker compose exec -T php bash -c "apt-get update && apt-get install -y nodejs npm"
+
+      - name: Composer install.
+        run: docker compose exec -T php composer install --prefer-dist --no-progress --optimize-autoloader
+
+      - name: Codeception build.
+        run: docker compose exec -T php vendor/bin/codecept build
+
+      - name: Codeception tests.
+        run: docker compose exec -T php vendor/bin/codecept run

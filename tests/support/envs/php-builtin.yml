@@ -1,0 +1,10 @@
+---
+extensions:
+  enabled:
+    - Codeception\Extension\RunProcess:
+        0: php -d variables_order=EGPCS -d memory_limit=-1 -d max_execution_time=0 -S localhost:8080 -t public
+        sleep: 2
+modules:
+  config:
+    PhpBrowser:
+      url: http://localhost:8080

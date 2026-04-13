@@ -1,0 +1,25 @@
+---
+on:
+  pull_request: &ignore-paths
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - "docker-compose.yml"
+      - "docs/**"
+      - "LICENSE"
+      - "README.md"
+
+  push: *ignore-paths
+
+name: static analysis
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  phpstan:
+    uses: yiisoft/yii2-actions/.github/workflows/phpstan.yml@master
+    with:
+      hook: vendor/bin/codecept build
