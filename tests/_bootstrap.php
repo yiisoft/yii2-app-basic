@@ -29,6 +29,7 @@ $app = new yii\console\Application(
                 'compact' => true,
             ],
         ],
+        'params' => require dirname(__DIR__) . '/config/params.php',
     ],
 );
 
