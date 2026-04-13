@@ -1,32 +1,28 @@
-on:
-  pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'infection.json.dist'
-      - 'psalm.xml'
-
-  push:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - '.gitignore'
-      - '.gitattributes'
-      - 'infection.json.dist'
-      - 'psalm.xml'
-
 name: build
 
+permissions:
+  contents: read
+
+on:
+  pull_request: &ignore-paths
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - "docker-compose.yml"
+      - "docs/**"
+      - "LICENSE"
+      - "README.md"
+
+  push: *ignore-paths
+
 jobs:
-  build:
-    uses: yiisoft/actions/.github/workflows/codeception.yml@master
+  codeception:
+    uses: yiisoft/yii2-actions/.github/workflows/codeception.yml@master
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     with:
-      extensions: dom, json, gd, imagick
-      os: >-
-        ['ubuntu-latest', 'windows-latest']
-      php: >-
-        ['8.1', '8.2', '8.3', '8.4']
+      codeception-command: vendor/bin/codecept run --env php-builtin --coverage-xml
+      coverage-file: tests/support/output/coverage.xml
+      extensions: dom, json, gd, imagick, pdo_sqlite
+      php-version: '["8.3","8.4","8.5"]'

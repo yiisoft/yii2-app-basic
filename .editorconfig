@@ -10,8 +10,23 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
+[*.js]
+indent_size = 2
+
 [*.md]
+indent_size = unset
 trim_trailing_whitespace = false
+
+[*.php]
+ij_php_space_before_short_closure_left_parenthesis = false
+ij_php_space_after_type_cast = true
+
+[*.yaml]
+indent_size = 2
 
 [*.yml]
 indent_size = 2
+
+[LICENSE*]
+indent_style = unset
+indent_size = unset

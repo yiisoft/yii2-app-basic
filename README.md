@@ -1,236 +1,245 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.yiiframework.com/image/design/logo/yii3_full_for_dark.svg">
+        <source media="(prefers-color-scheme: light)" srcset="https://www.yiiframework.com/image/design/logo/yii3_full_for_light.svg">
+        <img src="https://www.yiiframework.com/image/design/logo/yii3_full_for_light.svg" alt="Yii Framework" height="100">
+    </picture>
+    <h1 align="center">Yii2 Basic Project Template</h1>
     <br>
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-rapidly creating small projects.
+Yii 2 Basic Project Template is a skeleton [Yii2](https://www.yiiframework.com/) application best for rapidly creating 
+small projects.
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+The template contains the basic features including user registration, login/logout, contact page, user management with 
+GridView, RBAC authorization, database migrations (SQLite), and Bootstrap5 dark/light theme support.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
+[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Stable&logo=packagist)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg?style=for-the-badge&label=Downloads)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![build](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/build.yml?branch=22&style=for-the-badge&logo=github&label=Build)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild+branch%3A22)
+[![codecov](https://img.shields.io/codecov/c/github/yiisoft/yii2-app-basic/22.svg?style=for-the-badge&logo=codecov&logoColor=white&label=Codecov)](https://codecov.io/gh/yiisoft/yii2-app-basic/branch/22)
+[![Static Analysis](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/static.yml?branch=22&style=for-the-badge&label=Static)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Astatic+branch%3A22)
 
-DIRECTORY STRUCTURE
--------------------
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png">
+    <img src="docs/images/home-light.png" alt="Web Application Basic">
+</picture>
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+## Requirements
 
+> [!IMPORTANT]
+> The minimum required PHP version is **8.3**.
 
+The requirements checker runs automatically in development mode when the application starts.
+If any mandatory extension is missing (PDO, PDO SQLite, DOM, MBString), a standalone error page is displayed before the 
+framework loads.
 
-REQUIREMENTS
-------------
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/requirements-standalone-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/requirements-standalone-light.png">
+    <img src="docs/images/requirements-standalone-light.png" alt="Requirements checker">
+</picture>
 
-The minimum requirement by this project template that your Web server supports PHP 8.1.
+## Docker
 
+[![Apache](https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-app-basic/docker.yml?branch=22&style=for-the-badge&logo=apache&label=Apache)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Adocker+branch%3A22)
 
-INSTALLATION
-------------
+## Directory structure
+
+```text
+config/             application configurations
+public/             web entry point and static assets
+  css/              application stylesheets
+  images/           logo and SVG images
+  js/               JavaScript (dark mode toggle)
+rbac/               RBAC assignments, items, and rules
+resources/
+  mail/             email templates (verification, password reset)
+  views/            view files (layouts, site, user)
+runtime/            files generated during runtime
+src/
+  assets/           asset bundle definitions
+  commands/         console commands
+  controllers/      web controllers (Site, User)
+  migrations/       database migrations
+  models/           model classes (User, ContactForm, SignupForm, etc.)
+  widgets/          custom widgets (Alert)
+tests/              Codeception test suites (unit, functional, acceptance)
+```
+
+## Installation
+
+This package requires [npm](https://www.npmjs.com/) for [php-forge/foxy](https://github.com/php-forge/foxy), which 
+manages the installation of npm packages and resource compilation.
 
 ### Install via Composer
-
-This package requires [npm-asset](https://www.npmjs.com/) for [php-forge/foxy](https://www.github.com/php-forge/foxy),
-which manages the installation of npm packages and resource compilation.
 
 If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
 
 You can then install this project template using the following command:
 
-~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic:22.x.dev basic
-~~~
+```
+composer create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+```
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
+### Run database migrations
 
-~~~
-http://localhost:8080/basic/web/
-~~~
+The application uses SQLite by default. Run the migrations to create the database and seed the admin user:
 
-### Install from an Archive File
+```
+cd basic
+./yii migrate
+```
 
-Extract the archive file downloaded from [yiiframework.com](https://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
+### Start the development server
 
-Set cookie validation key in `config/web.php` file to some random secret string:
+```
+./yii serve --docroot=public
+```
+
+You can then access the application at:
+
+```
+http://localhost:8080
+```
+
+Default admin credentials: `admin` / `admin`
+
+### Install with Docker
+
+Start the container:
+
+```
+docker-compose up -d
+```
+
+Run migrations inside the container:
+
+```
+docker-compose exec php ./yii migrate
+```
+
+You can then access the application at:
+
+```
+http://127.0.0.1:8000
+```
+
+## Configuration
+
+### Database
+
+The default configuration uses SQLite at `runtime/db.sqlite`. Edit `config/db.php` to change:
+
+```php
+return [
+    'class' => \yii\db\Connection::class,
+    'dsn' => 'sqlite:' . dirname(__DIR__) . '/runtime/db.sqlite',
+];
+```
+
+To use MySQL or PostgreSQL, update the DSN and ensure the corresponding PDO extension is installed.
+
+### Cookie validation key
+
+Set a secret key in `config/web.php` (auto-generated by Composer on install):
 
 ```php
 'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
     'cookieValidationKey' => '<secret random string goes here>',
 ],
 ```
 
-You can then access the application through the following URL:
+## Screenshots
 
-~~~
-http://localhost/basic/web/
-~~~
+<details>
+<summary>Login</summary>
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/login-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/login-light.png">
+    <img src="docs/images/login-light.png" alt="Login page">
+</picture>
+</details>
 
+<details>
+<summary>Contact</summary>
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/contact-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/contact-light.png">
+    <img src="docs/images/contact-light.png" alt="Contact page">
+</picture>
+</details>
 
-### Install with Docker
+<details>
+<summary>Contact submitted</summary>
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/contact-submitted-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/contact-submitted-light.png">
+    <img src="docs/images/contact-submitted-light.png" alt="Contact submitted">
+</picture>
+</details>
 
-Update your vendor packages
+<details>
+<summary>User directory (admin)</summary>
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/users-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/users-light.png">
+    <img src="docs/images/users-light.png" alt="User directory">
+</picture>
+</details>
 
-    docker-compose run --rm php composer update --prefer-dist
-    
-Run the installation triggers (creating cookie validation code)
+## Testing
 
-    docker-compose run --rm php composer install    
-    
-Start the container
+Tests are located in `tests/` and developed with [Codeception](https://codeception.com/).
+There are 3 test suites:
 
-    docker-compose up -d
-    
-You can then access the application through the following URL:
+- `unit` - system components and model logic
+- `functional` - user interaction (forms, authentication, password reset)
+- `acceptance` - browser-based tests
 
-    http://127.0.0.1:8000
-
-**NOTES:** 
-- Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
-
-
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
-
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
-
-
-TESTING
--------
-
-Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](https://codeception.com/).
-By default, there are 3 test suites:
-
-- `unit`
-- `functional`
-- `acceptance`
-
-Tests can be executed by running
+Run all tests with the built-in web server:
 
 ```
-vendor/bin/codecept run
+vendor/bin/codecept run --env php-builtin
 ```
 
-The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
-tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
-they perform testing in real browser. 
-
-
-### Running  acceptance tests
-
-To execute acceptance tests do the following:  
-
-1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
-
-2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full-featured
-   version of Codeception
-
-3. Update dependencies with Composer 
-
-    ```
-    composer update  
-    ```
-
-4. Download [Selenium Server](https://www.seleniumhq.org/download/) and launch it:
-
-    ```
-    java -jar ~/selenium-server-standalone-x.xx.x.jar
-    ```
-
-    In case of using Selenium Server 3.0 with Firefox browser since v48 or Google Chrome since v53 you must download [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and launch Selenium with it:
-
-    ```
-    # for Firefox
-    java -jar -Dwebdriver.gecko.driver=~/geckodriver ~/selenium-server-standalone-3.xx.x.jar
-    
-    # for Google Chrome
-    java -jar -Dwebdriver.chrome.driver=~/chromedriver ~/selenium-server-standalone-3.xx.x.jar
-    ``` 
-    
-    As an alternative way you can use already configured Docker container with older versions of Selenium and Firefox:
-    
-    ```
-    docker run --net=host selenium/standalone-firefox:2.53.0
-    ```
-
-5. (Optional) Create `yii2basic_test` database and update it by applying migrations if you have them.
-
-   ```
-   tests/bin/yii migrate
-   ```
-
-   The database configuration can be found at `config/test_db.php`.
-
-
-6. Start web server:
-
-    ```
-    tests/bin/yii serve
-    ```
-
-7. Now you can run all available tests
-
-   ```
-   # run all available tests
-   vendor/bin/codecept run
-
-   # run acceptance tests
-   vendor/bin/codecept run acceptance
-
-   # run only unit and functional tests
-   vendor/bin/codecept run unit,functional
-   ```
-
-### Code coverage support
-
-By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
-to collect code coverage. You can run your tests and collect coverage with the following command:
+Or use the Composer script:
 
 ```
-#collect coverage for all tests
-vendor/bin/codecept run --coverage --coverage-html --coverage-xml
-
-#collect coverage only for unit tests
-vendor/bin/codecept run unit --coverage --coverage-html --coverage-xml
-
-#collect coverage for unit and functional tests
-vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xml
+composer tests
 ```
 
-You can see code coverage output under the `tests/_output` directory.
+### Code coverage
+
+```
+vendor/bin/codecept run --env php-builtin --coverage --coverage-html --coverage-xml
+```
+
+Coverage output is generated under `tests/support/output/`.
+
+## Code quality
+
+```
+# Static analysis (PHPStan level max)
+composer static
+
+# Code style (ECS)
+composer ecs
+```
+
+## Support the project
+
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-sponsor-7eadf1?style=for-the-badge&logo=open%20collective&logoColor=7eadf1&labelColor=555555)](https://opencollective.com/yiisoft)
+
+## Follow updates
+
+[![Official website](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=for-the-badge&logo=yii)](https://www.yiiframework.com/)
+[![Follow on X](https://img.shields.io/badge/-Follow%20on%20X-1DA1F2.svg?style=for-the-badge&logo=x&logoColor=white&labelColor=000000)](https://x.com/yiiframework)
+[![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=for-the-badge&logo=telegram)](https://t.me/yii_framework_in_english)
+[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=for-the-badge&logo=slack)](https://yiiframework.com/go/slack)
+
+## License
+
+[![License](https://img.shields.io/badge/License-BSD--3--Clause-brightgreen.svg?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=555555)](LICENSE)

@@ -1,162 +1,110 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * Application requirement checker script.
+ * Application requirements checker.
  *
- * In order to run this script use the following console command:
- * php requirements.php
+ * Returns an array with check results. Called from public/index.php before the framework boots.
  *
- * In order to run this script from the web, you should copy it to the web root.
- * If you are using Linux you can create a hard link instead, using the following command:
- * ln ../requirements.php requirements.php
+ * If any mandatory requirement fails, index.php renders a standalone error page instead of starting the application.
+ *
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ *
+ * @return array{requirements: list<array{name: string, mandatory: bool, passed: bool, by: string, memo: string}>, summary: array{total: int, passed: int, failed: int, warnings: int, errors: int}, php: array{version: string, sapi: string, os: string}}
  */
+return (static function (): array {
+    $gdMemo = 'Either GD with FreeType or ImageMagick with PNG support is required for CAPTCHA.';
+    $imagickMemo = $gdMemo;
+    $gdOK = false;
+    $imagickOK = false;
 
-// you may need to adjust this path to the correct Yii framework path
-// uncomment and adjust the following line if Yii is not located at the default path
-//$frameworkPath = dirname(__FILE__) . '/vendor/yiisoft/yii2';
+    if (extension_loaded('imagick')) {
+        $imagick = new Imagick();
+        $imagickFormats = $imagick->queryFormats('PNG');
 
-
-if (!isset($frameworkPath)) {
-    $searchPaths = array(
-        dirname(__FILE__) . '/vendor/yiisoft/yii2',
-        dirname(__FILE__) . '/../vendor/yiisoft/yii2',
-    );
-    foreach ($searchPaths as $path) {
-        if (is_dir($path)) {
-            $frameworkPath = $path;
-            break;
+        if (in_array('PNG', $imagickFormats, true)) {
+            $imagickOK = true;
+        } else {
+            $imagickMemo = 'Imagick should be installed with PNG support for CAPTCHA.';
         }
     }
-}
 
-if (!isset($frameworkPath) || !is_dir($frameworkPath)) {
-    $message = "<h1>Error</h1>\n\n"
-        . "<p><strong>The path to yii framework seems to be incorrect.</strong></p>\n"
-        . '<p>You need to install Yii framework via composer or adjust the framework path in file <abbr title="' . __FILE__ . '">' . basename(__FILE__) . "</abbr>.</p>\n"
-        . '<p>Please refer to the <abbr title="' . dirname(__FILE__) . "/README.md\">README</abbr> on how to install Yii.</p>\n";
+    if (extension_loaded('gd')) {
+        $gdInfo = gd_info();
 
-    if (!empty($_SERVER['argv'])) {
-        // do not print HTML when used in console mode
-        echo strip_tags($message);
-    } else {
-        echo $message;
+        if (!empty($gdInfo['FreeType Support'])) {
+            $gdOK = true;
+        } else {
+            $gdMemo = 'GD should be installed with FreeType support for CAPTCHA.';
+        }
     }
-    exit(1);
-}
 
-require_once($frameworkPath . '/requirements/YiiRequirementChecker.php');
-$requirementsChecker = new YiiRequirementChecker();
+    $checks = [
+        // mandatory: bundled and enabled by default, but can be excluded at compile time.
+        ['PDO extension', true, extension_loaded('pdo'), 'Database', 'Bundled and default-enabled. Required for all database operations.'],
+        ['PDO SQLite extension', true, extension_loaded('pdo_sqlite'), 'Database', 'Bundled and default-enabled. Required for SQLite database.'],
+        ['DOM extension', true, extension_loaded('dom'), 'Framework', 'Bundled and default-enabled. Required for HTML and XML processing.'],
 
-$gdMemo = $imagickMemo = 'Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required for image CAPTCHA.';
-$gdOK = $imagickOK = false;
+        // mandatory: bundled but requires --enable-mbstring at compile time.
+        ['MBString extension', true, extension_loaded('mbstring'), 'Framework', 'Bundled, requires --enable-mbstring. Required for multibyte string processing.'],
 
-if (extension_loaded('imagick')) {
-    $imagick = new Imagick();
-    $imagickFormats = $imagick->queryFormats('PNG');
-    if (in_array('PNG', $imagickFormats)) {
-        $imagickOK = true;
-    } else {
-        $imagickMemo = 'Imagick extension should be installed with PNG support in order to be used for image CAPTCHA.';
+        // optional: database drivers (not bundled by default, must opt-in).
+        ['PDO MySQL extension', false, extension_loaded('pdo_mysql'), 'Database', 'Not default-enabled. Required for MySQL database.'],
+        ['PDO PostgreSQL extension', false, extension_loaded('pdo_pgsql'), 'Database', 'Not default-enabled. Required for PostgreSQL database.'],
+
+        // optional: bundled but requires opt-in at compile time.
+        ['Intl extension', false, extension_loaded('intl'), 'Internationalization', 'Not default-enabled. Required for advanced formatting and transliteration.'],
+        ['cURL extension', false, extension_loaded('curl'), 'HTTP client', 'Not default-enabled. Required for HTTP requests.'],
+
+        // optional: image processing for CAPTCHA.
+        ['GD extension with FreeType', false, $gdOK, 'Captcha', $gdMemo],
+        ['ImageMagick with PNG support', false, $imagickOK, 'Captcha', $imagickMemo],
+
+        // optional: security recommendations (php.ini settings).
+        ['expose_php disabled', false, !ini_get('expose_php'), 'Security', '"expose_php" should be disabled in php.ini.'],
+        ['allow_url_include disabled', false, !ini_get('allow_url_include'), 'Security', '"allow_url_include" should be disabled in php.ini.'],
+    ];
+
+    $requirements = [];
+    $passed = 0;
+    $warnings = 0;
+    $errors = 0;
+
+    foreach ($checks as [$name, $mandatory, $condition, $by, $memo]) {
+        $ok = (bool) $condition;
+        $requirements[] = [
+            'name' => $name,
+            'mandatory' => $mandatory,
+            'passed' => $ok,
+            'by' => $by,
+            'memo' => $memo,
+        ];
+
+        if ($ok) {
+            $passed++;
+        } elseif ($mandatory) {
+            $errors++;
+        } else {
+            $warnings++;
+        }
     }
-}
 
-if (extension_loaded('gd')) {
-    $gdInfo = gd_info();
-    if (!empty($gdInfo['FreeType Support'])) {
-        $gdOK = true;
-    } else {
-        $gdMemo = 'GD extension should be installed with FreeType support in order to be used for image CAPTCHA.';
-    }
-}
-
-/**
- * Adjust requirements according to your application specifics.
- */
-$requirements = array(
-    // Database :
-    array(
-        'name' => 'PDO extension',
-        'mandatory' => true,
-        'condition' => extension_loaded('pdo'),
-        'by' => 'All DB-related classes',
-    ),
-    array(
-        'name' => 'PDO SQLite extension',
-        'mandatory' => false,
-        'condition' => extension_loaded('pdo_sqlite'),
-        'by' => 'All DB-related classes',
-        'memo' => 'Required for SQLite database.',
-    ),
-    array(
-        'name' => 'PDO MySQL extension',
-        'mandatory' => false,
-        'condition' => extension_loaded('pdo_mysql'),
-        'by' => 'All DB-related classes',
-        'memo' => 'Required for MySQL database.',
-    ),
-    array(
-        'name' => 'PDO PostgreSQL extension',
-        'mandatory' => false,
-        'condition' => extension_loaded('pdo_pgsql'),
-        'by' => 'All DB-related classes',
-        'memo' => 'Required for PostgreSQL database.',
-    ),
-    // Cache :
-    array(
-        'name' => 'Memcache extension',
-        'mandatory' => false,
-        'condition' => extension_loaded('memcache') || extension_loaded('memcached'),
-        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-caching-memcache.html">MemCache</a>',
-        'memo' => extension_loaded('memcached') ? 'To use memcached set <a href="https://www.yiiframework.com/doc-2.0/yii-caching-memcache.html#$useMemcached-detail">MemCache::useMemcached</a> to <code>true</code>.' : ''
-    ),
-    // CAPTCHA:
-    array(
-        'name' => 'GD PHP extension with FreeType support',
-        'mandatory' => false,
-        'condition' => $gdOK,
-        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-captcha-captcha.html">Captcha</a>',
-        'memo' => $gdMemo,
-    ),
-    array(
-        'name' => 'ImageMagick PHP extension with PNG support',
-        'mandatory' => false,
-        'condition' => $imagickOK,
-        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-captcha-captcha.html">Captcha</a>',
-        'memo' => $imagickMemo,
-    ),
-    // PHP ini :
-    'phpExposePhp' => array(
-        'name' => 'Expose PHP',
-        'mandatory' => false,
-        'condition' => $requirementsChecker->checkPhpIniOff("expose_php"),
-        'by' => 'Security reasons',
-        'memo' => '"expose_php" should be disabled at php.ini',
-    ),
-    'phpAllowUrlInclude' => array(
-        'name' => 'PHP allow url include',
-        'mandatory' => false,
-        'condition' => $requirementsChecker->checkPhpIniOff("allow_url_include"),
-        'by' => 'Security reasons',
-        'memo' => '"allow_url_include" should be disabled at php.ini',
-    ),
-    'phpSmtp' => array(
-        'name' => 'PHP mail SMTP',
-        'mandatory' => false,
-        'condition' => strlen(ini_get('SMTP')) > 0,
-        'by' => 'Email sending',
-        'memo' => 'PHP mail SMTP server required',
-    ),
-);
-
-// OPcache check
-if (!version_compare(phpversion(), '5.5', '>=')) {
-    $requirements[] = array(
-        'name' => 'APC extension',
-        'mandatory' => false,
-        'condition' => extension_loaded('apc'),
-        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-caching-apccache.html">ApcCache</a>',
-    );
-}
-
-$result = $requirementsChecker->checkYii()->check($requirements)->getResult();
-$requirementsChecker->render();
-exit($result['summary']['errors'] === 0 ? 0 : 1);
+    return [
+        'requirements' => $requirements,
+        'summary' => [
+            'total' => count($requirements),
+            'passed' => $passed,
+            'failed' => $errors + $warnings,
+            'warnings' => $warnings,
+            'errors' => $errors,
+        ],
+        'php' => [
+            'version' => PHP_VERSION,
+            'sapi' => PHP_SAPI,
+            'os' => PHP_OS,
+        ],
+    ];
+})();

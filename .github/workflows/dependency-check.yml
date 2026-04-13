@@ -1,0 +1,23 @@
+---
+on:
+  pull_request: &ignore-paths
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - "docker-compose.yml"
+      - "docs/**"
+      - "LICENSE"
+      - "README.md"
+
+  push: *ignore-paths
+
+name: Composer require checker
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  composer-require-checker:
+    uses: yiisoft/yii2-actions/.github/workflows/composer-require-checker.yml@master

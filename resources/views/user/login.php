@@ -1,0 +1,131 @@
+<?php
+
+declare(strict_types=1);
+
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
+
+/**
+ * @var yii\bootstrap5\ActiveForm $form active form instance.
+ * @var app\models\LoginForm $model login form model instance.
+ * @var yii\web\View $this view component instance.
+ *
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+$this->title = 'Login to your account';
+$this->params['breadcrumbs'][] = $this->title;
+$this->params['meta_description'] = 'Log in to access your Yii2 application account.';
+$htmlIcon = <<<HTML
+{label}<div class="input-group"><span class="input-group-text" aria-hidden="true">%s</span>{input}</div>{error}{hint}
+HTML;
+$labelOptions = ['class' => 'form-label fw-semibold small'];
+?>
+<div class="site-login d-flex align-items-center justify-content-center py-5">
+    <div class="card border-0 overflow-hidden login-split-card">
+        <div class="row g-0">
+
+            <!-- Brand panel -->
+            <div class="col-md-5 d-none d-md-flex login-brand-panel text-white">
+                <div class="d-flex flex-column justify-content-between p-4 p-lg-5 w-100">
+                    <div>
+                        <?= Html::img(
+                            Yii::getAlias('@web/images/yii3_full_white_for_dark.svg'),
+                            [
+                                'alt' => 'Yii Framework',
+                                'class' => 'mb-4',
+                                'height' => 40,
+                            ],
+                        ) ?>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-3 login-brand-title">
+                            Welcome<br>Back
+                        </h2>
+                        <p class="opacity-75 mb-0 login-brand-text">
+                            Log in to access your Yii2 application and manage your account.
+                        </p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="brand-meta">YII2</span>
+                        <span class="brand-meta-dot">&middot;</span>
+                        <span class="brand-meta">JQUERY</span>
+                        <span class="brand-meta-dot">&middot;</span>
+                        <span class="brand-meta">BOOTSTRAP5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form panel -->
+            <div class="col-md-7">
+                <div class="p-4 p-lg-5">
+                    <div class="text-center mb-4">
+                        <h1 class="h3 fw-bold mb-1"><?= Html::encode($this->title) ?></h1>
+                        <p class="text-body-secondary small">Enter your credentials to continue</p>
+                    </div>
+
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+
+                    <div class="mb-3">
+                        <?= $form->field($model, 'username', [
+                            'options' => ['class' => 'mb-0'],
+                            'template' => sprintf($htmlIcon, '&#128100;'),
+                            'inputOptions' => [
+                                'class' => 'form-control',
+                                'placeholder' => 'admin',
+                                'autofocus' => true,
+                            ],
+                        ])->textInput()->label('Your Username', $labelOptions) ?>
+                    </div>
+
+                    <div class="mb-3">
+                        <?= $form->field($model, 'password', [
+                            'options' => ['class' => 'mb-0'],
+                            'template' => sprintf($htmlIcon, '&#128274;'),
+                            'inputOptions' => [
+                                'class' => 'form-control',
+                                'placeholder' => 'admin',
+                            ],
+                        ])->passwordInput()->label('Your Password', $labelOptions) ?>
+                    </div>
+
+                    <div class="mb-4">
+                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    </div>
+
+                    <div class="d-grid">
+                        <?= Html::submitButton(
+                            'Login',
+                            [
+                                'class' => 'btn login-btn btn-lg rounded-3 text-white',
+                                'name' => 'login-button',
+                            ],
+                        ) ?>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
+
+                    <div class="login-footer-links mt-4">
+                        <div class="login-footer-divider">
+                            <span>or</span>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p class="mb-2 small">
+                                Don't have an account?
+                                <?= Html::a('Sign up', ['user/signup'], ['class' => 'fw-semibold login-footer-action']) ?>
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 small">
+                                <?= Html::a('Forgot password', ['user/request-password-reset'], ['class' => 'login-footer-action']) ?>
+                                <span class="text-body-tertiary">|</span>
+                                <?= Html::a('Resend verification', ['user/resend-verification-email'], ['class' => 'login-footer-action']) ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

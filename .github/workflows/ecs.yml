@@ -1,0 +1,25 @@
+---
+on:
+  pull_request: &ignore-paths
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - "docker-compose.yml"
+      - "docs/**"
+      - "LICENSE"
+      - "README.md"
+
+  push: *ignore-paths
+
+name: ecs
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  easy-coding-standard:
+    uses: yiisoft/yii2-actions/.github/workflows/ecs.yml@master
+    with:
+      php-version: '["8.3"]'
