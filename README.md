@@ -105,7 +105,7 @@ You can then access the application at:
 http://localhost:8080
 ```
 
-Default admin credentials: `admin` / `12345678`
+Default admin credentials: `admin` / `admin`
 
 ### Install with Docker
 
