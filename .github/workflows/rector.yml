@@ -28,5 +28,5 @@ jobs:
   rector:
     uses: yiisoft/yii2-actions/.github/workflows/rector.yml@6f8dc7a0de4cbcc0fffb6a20881f32bba0e13f44 # master
     with:
-      hook: composer require --dev rector/rector mspirkov/yii2-rector --no-interaction --ansi --no-blocking
+      hook: composer require --dev rector/rector mspirkov/yii2-rector --no-interaction --ansi
       php-version: '["8.5"]'
